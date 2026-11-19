@@ -10,6 +10,187 @@
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/svg+xml" href="/icon.svg">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <style>
+      /* Scoped styles for the Brevo signup form */
+      .gmr-brevo {
+        width: 100%;
+        margin: 0.25rem 0 0;
+        text-align: left;
+        background: transparent;
+      }
+      .gmr-brevo *,
+      .gmr-brevo *::before,
+      .gmr-brevo *::after {
+        box-sizing: border-box;
+      }
+      .gmr-brevo #sib-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 1.25rem 1.2rem 1.1rem;
+        text-align: left;
+        color: #163B67;
+        background-color: #FDF5E8;
+        border: 1px solid #d7cfc2;
+        border-radius: 0.5rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .gmr-brevo .gmr-brevo-block {
+        padding: 0.55rem 0;
+      }
+      .gmr-brevo .gmr-brevo-title {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1.25;
+        color: #163B67;
+        text-align: left;
+      }
+      .gmr-brevo .gmr-brevo-intro {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #163B67;
+        text-align: left;
+      }
+      .gmr-brevo .entry__label {
+        display: block;
+        margin: 0 0 0.4rem;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #163B67;
+        text-align: left;
+      }
+      .gmr-brevo .entry__label[data-required="*"]::after {
+        content: " *";
+        color: #b45309;
+      }
+      .contact-form .gmr-brevo input[type="text"],
+      .gmr-brevo input[type="text"] {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0.7rem 0.8rem;
+        color: #163B67;
+        background-color: #ffffff;
+        border: 1px solid #c5b9a8;
+        border-radius: 0.5rem;
+        font-family: inherit;
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+      .contact-form .gmr-brevo input[type="text"]:focus,
+      .gmr-brevo input[type="text"]:focus {
+        outline: 2px solid #10B981;
+        outline-offset: 1px;
+        border-color: #10B981;
+      }
+      .gmr-brevo input::placeholder {
+        color: #8a8174;
+        opacity: 1;
+      }
+      .gmr-brevo .entry__specification {
+        display: block;
+        margin: 0.35rem 0 0;
+        font-size: 0.75rem;
+        line-height: 1.4;
+        color: #5c6b80;
+        text-align: left;
+      }
+      .gmr-brevo .entry__error {
+        display: none;
+      }
+      .gmr-brevo .entry__error:not(:empty) {
+        display: block;
+        margin-top: 0.4rem;
+        padding: 0.4rem 0.55rem;
+        font-size: 0.875rem;
+        color: #661d1d;
+        background-color: #ffeded;
+        border: 1px solid #ff4949;
+        border-radius: 0.375rem;
+        text-align: left;
+      }
+      .gmr-brevo .entry__choice > label {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.65rem;
+        cursor: pointer;
+      }
+      .contact-form .gmr-brevo input[type="checkbox"],
+      .gmr-brevo input[type="checkbox"] {
+        flex-shrink: 0;
+        width: 1.15rem;
+        height: 1.15rem;
+        margin: 0.2rem 0 0;
+        padding: 0;
+        accent-color: #10B981;
+        cursor: pointer;
+      }
+      .gmr-brevo .checkbox {
+        display: none;
+      }
+      .gmr-brevo .entry__choice p {
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: #163B67;
+        text-align: left;
+      }
+      .gmr-brevo a {
+        color: #163B67;
+        text-decoration: underline;
+      }
+      .gmr-brevo a:hover {
+        color: #0f2b4c;
+      }
+      .gmr-brevo .sib-form-block__button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 16rem;
+        margin: 0.25rem auto 0;
+        padding: 0.75rem 1.5rem;
+        color: #ffffff;
+        background-color: #10B981;
+        border: 0;
+        border-radius: 0.5rem;
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.2;
+        cursor: pointer;
+      }
+      .gmr-brevo .sib-form-block__button:hover {
+        background-color: #059669;
+      }
+      .gmr-brevo .clickable__icon {
+        display: none;
+      }
+      .gmr-brevo .input--hidden,
+      .gmr-brevo input[name="email_address_check"] {
+        display: none !important;
+        position: absolute;
+        left: -9999px;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+      }
+      @media (max-width: 767px) {
+        .gmr-brevo .sib-form-block__button {
+          max-width: 100%;
+        }
+      }
+      @media (max-width: 479px) {
+        .gmr-brevo #sib-container {
+          padding: 1rem 0.9rem 0.9rem;
+        }
+        .gmr-brevo .gmr-brevo-title {
+          font-size: 1.35rem;
+        }
+      }
+    </style>
 </head>
 <body>
     <!-- Header Bereich -->
@@ -115,7 +296,86 @@
                 <div class="contact-form">
                     <p>Schreiben Sie uns einfach eine E-Mail – wir melden uns schnell.</p>
                     <a href="mailto:info@getmyright.de?subject=Anfrage%20GetMyRight" class="btn primary">E-Mail an info@getmyright.de</a>
-                    <!-- BREVO-FORM -->
+                    <div class="gmr-brevo sib-form">
+                      <div id="sib-form-container" class="sib-form-container">
+                        <div id="sib-container" class="sib-container--large sib-container--vertical">
+                          <form id="sib-form" method="POST" action="https://3304f71f.sibforms.com/serve/MUIFAPRrtlgGOSav-TZEYvwxWoDfrRU0h-FW866IBAxNbwrcT9qdorM53pYAVRR_LIN_auUSrK7Gws7Kf3LsH_caNtFOpb_AMmLfja7j26qYVn2-73m07Doifd5UHweqOfrg1WU4Y4pM_v68QCNZHoBI9QQKtDD0khiYLHZQ6ca94bE-aCyjqPcVOKuAQenYv7E7VWM6GkKOXmnl7A==">
+                            <div class="gmr-brevo-block">
+                              <div class="sib-form-block">
+                                <p class="gmr-brevo-title">Bleiben Sie informiert</p>
+                              </div>
+                            </div>
+                            <div class="gmr-brevo-block">
+                              <div class="sib-form-block sib-text-form-block">
+                                <p class="gmr-brevo-intro">Tragen Sie sich ein und erfahren Sie als Erste/r vom Start der Plattform.</p>
+                              </div>
+                            </div>
+                            <div class="gmr-brevo-block">
+                              <div class="sib-input sib-form-block">
+                                <div class="form__entry entry_block">
+                                  <div class="form__label-row">
+                                    <label class="entry__label" for="EMAIL" data-required="*">E-Mail</label>
+                                    <div class="entry__field">
+                                      <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" value="" placeholder="E-Mail" data-required="true" required>
+                                    </div>
+                                  </div>
+                                  <label class="entry__error entry__error--primary"></label>
+                                  <label class="entry__specification">Wir senden Ihnen eine Bestätigungs-E-Mail.</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="gmr-brevo-block">
+                              <div class="sib-input sib-form-block">
+                                <div class="form__entry entry_block">
+                                  <div class="form__label-row">
+                                    <label class="entry__label" for="FIRSTNAME">Vorname</label>
+                                    <div class="entry__field">
+                                      <input class="input" maxlength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autocomplete="off" placeholder="Vorname">
+                                    </div>
+                                  </div>
+                                  <label class="entry__error entry__error--primary"></label>
+                                  <label class="entry__specification">Optional</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="gmr-brevo-block">
+                              <div class="sib-optin sib-form-block" data-required="true">
+                                <div class="form__entry entry_mcq">
+                                  <div class="form__label-row">
+                                    <label class="entry__label" for="OPT_IN" data-required="*">Einwilligung</label>
+                                    <div class="entry__choice">
+                                      <label>
+                                        <input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" required>
+                                        <span class="checkbox checkbox_tick_positive"></span>
+                                        <span>
+                                          <p>Ich willige ein, dass GetMyRight mir Informationen zu meinem Anliegen und zum Start der Plattform per E-Mail sendet. Die Einwilligung kann ich jederzeit widerrufen. Hinweise in der <a href="https://getmyright.de/datenschutz.html" target="_blank" rel="nofollow noopener">Datenschutzerklärung</a>.</p>
+                                        </span>
+                                      </label>
+                                    </div>
+                                  </div>
+                                  <label class="entry__error entry__error--primary"></label>
+                                  <label class="entry__specification">Sie können Ihre Einwilligung jederzeit widerrufen.</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="gmr-brevo-block">
+                              <div class="sib-form-block">
+                                <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+                                  <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512" aria-hidden="true">
+                                    <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+                                  </svg>
+                                  Anmelden
+                                </button>
+                              </div>
+                            </div>
+                            <input type="text" name="email_address_check" value="" class="input--hidden">
+                            <input type="hidden" name="locale" value="de">
+                            <input type="hidden" name="html_type" value="simple">
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+
                 </div>
             </div>
         </div>
