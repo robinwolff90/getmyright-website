@@ -33,10 +33,30 @@ header {
   padding: 1rem 0;
 }
 
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 .logo h1 {
   margin: 0;
   font-size: 1.5rem;
   color: var(--text-primary);
+}
+
+.logo a {
+  display: inline-block;
+  line-height: 0;
+}
+
+.logo img {
+  display: block;
+  height: 96px;
+  width: auto;
+  /* Navy mark on the dark header: render as light cream/white */
+  filter: brightness(0) invert(1);
 }
 
 nav ul {
