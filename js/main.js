@@ -58,44 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Formularvalidierung
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simple validation
-            let isValid = true;
-            const inputs = form.querySelectorAll('input, textarea');
-            
-            inputs.forEach(input => {
-                if (input.hasAttribute('required') && !input.value.trim()) {
-                    isValid = false;
-                    input.style.borderColor = '#ef4444';
-                } else {
-                    input.style.borderColor = '';
-                }
-            });
-            
-            if (isValid) {
-                // Formular senden (hier nur Simulation)
-                const submitButton = form.querySelector('button[type="submit"]');
-                const originalText = submitButton.textContent;
-                submitButton.textContent = 'Sending...';
-                submitButton.disabled = true;
-                
-                setTimeout(() => {
-                    submitButton.textContent = 'Sent!';
-                    form.reset();
-                    
-                    setTimeout(() => {
-                        submitButton.textContent = originalText;
-                        submitButton.disabled = false;
-                    }, 2000);
-                }, 1500);
-            }
-        });
-    });
+    // Hinweis: Formulare werden nicht mehr simuliert abgeschickt.
+    // Warteliste/Registrierung übernimmt js/gmr-forms.js (echte Übermittlung an Brevo bzw. per E-Mail).
 });
 
 // Utility Functions

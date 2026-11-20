@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="GetMyRight erklärt: für Kanzleien">
+<title>Info für Kanzleien – GetMyRight</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/icon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 min-h-screen text-slate-200 flex flex-col">
+
+  <nav class="bg-slate-900 border-b border-slate-800">
+    <div class="max-w-5xl mx-auto px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <a href="index.html" aria-label="GetMyRight Startseite"><img src="logo-wortmarke.svg" alt="GetMyRight" class="h-10 w-auto brightness-0 invert"></a>
+      <div class="flex flex-wrap gap-2 text-sm">
+        <a href="spieler-info.html" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-200">Für Spieler</a>
+        <a href="kanzlei-info.html" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-100 font-medium" aria-current="page">Für Kanzleien</a>
+        <a href="warteliste.html" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-200">Warteliste</a>
+        <a href="registrierung.html" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-200">Registrieren</a>
+        <a href="spieler-login.html" class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white hover:bg-emerald-500 font-medium">Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-5xl mx-auto w-full px-6 py-10">
+    <section>
+      <p class="text-sm font-semibold uppercase tracking-wide text-violet-400">Für Kanzleien</p>
+      <h1 class="mt-1 text-3xl font-bold text-slate-100">Neue Mandate im Bereich Glücksspiel-Rückforderung</h1>
+      <p class="mt-3 text-slate-400 max-w-3xl">GetMyRight bündelt Anfragen von Spielerinnen und Spielern und stellt sie Partnerkanzleien als anonymisierte Fälle bereit. Sie entscheiden selbst, welche Fälle Sie übernehmen. Konditionen für Partnerkanzleien besprechen wir persönlich nach der Registrierung.</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="registrierung.html#kanzlei" class="rounded-lg bg-violet-600 px-5 py-3 font-semibold text-white hover:bg-violet-500">Als Kanzlei registrieren</a>
+        <a href="kanzlei-login.html" class="rounded-lg border border-slate-700 px-5 py-3 font-semibold text-slate-200 hover:bg-slate-800">Kanzlei-Login</a>
+        <a href="warteliste.html" class="rounded-lg border border-slate-700 px-5 py-3 font-semibold text-slate-200 hover:bg-slate-800">Wartelisten-Fragebogen für Spieler</a>
+      </div>
+    </section>
+    <section class="mt-8" aria-labelledby="video-titel">
+      <h2 id="video-titel" class="text-xl font-semibold text-slate-100 mb-3">Erklärvideo</h2>
+      <!-- Platzhalter: Sobald das Video vorliegt, hier ersetzen durch z. B.
+           <video controls preload="metadata" class="w-full rounded-xl" src="assets/video/kanzlei-erklaervideo.mp4"></video> -->
+      <div class="relative aspect-video w-full overflow-hidden rounded-xl border border-dashed border-slate-700 bg-slate-900 flex items-center justify-center text-center p-6">
+        <div>
+          <div class="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-slate-800 text-2xl text-slate-400" aria-hidden="true">▶</div>
+          <p class="font-semibold text-slate-200">Erklärvideo für Kanzleien folgt in Kürze</p>
+          <p class="mt-1 text-sm text-slate-500">Das Video ist in Produktion. Bis dahin finden Sie alle wichtigen Schritte unten.</p>
+        </div>
+      </div>
+    </section>
+    <section id="ablauf" class="mt-10">
+      <h2 class="text-xl font-semibold text-slate-100 mb-4">So funktioniert es</h2>
+      <ol class="grid gap-4 md:grid-cols-3">
+        <li class="rounded-xl border border-slate-800 bg-slate-900 p-5">
+          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-violet-950 text-sm font-bold text-violet-300">1</span>
+          <h3 class="mt-3 font-semibold text-slate-100">Registrieren</h3>
+          <p class="mt-1 text-sm text-slate-400">Sie registrieren Ihre Kanzlei; wir melden uns zur Prüfung und zum Onboarding.</p>
+        </li>
+        <li class="rounded-xl border border-slate-800 bg-slate-900 p-5">
+          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-violet-950 text-sm font-bold text-violet-300">2</span>
+          <h3 class="mt-3 font-semibold text-slate-100">Fälle claimen</h3>
+          <p class="mt-1 text-sm text-slate-400">Im Kanzlei-Dashboard sehen Sie anonymisierte Fälle mit Region und geschätztem Streitwert und können passende Fälle übernehmen.</p>
+        </li>
+        <li class="rounded-xl border border-slate-800 bg-slate-900 p-5">
+          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-violet-950 text-sm font-bold text-violet-300">3</span>
+          <h3 class="mt-3 font-semibold text-slate-100">Annehmen oder ablehnen</h3>
+          <p class="mt-1 text-sm text-slate-400">Nach der Prüfung nehmen Sie den Fall an oder lehnen ab – abgelehnte Fälle werden automatisch wieder für andere Kanzleien freigegeben.</p>
+        </li>
+      </ol>
+    </section>
+
+    <p class="mt-8 text-xs text-slate-500">GetMyRight befindet sich in der Vorbereitung. Logins sind derzeit Demo-Zugänge mit Beispieldaten.</p>
+  </main>
+
+  <footer class="mt-auto border-t border-slate-800 bg-slate-900">
+    <div class="max-w-5xl mx-auto px-6 py-6 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-500">
+      <p>&copy; 2026 GetMyRight</p>
+      <p class="flex flex-wrap gap-4"><a href="spieler-login.html" class="hover:text-slate-300">Spieler-Login</a><a href="kanzlei-login.html" class="hover:text-slate-300">Kanzlei-Login</a><a href="impressum.html" class="hover:text-slate-300">Impressum</a><a href="datenschutz.html" class="hover:text-slate-300">Datenschutz</a></p>
+    </div>
+  </footer>
+  <script src="js/gmr-forms.js"></script>
+</body>
+</html>

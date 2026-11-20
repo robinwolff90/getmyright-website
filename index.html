@@ -165,6 +165,29 @@
       .gmr-brevo .sib-form-block__button:hover {
         background-color: #059669;
       }
+      .gmr-brevo .gmr-status {
+        margin-top: 1rem;
+        padding: 0.75rem 0.9rem;
+        border-radius: 0.5rem;
+        border: 1px solid #10B981;
+        background: #ecfdf5;
+        color: #064e3b;
+        font-size: 0.9rem;
+      }
+      .gmr-brevo .gmr-status.border-rose-700 {
+        border-color: #ff4949;
+        background: #ffeded;
+        color: #661d1d;
+      }
+      .gmr-brevo .gmr-status a.inline-block {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        background: #10B981;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 700;
+      }
       .gmr-brevo .clickable__icon {
         display: none;
       }
@@ -208,6 +231,8 @@
                     <li><a href="#services">Dienstleistungen</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contact">Kontakt</a></li>
+                    <li><a href="warteliste.html">Warteliste</a></li>
+                    <li><a href="spieler-login.html">Login</a></li>
                 </ul>
             </nav>
         </div>
@@ -218,8 +243,14 @@
         <div class="container">
             <h1>Willkommen bei GetMyRight</h1>
             <p>Ihre Plattform zur Vermittlung von Rechtsfällen zwischen Spielern und Kanzleien</p>
-            <a href="spieler.html" class="btn primary">Spieler-Portal</a>
-            <a href="kanzlei.html" class="btn" style="margin-left: 1rem; background-color: #1e293b; color: #f1f5f9; border: 1px solid #334155;">Kanzlei-Dashboard</a>
+            <a href="spieler-login.html" class="btn primary">Spieler-Login</a>
+            <a href="kanzlei-login.html" class="btn" style="margin-left: 1rem; background-color: #1e293b; color: #f1f5f9; border: 1px solid #334155;">Kanzlei-Login</a>
+            <p style="margin-top: 1.5rem;">
+                <a href="warteliste.html" style="color: #10b981; font-weight: 600;">Zum Wartelisten-Fragebogen</a> ·
+                <a href="registrierung.html" style="color: #cbd5e1;">Registrieren</a> ·
+                <a href="spieler-info.html" style="color: #cbd5e1;">Info für Spieler</a> ·
+                <a href="kanzlei-info.html" style="color: #cbd5e1;">Info für Kanzleien</a>
+            </p>
         </div>
     </section>
 
@@ -299,7 +330,7 @@
                     <div class="gmr-brevo sib-form">
                       <div id="sib-form-container" class="sib-form-container">
                         <div id="sib-container" class="sib-container--large sib-container--vertical">
-                          <form id="sib-form" method="POST" action="https://3304f71f.sibforms.com/serve/MUIFAPRrtlgGOSav-TZEYvwxWoDfrRU0h-FW866IBAxNbwrcT9qdorM53pYAVRR_LIN_auUSrK7Gws7Kf3LsH_caNtFOpb_AMmLfja7j26qYVn2-73m07Doifd5UHweqOfrg1WU4Y4pM_v68QCNZHoBI9QQKtDD0khiYLHZQ6ca94bE-aCyjqPcVOKuAQenYv7E7VWM6GkKOXmnl7A==">
+                          <form id="sib-form" data-gmr-brevo method="POST" action="https://3304f71f.sibforms.com/serve/MUIFAPRrtlgGOSav-TZEYvwxWoDfrRU0h-FW866IBAxNbwrcT9qdorM53pYAVRR_LIN_auUSrK7Gws7Kf3LsH_caNtFOpb_AMmLfja7j26qYVn2-73m07Doifd5UHweqOfrg1WU4Y4pM_v68QCNZHoBI9QQKtDD0khiYLHZQ6ca94bE-aCyjqPcVOKuAQenYv7E7VWM6GkKOXmnl7A==">
                             <div class="gmr-brevo-block">
                               <div class="sib-form-block">
                                 <p class="gmr-brevo-title">Bleiben Sie informiert</p>
@@ -371,7 +402,9 @@
                             <input type="text" name="email_address_check" value="" class="input--hidden">
                             <input type="hidden" name="locale" value="de">
                             <input type="hidden" name="html_type" value="simple">
+                            <div data-gmr-status hidden></div>
                           </form>
+                          <p style="margin: 0.75rem 0 0; font-size: 0.875rem; color: #163B67;">Ausführlicher Fragebogen: <a href="warteliste.html">Zur Warteliste</a></p>
                         </div>
                       </div>
                     </div>
@@ -390,5 +423,6 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/gmr-forms.js"></script>
 </body>
 </html>
