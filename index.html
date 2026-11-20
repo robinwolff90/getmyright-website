@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.googleusercontent.com; media-src 'self'; connect-src 'self' https://3304f71f.sibforms.com https://accounts.google.com; frame-src https://accounts.google.com; form-action 'self' https://3304f71f.sibforms.com; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://3304f71f.sibforms.com; frame-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>GetMyRight – Strukturierte Vorbereitung im Glücksspielrecht</title>
 <meta name="description" content="GetMyRight bereitet freiwillige Angaben von Betroffenen nach Verlusten im Online-Glücksspiel strukturiert auf. Getrennte Bereiche für Spieler und Partnerkanzleien.">
@@ -19,9 +19,8 @@
 <link rel="icon" type="image/svg+xml" href="/icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Outfit:wght@400;500;600&amp;display=swap">
+<link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/gmr.css">
 </head>
 <body>
@@ -105,7 +104,7 @@
 <li><strong>Keine Provision pro Mandat.</strong> Kanzleien zahlen eine feste Software-Lizenz, unabhängig von Anzahl oder Höhe einzelner Mandate.</li>
 <li><strong>Keine Kosten für Spieler.</strong> Die Nutzung des Mandantenbereichs ist für Betroffene kostenlos.</li>
 </ul>
-<p class="note" style="margin-top:22px">Wenn Sie gerade mit dem Spielen kämpfen, steht Ihr Schutz an erster Stelle. Kostenfreie, anonyme Beratung erhalten Sie zum Beispiel bei <a href="https://www.check-dein-spiel.de/" rel="noopener" target="_blank">Check dein Spiel</a> oder telefonisch unter 0800 137 27 00.</p>
+<p class="note" style="margin-top:22px">Wenn Sie gerade mit dem Spielen kämpfen, steht Ihr Schutz an erster Stelle. Kostenfreie, anonyme Beratung erhalten Sie zum Beispiel bei <a href="https://www.check-dein-spiel.de/" rel="noopener noreferrer" target="_blank">Check dein Spiel</a> oder telefonisch unter 0800 137 27 00.</p>
 </div>
 </section>
 </main>

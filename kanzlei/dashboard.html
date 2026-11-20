@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.googleusercontent.com; media-src 'self'; connect-src 'self' https://3304f71f.sibforms.com https://accounts.google.com; frame-src https://accounts.google.com; form-action 'self' https://3304f71f.sibforms.com; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://3304f71f.sibforms.com; frame-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Kanzlei-Dashboard – Anwaltsbereich · GetMyRight</title>
 <meta name="description" content="Software-Vorschau für Partnerkanzleien: filterbare Beispieldatensätze mit Qualitätsstatus, exklusiver Reservierung und 2FA-Einstellungen.">
@@ -19,9 +19,8 @@
 <link rel="icon" type="image/svg+xml" href="/icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Outfit:wght@400;500;600&amp;display=swap">
+<link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/gmr.css">
 </head>
 <body>
@@ -38,10 +37,10 @@
 <section class="section">
 <div class="wrap">
 <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:end">
-<div><span class="eyebrow">Kanzlei-Dashboard</span><h1 style="font-size:2.2rem;margin:0">Anonymisierte Fälle</h1></div>
+<div><span class="eyebrow">Kanzlei-Dashboard</span><h1 style="font-size:2.2rem;margin:0">Pseudonymisierte Fälle</h1></div>
 <a class="btn ghost" href="/kanzlei/login.html" data-gmr-logout>Abmelden</a>
 </div>
-<p class="lead" style="margin-top:14px">GetMyRight bündelt Anfragen von Spielerinnen und Spielern und stellt sie Partnerkanzleien vorab anonymisiert bereit. Bereits vor einer Fallübernahme sehen Sie das betroffene Casino beziehungsweise den Anbieter, die geschätzte Verlusthöhe sowie die Wohnregion des Spielers und entscheiden selbst, welche Fälle Sie übernehmen. Konditionen für Partnerkanzleien besprechen wir persönlich nach der Registrierung.</p>
+<p class="lead" style="margin-top:14px">GetMyRight bündelt Anfragen von Spielerinnen und Spielern und stellt sie Partnerkanzleien vorab pseudonymisiert bereit (ohne Namen, Kontaktdaten oder Unterlagen). Bereits vor einer Fallübernahme sehen Sie das betroffene Casino beziehungsweise den Anbieter, die geschätzte Verlusthöhe sowie die Wohnregion des Spielers und entscheiden selbst, welche Fälle Sie übernehmen. Konditionen für Partnerkanzleien besprechen wir persönlich nach der Registrierung.</p>
 <div class="kpis" style="margin-top:24px">
 <div class="kpi"><span class="small">Beispieldatensätze</span><b>8</b></div>
 <div class="kpi"><span class="small">vollständig</span><b>5</b></div>
@@ -53,6 +52,7 @@
 <div class="field"><label for="f-s">Status</label><select id="f-s" data-gmr-filter-status><option value="">Alle</option><option>vollständig</option><option>kontaktieren</option><option>Daten fehlen</option></select></div>
 <div class="field"><label for="f-l">Lizenzsitz</label><select id="f-l" data-gmr-filter-lic><option value="">Alle</option><option>Malta (MGA)</option><option>Curaçao</option><option>Gibraltar</option><option>Isle of Man</option><option>unbekannt</option></select></div>
 </div>
+<p class="small" data-gmr-oasis-note>Pseudonymisierte Datensätze: keine Namen, Kontaktdaten oder Unterlagen. Die Spalte „OASIS-Sperre“ wird nur befüllt, wenn der Spieler ausdrücklich nach Art. 9 Abs. 2 lit. a DSGVO in die Verarbeitung und in die Weitergabe an Partnerkanzleien eingewilligt hat; sonst steht dort „—“.</p>
 <p class="small"><span data-gmr-count>8</span> Datensätze angezeigt · Beispieldaten</p>
 <div class="table-wrap"><table data-gmr-cases>
 <thead><tr><th>ID</th><th>Casino / Anbieter</th><th>Wohnregion</th><th>Spielart</th><th>Lizenzsitz</th><th>Zeitraum</th><th>Geschätzte Verlusthöhe (Spieler)</th><th>OASIS-Sperre</th><th>Rechtsschutz</th><th>Status</th><th>Reservierung</th></tr></thead>
@@ -65,10 +65,11 @@
 <div class="card"><h3>Ihre Reservierungen</h3><div data-gmr-claims></div></div>
 <div class="card" data-gmr-2fa-settings="kanzlei">
 <h3>Sicherheit · Zwei-Faktor-Authentifizierung</h3>
-<p class="small">Status: <span data-gmr-2fa-state></span></p>
+<p class="small">Status: <span data-gmr-2fa-state><span class="badge warn">Anmeldung erforderlich</span></span></p>
+<p class="small" data-gmr-2fa-login-hint>Die Zwei-Faktor-Einstellungen sind nur nach Anmeldung mit Ihrem eigenen Konto änderbar. In der Demo-Ansicht ohne Anmeldung wird nichts gespeichert.</p>
 <div class="row-2" style="align-items:end">
-<div class="field"><label for="kanzlei-s-method">Verfahren</label><select id="kanzlei-s-method" data-gmr-2fa-method><option value="app">Authenticator-App (empfohlen)</option><option value="sms">SMS-Code</option></select></div>
-<label class="choice" style="margin-bottom:12px"><input type="checkbox" data-gmr-2fa-toggle> <span>2FA aktivieren</span></label>
+<div class="field"><label for="kanzlei-s-method">Verfahren</label><select id="kanzlei-s-method" data-gmr-2fa-method disabled><option value="app">Authenticator-App (empfohlen)</option><option value="sms">SMS-Code</option></select></div>
+<label class="choice" style="margin-bottom:12px"><input type="checkbox" data-gmr-2fa-toggle disabled> <span>2FA aktivieren</span></label>
 </div>
 <div data-gmr-2fa-setup id="kanzlei-settings-2fa" hidden class="card cream" style="margin-top:18px"><div data-gmr-2fa-box></div></div>
 <p class="small" style="margin-top:12px">Vorschau: Authenticator-Codes werden im Browser nach RFC 6238 geprüft; ein echter SMS-Versand und die serverseitige Speicherung folgen mit dem Backend.</p>

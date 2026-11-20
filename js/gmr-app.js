@@ -1,9 +1,12 @@
 /* GetMyRight – Frontend-Logik (statische Website, kein eigener Server)
- * - Warteliste: EMAIL, FIRSTNAME, OPT_IN gehen per HTTPS an Brevo (Double-Opt-in).
- *   Optionale Fragebogen-Angaben werden mit AES-GCM (256 Bit, Web Crypto API) lokal im Browser
- *   verschlüsselt gespeichert und nur per E-Mail-Button aktiv an das Team gesendet.
- * - Login/Registrierung/2FA: Vorschau-Konten lokal auf diesem Gerät (PBKDF2-Hash, TOTP-Prüfung im Browser).
- * - Google-Login: nur aktiv, wenn in /js/gmr-config.js eine Client-ID hinterlegt ist.
+ * - Beim Seitenaufruf werden KEINE Cookies, KEIN localStorage/sessionStorage/IndexedDB und KEINE Drittanbieter genutzt.
+ * - Formulare liegen in <fieldset data-gmr-js-only disabled> und werden erst hier freigeschaltet (kein GET-Leak ohne JS).
+ * - Warteliste: nur EMAIL, FIRSTNAME, OPT_IN gehen per HTTPS an Brevo (Double-Opt-in). Drei getrennte Einwilligungen
+ *   (Warteliste, Updates, Art. 9). Sensible Fragen sind bis zur Art.-9-Einwilligung gesperrt. Optionale Angaben werden
+ *   mit AES-GCM (256 Bit, Web Crypto API) lokal verschlüsselt; per E-Mail geht nur eine Referenz-ID (nach Transport-Hinweis).
+ * - Login/Registrierung/2FA: Vorschau-Konten lokal, AES-GCM-verschlüsselt (PBKDF2-Hash, TOTP-Prüfung im Browser).
+ * - Upload: keine automatische Schwärzung; optionale Selbstschwärzung privater Zeilen durch den Spieler (GMRSelfRedact).
+ * - Google-Login: nur aktiv, wenn in /js/gmr-config.js eine Client-ID hinterlegt ist (dann CSP erweitern).
  */
 (function () {
   'use strict';
@@ -50,11 +53,12 @@
   }
 
   /* ---------- Gerätespezifischer AES-GCM-Schlüssel (nicht extrahierbar, IndexedDB) ---------- */
+  var openDbs = [];
   function idb() {
     return new Promise(function (res, rej) {
       var r = indexedDB.open('gmr-secure', 1);
       r.onupgradeneeded = function () { r.result.createObjectStore('keys'); };
-      r.onsuccess = function () { res(r.result); };
+      r.onsuccess = function () { openDbs.push(r.result); res(r.result); };
       r.onerror = function () { rej(r.error); };
     });
   }
@@ -99,7 +103,40 @@
       return crypto.subtle.deriveBits({ name: 'PBKDF2', salt: salt, iterations: 210000, hash: 'SHA-256' }, k, 256);
     }).then(function (bits) { return { hash: b64(bits), salt: b64(salt) }; });
   }
-  function accKey(role, email) { return 'gmr_acc_' + role + '_' + email.toLowerCase(); }
+  /* ---------- Vorschau-Konten: AES-GCM-verschlüsselt, Speicherschlüssel nur mit SHA-256 der E-Mail ---------- */
+  function sha256hex(s) {
+    return crypto.subtle.digest('SHA-256', enc.encode(s)).then(function (b) {
+      return Array.prototype.map.call(new Uint8Array(b), function (x) { return ('0' + x.toString(16)).slice(-2); }).join('').slice(0, 32);
+    });
+  }
+  function accKey(role, email) { return sha256hex(String(email).trim().toLowerCase()).then(function (h) { return 'gmr_acc_' + role + '_' + h; }); }
+  function legacyAccKey(role, email) { return 'gmr_acc_' + role + '_' + String(email).trim().toLowerCase(); }
+  function saveAcc(acc) {
+    return Promise.all([accKey(acc.role, acc.email), encryptJSON(acc)]).then(function (r) {
+      store(r[0], r[1]);
+      try { localStorage.removeItem(legacyAccKey(acc.role, acc.email)); } catch (e) { /* ignorieren */ }
+      return acc;
+    });
+  }
+  function loadAcc(role, email) {
+    return accKey(role, email).then(function (k) {
+      var rec = store(k);
+      if (rec && rec.ct) return decryptJSON(rec).catch(function () { return null; });
+      var legacy = store(legacyAccKey(role, email)); // Migration aus älterer Klartext-Vorschau
+      if (legacy && legacy.hash) { legacy.role = legacy.role || role; return saveAcc(legacy); }
+      return null;
+    });
+  }
+  /* E-Mail-Button erst nach ausdrücklicher Bestätigung des Transport-Hinweises aktivieren */
+  function gateMailto(ack, a, hrefFn) {
+    if (!ack || !a) return;
+    function upd() {
+      if (ack.checked) { a.href = hrefFn(); a.hidden = false; a.removeAttribute('aria-disabled'); }
+      else { a.removeAttribute('href'); a.hidden = true; a.setAttribute('aria-disabled', 'true'); }
+    }
+    ack.addEventListener('change', upd); upd();
+  }
+  var MAIL_ACK_TEXT = 'Mir ist bekannt, dass E-Mails unverschlüsselt über meinen E-Mail-Anbieter an ' + CONTACT + ' übertragen und dort im Postfach von Spacemail (Spaceship Inc., USA) gespeichert werden.';
 
   /* ---------- TOTP (RFC 6238, HMAC-SHA1, 30 s) ---------- */
   var B32 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
@@ -236,7 +273,9 @@
         hashPw(el.password.value).then(function (h) {
           var acc = { role: role, email: email, name: (el.name ? el.name.value.trim() : extras['Ansprechpartner'] || ''), hash: h.hash, salt: h.salt, twofa: { method: 'none' }, created: new Date().toISOString() };
           function save() {
-            store(accKey(role, email), acc);
+            saveAcc(acc).then(finish).catch(function () { status(st, 'err', 'Das Vorschau-Konto konnte nicht verschlüsselt gespeichert werden. Bitte nutzen Sie einen aktuellen Browser.'); });
+          }
+          function finish() {
             var html = '<strong>Vorschau-Konto angelegt.</strong> Sie können sich jetzt auf diesem Gerät anmelden.' + (acc.twofa.method !== 'none' ? ' Zwei-Faktor-Bestätigung ist aktiv (' + (acc.twofa.method === 'app' ? 'Authenticator-App' : 'SMS') + ').' : '') +
               ' <a href="' + (role === 'betreiber' ? '/admin.html' : 'login.html') + '">Zur Anmeldung</a>';
             if (role === 'kanzlei') {
@@ -246,7 +285,8 @@
               encryptJSON({ type: 'kanzlei-vormerkung', email: email, data: extras, twofa: method }).then(function (rec) {
                 var list = store('gmr_kanzlei_vormerkungen') || []; list.push(rec); store('gmr_kanzlei_vormerkungen', list);
               }).catch(function (er) { if (window.console) console.warn('Lokale Verschlüsselung nicht möglich', er && er.name); });
-              html += '<br><br><strong>Vormerkung übermitteln:</strong> Ihre Angaben wurden AES-GCM-verschlüsselt lokal gespeichert. An unser Team gelangen sie erst, wenn Sie die vorbereitete E-Mail senden. <div class="btn-row"><a class="btn accent" data-gmr-mailto href="' + esc(mailto('Kanzlei-Vormerkung GetMyRight', body)) + '">Vormerkung per E-Mail senden</a></div>';
+              html += '<br><br><strong>Vormerkung übermitteln:</strong> Ihre Angaben wurden AES-GCM-verschlüsselt lokal gespeichert. An unser Team gelangen sie erst, wenn Sie die vorbereitete E-Mail senden.' +
+                '<label class="choice" style="margin-top:10px"><input type="checkbox" data-gmr-mail-ack> <span>' + esc(MAIL_ACK_TEXT) + '</span></label><div class="btn-row"><a class="btn accent" data-gmr-mailto hidden>Vormerkung per E-Mail senden</a></div>';
             }
             if (role === 'spieler' && el.brevo && el.brevo.checked) {
               brevoSend({ EMAIL: email, FIRSTNAME: acc.name, OPT_IN: '1' }).then(function () {
@@ -256,6 +296,7 @@
               });
             }
             status(st, 'ok', html);
+            if (role === 'kanzlei') gateMailto($('[data-gmr-mail-ack]', st), $('[data-gmr-mailto]', st), function () { return mailto('Kanzlei-Vormerkung GetMyRight', body); });
             $$('input, select, textarea, button[type=submit]', form).forEach(function (f) { f.disabled = true; });
           }
           if (method === 'none') return save();
@@ -266,6 +307,7 @@
       });
     });
   }
+
 
   /* ---------- Login ---------- */
   function initLogin() {
@@ -279,39 +321,40 @@
         var email = form.elements.email, pw = form.elements.password;
         var b1 = invalid(email, !EMAIL_RE.test(email.value.trim())), b2 = invalid(pw, !pw.value);
         if (b1 || b2) { status(st, 'err', 'Bitte geben Sie eine gültige E-Mail-Adresse und Ihr Passwort ein.'); return; }
-        var acc = store(accKey(role, email.value.trim()));
-        if (!acc) { status(st, 'warn', 'Für diese E-Mail-Adresse gibt es auf diesem Gerät noch kein Vorschau-Konto. ' + (role === 'betreiber' ? 'Legen Sie unten ein Vorschau-Konto an.' : '<a href="registrierung.html">Jetzt registrieren</a>')); return; }
-        hashPw(pw.value, acc.salt).then(function (h) {
-          if (h.hash !== acc.hash) { invalid(pw, true); status(st, 'err', 'E-Mail-Adresse oder Passwort ist nicht korrekt.'); return; }
-          var method = acc.twofa && acc.twofa.method !== 'none' ? acc.twofa.method : (form.elements.force2fa && form.elements.force2fa.checked ? 'sms' : 'none');
-          function done() {
-            sess({ role: role, email: acc.email, name: acc.name, via: 'passwort', twofa: method, at: Date.now() });
-            status(st, 'ok', 'Anmeldung erfolgreich. Sie werden weitergeleitet …');
-            setTimeout(function () { go(HOME[role]); }, 600);
-          }
-          if (method === 'none') return done();
-          var code = method === 'sms' ? smsCode() : null;
-          step.hidden = false;
-          $('[data-gmr-2fa-hint]', step).innerHTML = method === 'app' ? 'Bitte geben Sie den aktuellen 6-stelligen Code aus Ihrer Authenticator-App ein.' :
-            'Vorschau ohne SMS-Versand: Ihr Einmalcode lautet <span class="secret" data-gmr-preview-code>' + code + '</span>';
-          var input = $('[data-gmr-2fa-input]', step), sst = $('[data-gmr-2fa-status]', step), btn = $('[data-gmr-2fa-verify]', step);
-          input.focus();
-          btn.onclick = function () {
-            var v = (input.value || '').replace(/\D/g, '');
-            if (v.length !== 6) { invalid(input, true); status(sst, 'err', 'Bitte geben Sie einen 6-stelligen Code ein.'); return; }
-            (method === 'app' ? verifyTotp(acc.twofa.secret, v) : Promise.resolve(v === code)).then(function (ok) {
-              invalid(input, !ok);
-              if (!ok) { status(sst, 'err', 'Der Code ist nicht korrekt oder abgelaufen.'); return; }
-              status(sst, 'ok', 'Code bestätigt.'); done();
-            });
-          };
-          status(st, '', 'Passwort bestätigt – bitte schließen Sie die Zwei-Faktor-Bestätigung ab.');
-        });
+        loadAcc(role, email.value.trim()).then(function (acc) {
+          if (!acc) { status(st, 'warn', 'Für diese E-Mail-Adresse gibt es auf diesem Gerät noch kein Vorschau-Konto. ' + (role === 'betreiber' ? 'Legen Sie unten ein Vorschau-Konto an.' : '<a href="registrierung.html">Jetzt registrieren</a>')); return; }
+          return hashPw(pw.value, acc.salt).then(function (h) {
+            if (h.hash !== acc.hash) { invalid(pw, true); status(st, 'err', 'E-Mail-Adresse oder Passwort ist nicht korrekt.'); return; }
+            var method = acc.twofa && acc.twofa.method !== 'none' ? acc.twofa.method : (form.elements.force2fa && form.elements.force2fa.checked ? 'sms' : 'none');
+            function done() {
+              sess({ role: role, email: acc.email, name: acc.name, via: 'passwort', twofa: method, at: Date.now() });
+              status(st, 'ok', 'Anmeldung erfolgreich. Sie werden weitergeleitet …');
+              setTimeout(function () { go(HOME[role]); }, 600);
+            }
+            if (method === 'none') return done();
+            var code = method === 'sms' ? smsCode() : null;
+            step.hidden = false;
+            $('[data-gmr-2fa-hint]', step).innerHTML = method === 'app' ? 'Bitte geben Sie den aktuellen 6-stelligen Code aus Ihrer Authenticator-App ein.' :
+              'Vorschau ohne SMS-Versand: Ihr Einmalcode lautet <span class="secret" data-gmr-preview-code>' + code + '</span>';
+            var input = $('[data-gmr-2fa-input]', step), sst = $('[data-gmr-2fa-status]', step), btn = $('[data-gmr-2fa-verify]', step);
+            input.focus();
+            btn.onclick = function () {
+              var v = (input.value || '').replace(/\D/g, '');
+              if (v.length !== 6) { invalid(input, true); status(sst, 'err', 'Bitte geben Sie einen 6-stelligen Code ein.'); return; }
+              (method === 'app' ? verifyTotp(acc.twofa.secret, v) : Promise.resolve(v === code)).then(function (ok) {
+                invalid(input, !ok);
+                if (!ok) { status(sst, 'err', 'Der Code ist nicht korrekt oder abgelaufen.'); return; }
+                status(sst, 'ok', 'Code bestätigt.'); done();
+              });
+            };
+            status(st, '', 'Passwort bestätigt – bitte schließen Sie die Zwei-Faktor-Bestätigung ab.');
+          });
+        }).catch(function () { status(st, 'err', 'Die lokale Anmeldung ist in diesem Browser nicht möglich.'); });
       });
     });
   }
 
-  /* ---------- Sitzung, Abmelden, 2FA-Einstellungen ---------- */
+  /* ---------- Sitzung, Abmelden, 2FA-Einstellungen (nur mit aktiver Sitzung) ---------- */
   function initSession() {
     var s = sess();
     $$('[data-gmr-session]').forEach(function (box) {
@@ -322,16 +365,27 @@
     $$('[data-gmr-logout]').forEach(function (a) { a.addEventListener('click', function () { sess(null); }); });
     $$('[data-gmr-2fa-settings]').forEach(function (wrap) {
       var role = wrap.getAttribute('data-gmr-2fa-settings');
-      var toggle = $('[data-gmr-2fa-toggle]', wrap), sel = $('[data-gmr-2fa-method]', wrap), st = $('[data-gmr-2fa-state]', wrap), panel = $('[data-gmr-2fa-setup]', wrap);
-      var acc = s && s.role === role && s.email ? store(accKey(role, s.email)) : null;
-      var cur = acc ? acc.twofa : (store('gmr_2fa_pref_' + role) || { method: 'none' });
-      function show() { st.innerHTML = cur.method === 'none' ? '<span class="badge warn">2FA aus</span>' : '<span class="badge ok">2FA aktiv · ' + (cur.method === 'app' ? 'Authenticator-App' : 'SMS') + '</span>'; toggle.checked = cur.method !== 'none'; }
-      function persist() { if (acc) { acc.twofa = cur; store(accKey(role, acc.email), acc); } else store('gmr_2fa_pref_' + role, cur); show(); }
-      show();
-      toggle.addEventListener('change', function () {
-        if (!toggle.checked) { cur = { method: 'none' }; panel.hidden = true; persist(); return; }
-        setup2fa(panel, sel.value, sel.value === 'sms' ? 'Ihre hinterlegte Nummer' : '', acc ? acc.email : 'vorschau@' + role, function (tf) { cur = tf; persist(); });
-      });
+      var toggle = $('[data-gmr-2fa-toggle]', wrap), sel = $('[data-gmr-2fa-method]', wrap), st = $('[data-gmr-2fa-state]', wrap), panel = $('[data-gmr-2fa-setup]', wrap), hint = $('[data-gmr-2fa-login-hint]', wrap);
+      function lock(msg) {
+        toggle.disabled = true; sel.disabled = true; toggle.checked = false; if (panel) panel.hidden = true;
+        st.innerHTML = '<span class="badge warn">Anmeldung erforderlich</span>';
+        if (hint) { hint.hidden = false; if (msg) hint.textContent = msg; }
+        wrap.setAttribute('data-gmr-2fa-locked', 'true');
+      }
+      lock();
+      if (!(s && s.role === role && s.email) || !hasCrypto()) return;
+      loadAcc(role, s.email).then(function (acc) {
+        if (!acc) { lock('Für diese Sitzung ist auf diesem Gerät kein Vorschau-Konto gespeichert. Die 2FA-Einstellungen sind daher nicht verfügbar.'); return; }
+        var cur = acc.twofa || { method: 'none' };
+        toggle.disabled = false; sel.disabled = false; if (hint) hint.hidden = true; wrap.removeAttribute('data-gmr-2fa-locked');
+        function show() { st.innerHTML = cur.method === 'none' ? '<span class="badge warn">2FA aus</span>' : '<span class="badge ok">2FA aktiv · ' + (cur.method === 'app' ? 'Authenticator-App' : 'SMS') + '</span>'; toggle.checked = cur.method !== 'none'; }
+        function persist() { acc.twofa = cur; show(); saveAcc(acc); }
+        show();
+        toggle.addEventListener('change', function () {
+          if (!toggle.checked) { cur = { method: 'none' }; panel.hidden = true; persist(); return; }
+          setup2fa(panel, sel.value, sel.value === 'sms' ? 'Ihre hinterlegte Nummer' : '', acc.email, function (tf) { cur = tf; persist(); });
+        });
+      }).catch(function () { lock(); });
     });
   }
 
@@ -345,8 +399,11 @@
       .then(function (d) { if (!d || d.success !== true) { var er = new Error('brevo'); er.brevo = d; throw er; } return d; });
   }
 
-  /* ---------- Warteliste (Lead-First) ---------- */
-  function leadQuality(data) {
+  /* ---------- Warteliste (Lead-First, getrennte Einwilligungen) ---------- */
+  var CONSENT_VERSION = 'warteliste-2026-11-20';
+  /* Art.-9-basierte Vorab-Einstufung NUR mit ausdrücklicher Einwilligung (sonst neutraler Basis-Status) */
+  function leadQuality(data, art9) {
+    if (!art9) return { leadQuality: 'basis', statusFlag: 'Warteliste (Basis)' };
     var oasis = data.oasis_sperre;
     var opt = Object.keys(data).filter(function (k) { return data[k] && k !== 'oasis_sperre'; }).length;
     if (oasis) return { leadQuality: 'stark', statusFlag: 'vollständig' };
@@ -355,6 +412,7 @@
   function collectQ(form) {
     var out = {};
     $$('[data-gmr-q]', form).forEach(function (f) {
+      if (f.matches(':disabled')) return; // gesperrte (Art.-9-)Felder werden nie erfasst
       var k = f.getAttribute('data-gmr-q');
       if (f.type === 'radio') { if (f.checked) out[k] = f.value; }
       else if (f.type === 'checkbox') { if (f.checked) out[k] = (out[k] ? out[k] + ', ' : '') + f.value; }
@@ -362,22 +420,51 @@
     });
     return out;
   }
+  function refId() {
+    var d = new Date(), p = function (n) { return ('0' + n).slice(-2); };
+    return 'GMR-' + d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate()) + '-' + b32enc(rnd(5)).slice(0, 6);
+  }
   var LABELS = { oasis_sperre: 'OASIS-Spielersperre', gespielt_trotz_sperre: 'Während aktiver Sperre weitergespielt', oasis_notiz: 'Notiz zur Sperre', telefon: 'Telefon', kontaktweg: 'Bevorzugter Kontaktweg', wohnsitz_de: 'Wohnsitz in Deutschland im Spielzeitraum', bundesland: 'Bundesland', spielart: 'Glücksspiel-Art', anbieter: 'Anbieter', lizenzsitz: 'Lizenzsitz (falls bekannt)', zeitraum_von: 'Spielzeitraum von', zeitraum_bis: 'Spielzeitraum bis', verlust: 'Geschätzter Netto-Verlust', einzahlung_1000: 'Einzahlungen > 1.000 €/Monat bei einem Anbieter', rechtsschutz: 'Rechtsschutzversicherung', insolvenz: 'Insolvenzverfahren', anwalt: 'Bereits Anwalt/Prozessfinanzierer beauftragt', belege: 'Belege/Kontoauszüge', notiz: 'Weitere Hinweise' };
+  /* Nur für die lokale Anzeige im eigenen Browser */
   function summaryLines(rec) {
-    var l = ['Name: ' + rec.name, 'E-Mail: ' + rec.email, 'Lead-Einstufung: ' + rec.leadQuality + ' (' + rec.statusFlag + ')'];
-    Object.keys(rec.answers).forEach(function (k) { l.push((LABELS[k] || k) + ': ' + rec.answers[k]); });
+    var l = [];
+    if (rec.refId) l.push('Referenz-ID: ' + rec.refId);
+    l.push('Name: ' + rec.name, 'E-Mail: ' + rec.email);
+    l.push('Status: ' + (rec.consentArt9 ? 'Vorab-Einstufung ' + rec.leadQuality + ' (' + rec.statusFlag + ')' : (rec.statusFlag || 'Warteliste (Basis)')));
+    if (rec.consentVersion) l.push('Einwilligungen: Warteliste ja · Updates ' + (rec.consentUpdates ? 'ja' : 'nein') + ' · Art. 9 ' + (rec.consentArt9 ? 'ja' : 'nein') + ' (' + rec.consentVersion + ')');
+    Object.keys(rec.answers || {}).forEach(function (k) { l.push((LABELS[k] || k) + ': ' + rec.answers[k]); });
     return l;
+  }
+  /* E-Mail-Text: niemals Art.-9-Angaben oder Einstufung – nur Referenz-ID und Vorname */
+  function waitlistMailBody(rec) {
+    var first = String(rec.name || '').trim().split(/\s+/)[0] || '';
+    return 'Hallo GetMyRight-Team,\n\nich habe mich für die Warteliste eingetragen.\n\nReferenz-ID: ' + rec.refId + '\nVorname: ' + first +
+      '\n\nMeine optionalen Detailangaben bleiben verschlüsselt lokal in meinem Browser gespeichert, bis ein EU-Backend bzw. ein sicherer Upload verfügbar ist.\n\nViele Grüße\n' + first;
   }
   function initWaitlist() {
     $$('form[data-gmr-waitlist]').forEach(function (form) {
       var st = $('[data-gmr-status]', form.parentNode);
       var result = $('[data-gmr-result]', form.parentNode);
       var follow = $('[data-gmr-oasis-follow]', form);
+      var art9 = form.elements.optin_art9, notice = $('[data-gmr-art9-notice]', form);
+      function clearFs(fs) { $$('input, select, textarea', fs).forEach(function (f) { if (f.type === 'radio' || f.type === 'checkbox') f.checked = false; else f.value = ''; }); }
+      function syncArt9() {
+        var on = !!(art9 && art9.checked);
+        $$('fieldset[data-gmr-art9]', form).forEach(function (fs) { fs.disabled = !on; if (!on) { clearFs(fs); fs.classList.remove('skipped'); } });
+        if (!on && follow) follow.hidden = true;
+        if (notice) {
+          notice.className = 'note small ' + (on ? 'ok' : 'warn');
+          notice.innerHTML = on ? '<strong>Sensible Fragen freigeschaltet.</strong> Die Abschnitte 3, 7, 8 und 9 sind jetzt ausfüllbar – weiterhin freiwillig und überspringbar. Wenn Sie den Haken wieder entfernen, werden Ihre Eingaben dort gelöscht.'
+            : '<strong>Sensible Fragen gesperrt:</strong> Die Fragen zu OASIS-Sperre, Verlusten, Insolvenz und Belegen (Abschnitte 3, 7, 8 und 9) werden erst freigeschaltet, wenn Sie oben die freiwillige Einwilligung für sensible Angaben (Art. 9 DSGVO) erteilen. Für die Warteliste ist das nicht nötig.';
+        }
+      }
+      if (art9) art9.addEventListener('change', syncArt9);
+      syncArt9();
       $$('input[name="oasis"]', form).forEach(function (r) { r.addEventListener('change', function () { if (follow) follow.hidden = r.value !== 'Ja' || !r.checked; }); });
       $$('[data-gmr-skip]', form).forEach(function (b) {
         b.addEventListener('click', function () {
           var fs = b.closest('fieldset');
-          $$('input, select, textarea', fs).forEach(function (f) { if (f.type === 'radio' || f.type === 'checkbox') f.checked = false; else f.value = ''; });
+          clearFs(fs);
           fs.classList.add('skipped'); b.textContent = 'Übersprungen ✓';
           var nx = fs.nextElementSibling; if (nx && nx.scrollIntoView) nx.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
@@ -387,10 +474,13 @@
         var el = form.elements;
         if (el.email_address_check && el.email_address_check.value) return; // Honeypot
         var b = [invalid(el.FIRSTNAME, !el.FIRSTNAME.value.trim()), invalid(el.EMAIL, !EMAIL_RE.test(el.EMAIL.value.trim())), invalid(el.OPT_IN, !el.OPT_IN.checked)];
-        if (b.indexOf(true) >= 0) { status(st, 'err', 'Bitte geben Sie Ihren Namen und eine gültige E-Mail-Adresse an und bestätigen Sie die Einwilligung. Alle weiteren Fragen sind freiwillig.'); el[b[0] ? 'FIRSTNAME' : b[1] ? 'EMAIL' : 'OPT_IN'].focus(); return; }
+        if (b.indexOf(true) >= 0) { status(st, 'err', 'Bitte geben Sie Ihren Namen und eine gültige E-Mail-Adresse an und setzen Sie den Haken für die Warteliste. Alle weiteren Angaben und Einwilligungen sind freiwillig.'); el[b[0] ? 'FIRSTNAME' : b[1] ? 'EMAIL' : 'OPT_IN'].focus(); return; }
+        var now = new Date().toISOString();
+        var art9On = !!(el.optin_art9 && el.optin_art9.checked), updOn = !!(el.optin_updates && el.optin_updates.checked);
         var answers = collectQ(form);
-        var q = leadQuality(answers);
-        var rec = { type: 'warteliste', name: el.FIRSTNAME.value.trim(), email: el.EMAIL.value.trim(), answers: answers, leadQuality: q.leadQuality, statusFlag: q.statusFlag, consent: { opt_in: true, at: new Date().toISOString() } };
+        var q = leadQuality(answers, art9On);
+        var rec = { type: 'warteliste', refId: refId(), name: el.FIRSTNAME.value.trim(), email: el.EMAIL.value.trim(), answers: answers, leadQuality: q.leadQuality, statusFlag: q.statusFlag,
+          consentVersion: CONSENT_VERSION, consentWaitlistAt: now, consentUpdates: updOn, consentUpdatesAt: updOn ? now : null, consentArt9: art9On, consentArt9At: art9On ? now : null };
         var btn = $('button[type=submit]', form); btn.disabled = true; btn.textContent = 'Wird sicher übermittelt …';
         var pass = el.passphrase ? el.passphrase.value : '';
         var brevoP = brevoSend({ EMAIL: rec.email, FIRSTNAME: rec.name, OPT_IN: '1' }).then(function () { return 'ok'; }).catch(function (er) { return er && er.brevo ? 'rejected' : 'network'; });
@@ -399,19 +489,20 @@
           var brevo = r[0], saved = r[1];
           if (brevo === 'rejected') {
             btn.disabled = false; btn.textContent = 'Kostenlos auf die Warteliste';
-            status(st, 'err', 'Brevo hat die Anmeldung abgelehnt (z. B. ungültige oder bereits eingetragene E-Mail-Adresse). Bitte prüfen Sie Ihre Eingabe oder schreiben Sie an <a href="mailto:' + CONTACT + '">' + CONTACT + '</a>.');
+            status(st, 'err', 'Brevo hat die Anmeldung abgelehnt (z. B. ungültige oder bereits eingetragene E-Mail-Adresse). Bitte prüfen Sie Ihre Eingabe oder schreiben Sie uns an ' + esc(CONTACT) + '.');
             return;
           }
-          var body = 'Hallo GetMyRight-Team,\n\nich habe mich für die Warteliste eingetragen. Hier meine freiwilligen Angaben:\n\n' + summaryLines(rec).join('\n') + '\n\nViele Grüße\n' + rec.name;
-          var badge = rec.leadQuality === 'stark' ? '<span class="badge ok">Angaben vollständig</span>' : rec.statusFlag === 'Daten fehlen' ? '<span class="badge warn">Daten fehlen – gerne ergänzen</span>' : '<span class="badge warn">Wir melden uns per E-Mail</span>';
+          var badge = !rec.consentArt9 ? '<span class="badge ok">Warteliste (Basis)</span>' : rec.leadQuality === 'stark' ? '<span class="badge ok">Angaben vollständig</span>' : rec.statusFlag === 'Daten fehlen' ? '<span class="badge warn">Daten fehlen – gerne ergänzen</span>' : '<span class="badge warn">Wir melden uns per E-Mail</span>';
           var rows = summaryLines(rec).map(function (x) { var i = x.indexOf(': '); return '<tr><th>' + esc(x.slice(0, i)) + '</th><td>' + esc(x.slice(i + 2)) + '</td></tr>'; }).join('');
           status(st, brevo === 'ok' ? 'ok' : 'warn', brevo === 'ok'
             ? '<strong>Danke, ' + esc(rec.name) + ' – fast geschafft!</strong> Name und E-Mail wurden verschlüsselt per HTTPS an Brevo übermittelt. Bitte bestätigen Sie den Link in der E-Mail (Double-Opt-in), erst dann sind Sie auf der Warteliste.'
-            : '<strong>Brevo ist gerade nicht erreichbar.</strong> Ihre Angaben sind lokal gesichert. Bitte senden Sie sie uns per E-Mail-Button – so geht Ihre Anfrage nicht verloren.');
+            : '<strong>Brevo ist gerade nicht erreichbar.</strong> Ihre Angaben sind lokal verschlüsselt gesichert. Sie können uns optional eine Kurzmitteilung mit Ihrer Referenz-ID senden – so geht Ihre Anfrage nicht verloren.');
           result.hidden = false;
           $('[data-gmr-result-badge]', result).innerHTML = badge;
           $('[data-gmr-result-table]', result).innerHTML = rows;
-          var m = $('[data-gmr-result-mailto]', result); m.href = mailto('Warteliste – freiwillige Angaben', body);
+          var ack = $('[data-gmr-mail-ack]', result), m = $('[data-gmr-result-mailto]', result), body = waitlistMailBody(rec);
+          ack.checked = false;
+          gateMailto(ack, m, function () { return mailto('Warteliste – Referenz ' + rec.refId, body); });
           $('[data-gmr-result-saved]', result).textContent = saved ? 'Lokal gespeichert: AES-GCM 256 Bit (' + (saved.mode === 'passphrase-pbkdf2' ? 'mit Ihrer Passphrase' : 'gerätegebundener, nicht exportierbarer Schlüssel') + '), ' + new Date(saved.savedAt).toLocaleString('de-DE') + '.' : 'Lokale Verschlüsselung in diesem Browser nicht verfügbar – es wurde nichts lokal gespeichert.';
           form.dataset.lead = JSON.stringify({ leadQuality: rec.leadQuality, statusFlag: rec.statusFlag });
           $$('input, select, textarea, button', form).forEach(function (f) { f.disabled = true; });
@@ -433,10 +524,12 @@
       });
       $('[data-gmr-local-export]', wrap).addEventListener('click', function () {
         var blob = new Blob([JSON.stringify(list(), null, 2)], { type: 'application/json' });
-        var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'getmyright-angaben-verschluesselt.json'; document.body.appendChild(a); a.click(); a.remove();
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a'); a.href = url; a.download = 'getmyright-angaben-verschluesselt.json'; document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
         status(out, '', 'Export erstellt (verschlüsselt, ' + list().length + ' Eintrag/Einträge).');
       });
-      $('[data-gmr-local-delete]', wrap).addEventListener('click', function () { store('gmr_waitlist_records', null); status(out, 'ok', 'Alle lokal gespeicherten Angaben wurden von diesem Gerät gelöscht.'); });
+      $('[data-gmr-local-delete]', wrap).addEventListener('click', function () { store('gmr_waitlist_records', null); status(out, 'ok', 'Alle lokal gespeicherten Angaben wurden von diesem Gerät gelöscht. Alle übrigen lokalen Daten löschen Sie in der <a href="/datenschutz.html#d17">Datenschutzerklärung</a>.'); });
     });
   }
 
@@ -452,19 +545,55 @@
     });
   }
 
-  /* ---------- Upload (Kanal 2) ---------- */
+  /* ---------- Upload (Kanal 2) – KEINE automatische Schwärzung ---------- */
   var ALLOWED = ['zip', 'csv', 'pdf', 'xlsx', 'xls', 'json', 'txt', 'png', 'jpg', 'jpeg'];
+  var TEXT_EXT = ['csv', 'txt', 'json'];
+  var MAX_PICK_ROWS = 2000;
+  function extOf(f) { return (f.name.split('.').pop() || '').toLowerCase(); }
+  function isText(f) { return TEXT_EXT.indexOf(extOf(f)) >= 0; }
   function fmtMb(b) { return (b / 1048576).toFixed(b < 10485760 ? 2 : 1).replace('.', ',') + ' MB'; }
+  /* Blob-URLs erzeugter Vorschau-Kopien verwalten und freigeben */
+  var blobUrls = [];
+  function trackUrl(u) { blobUrls.push(u); return u; }
+  function revokeUrl(u) { if (!u) return; try { URL.revokeObjectURL(u); } catch (e) { /* ignorieren */ } blobUrls = blobUrls.filter(function (x) { return x !== u; }); }
+  function revokeAll() { blobUrls.slice().forEach(revokeUrl); }
+  window.addEventListener('pagehide', revokeAll);
+  window.GMRDebug = { blobCount: function () { return blobUrls.length; } };
+
+  /* Optionale Selbstschwärzung: Spieler wählt selbst private Zeilen ohne Glücksspielbezug */
+  function renderPicker(box, label, text, onResult) {
+    var SR = window.GMRSelfRedact;
+    if (!SR) { box.innerHTML = '<p class="note warn small">Das Selbstschwärzungs-Werkzeug ist nicht verfügbar.</p>'; return; }
+    var rows = SR.rows(text), shown = rows.filter(function (r) { return !r.empty; }).slice(0, MAX_PICK_ROWS);
+    var trs = shown.map(function (r) {
+      var lock = r.gambling || r.header;
+      var badge = r.gambling ? '<span class="badge ok">Glücksspielbezug – bleibt im Klartext</span>' : r.header ? '<span class="badge">Kopfzeile</span>' : '';
+      return '<tr' + (r.gambling ? ' data-gmr-gambling-row' : '') + '><td><input type="checkbox" data-row="' + r.index + '"' + (lock ? ' disabled' : '') + ' aria-label="Zeile ' + (r.index + 1) + ' selbst schwärzen"></td><td><code style="white-space:pre-wrap;word-break:break-word">' + esc(r.text) + '</code></td><td>' + badge + '</td></tr>';
+    }).join('');
+    box.innerHTML = '<div class="card" style="margin-top:12px" data-gmr-picker><h4 style="margin-top:0">' + esc(label) + '</h4>' +
+      '<p class="small">Optional: Markieren Sie nur private Buchungen ohne Glücksspielbezug (z. B. Alltagseinkäufe, Bestellungen). Ein- und Auszahlungen zum bzw. vom Casino oder Wettanbieter sind gesperrt und bleiben lesbar.' + (rows.length > shown.length ? ' Angezeigt werden die ersten ' + MAX_PICK_ROWS + ' Zeilen.' : '') + '</p>' +
+      '<div class="table-wrap" style="max-height:340px;overflow:auto"><table><thead><tr><th>Schwärzen</th><th>Zeile</th><th>Hinweis</th></tr></thead><tbody>' + trs + '</tbody></table></div>' +
+      '<div class="btn-row"><button type="button" class="btn ghost" data-gmr-apply>Kopie mit meinen Schwärzungen erstellen</button></div><div class="status" data-gmr-picker-out style="margin-top:10px"></div></div>';
+    var out = $('[data-gmr-picker-out]', box);
+    $('[data-gmr-apply]', box).addEventListener('click', function () {
+      var idx = $$('input[data-row]:checked', box).map(function (c) { return +c.getAttribute('data-row'); });
+      if (!idx.length) { status(out, 'warn', 'Keine Zeile ausgewählt – die Datei bleibt unverändert. Die Selbstschwärzung ist freiwillig.'); return; }
+      var res = SR.apply(text, idx);
+      onResult(res, out);
+    });
+  }
+
   function initUpload() {
     var form = $('form[data-gmr-upload]'); if (!form) return;
     var max = (CFG.maxUploadMb || 250) * 1048576;
     var input = form.elements.files, list = $('[data-gmr-file-list]', form.parentNode), st = $('[data-gmr-status]', form.parentNode), bar = $('[data-gmr-progress]', form.parentNode), banner = $('[data-gmr-upload-mode]');
+    var report = $('[data-gmr-redact-report]', form.parentNode);
     if (banner) status(banner, CFG.uploadEndpoint ? 'ok' : 'warn', CFG.uploadEndpoint ? '<strong>Upload aktiv.</strong> Dateien werden verschlüsselt per HTTPS an unseren Upload-Dienst übertragen.' :
-      '<strong>Hinweis zum Upload-Kanal:</strong> Der Server für große Dateien wird gerade angebunden. Diese Seite prüft Dateityp und Größe bereits lokal, <strong>überträgt aber noch keine Datei an einen Server</strong>. Kleinere Dateien senden Sie bis dahin bitte per E-Mail an <a href="mailto:' + CONTACT + '">' + CONTACT + '</a>.');
+      '<strong>Hinweis zum Upload-Kanal:</strong> Der Server für große Dateien wird gerade angebunden. Diese Seite prüft Dateityp und Größe bereits lokal, <strong>überträgt aber noch keine Datei an einen Server</strong>. Kleinere Dateien können Sie nach der Prüfung und Bestätigung der Hinweise per E-Mail senden (Kanal 1).');
     function check() {
       var files = Array.prototype.slice.call(input.files || []), rows = [], ok = [], bad = 0;
       files.forEach(function (f) {
-        var ext = (f.name.split('.').pop() || '').toLowerCase(), err = '';
+        var ext = extOf(f), err = '';
         if (ALLOWED.indexOf(ext) < 0) err = 'Dateityp .' + ext + ' nicht erlaubt';
         else if (f.size > max) err = 'größer als ' + (CFG.maxUploadMb || 250) + ' MB';
         else if (f.size === 0) err = 'Datei ist leer';
@@ -474,21 +603,49 @@
       list.innerHTML = rows.length ? '<div class="table-wrap"><table><thead><tr><th>Datei</th><th>Größe</th><th>Prüfung</th></tr></thead><tbody>' + rows.join('') + '</tbody></table></div>' : '';
       return { ok: ok, bad: bad, all: files.length };
     }
-    input.addEventListener('change', check);
+    input.addEventListener('change', function () { revokeAll(); if (report) report.innerHTML = ''; check(); });
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var r = check(), el = form.elements;
-      var b1 = invalid(el.email, !EMAIL_RE.test(el.email.value.trim())), b2 = invalid(el.consent, !el.consent.checked), b3 = invalid(input, !r.all);
-      if (b1 || b2 || b3) { status(st, 'err', 'Bitte wählen Sie mindestens eine Datei, geben Sie Ihre E-Mail-Adresse an und bestätigen Sie den Datenschutzhinweis.'); return; }
+      var b1 = invalid(el.email, !EMAIL_RE.test(el.email.value.trim())), b2 = invalid(el.consent, !el.consent.checked), b3 = invalid(el.plaintext_ack, !el.plaintext_ack.checked), b4 = invalid(input, !r.all);
+      if (b1 || b2 || b3 || b4) { status(st, 'err', 'Bitte wählen Sie mindestens eine Datei, geben Sie Ihre E-Mail-Adresse an, erteilen Sie die Einwilligung und bestätigen Sie, dass casino-relevante Buchungen lesbar sind.'); return; }
       if (r.bad) { status(st, 'err', r.bad + ' Datei(en) erfüllen die Vorgaben nicht (erlaubt: ' + ALLOWED.join(', ').toUpperCase() + ', max. ' + (CFG.maxUploadMb || 250) + ' MB je Datei). Bitte entfernen oder ersetzen.'); return; }
+      revokeAll();
+      var texts = r.ok.filter(isText), hasBinary = r.ok.some(function (f) { return !isText(f); });
+      // Dateiinhalt wird erst jetzt (nach Einwilligung) und nur bei gewünschter Selbstschwärzung gelesen
+      if (report) {
+        if (el.selfredact && el.selfredact.checked && texts.length) {
+          report.innerHTML = '<h4 style="margin-top:14px">Optionale Selbstschwärzung</h4><div data-gmr-pickers></div>';
+          var holder = $('[data-gmr-pickers]', report);
+          texts.forEach(function (f) {
+            var box = document.createElement('div'); holder.appendChild(box);
+            f.text().then(function (txt) {
+              var url = null;
+              renderPicker(box, f.name, txt, function (res, out) {
+                revokeUrl(url);
+                var nf = new File([res.text], f.name.replace(/(\.[^.]+)$/, '_selbstgeschwaerzt$1'), { type: f.type || 'text/plain' });
+                url = trackUrl(URL.createObjectURL(nf));
+                status(out, 'ok', '<strong>' + res.redacted + ' private Zeile(n) von Ihnen geschwärzt.</strong> Glücksspielzeilen und die Originaldatei bleiben unverändert. <a href="' + url + '" download="' + esc(nf.name) + '" data-gmr-redacted>Selbst geschwärzte Kopie herunterladen</a>');
+              });
+            });
+          });
+        } else {
+          report.innerHTML = '<p class="small" style="margin-top:12px" data-gmr-no-redaction>Keine Schwärzung: Ihre Dateien bleiben unverändert. GetMyRight schwärzt nichts automatisch.</p>';
+        }
+      }
       bar.hidden = false; bar.value = 0;
-      prepareFiles(r.ok, el.redact && el.redact.checked, $('[data-gmr-redact-report]', form.parentNode)).then(function (files) { r.ok = files; send(); });
-      function send() {
       if (!CFG.uploadEndpoint) {
         var i = 0, n = r.ok.length;
         (function next() {
           if (i >= n) {
-            status(st, 'warn', '<strong>' + n + ' Datei(en) lokal erfolgreich geprüft – es wurde noch nichts an einen Server übertragen.</strong> Der Upload-Server ist noch nicht freigeschaltet. Für kleinere Dateien nutzen Sie bitte Kanal 1: <a href="' + esc(mailto('Unterlagen für GetMyRight', 'Hallo GetMyRight-Team,\n\nanbei meine Unterlagen (' + r.ok.map(function (f) { return f.name; }).join(', ') + ').\n\nE-Mail im Konto: ' + el.email.value.trim() + '\n\nViele Grüße')) + '">E-Mail an ' + CONTACT + '</a>. Große Dateien bitte aufbewahren – wir melden uns, sobald der Upload aktiv ist.');
+            status(st, 'warn', '<strong>' + n + ' Datei(en) lokal geprüft – es wurde nichts an einen Server übertragen.</strong> Der Upload-Server ist noch nicht freigeschaltet; große Dateien bitte aufbewahren, wir melden uns, sobald der Upload aktiv ist.' +
+              '<div class="card cream" style="margin-top:12px" data-gmr-mail-section><h4 style="margin-top:0">Kanal 1: kleinere Dateien per E-Mail (optional)</h4><p class="small">Hängen Sie die Dateien selbst an die vorbereitete E-Mail an. Casino-relevante Buchungen müssen lesbar bleiben; private Buchungen ohne Glücksspielbezug dürfen Sie vorher selbst schwärzen.' + (hasBinary ? ' <strong>PDF-, Bild-, XLSX- und ZIP-Dateien wurden nicht geschwärzt.</strong>' : '') + '</p>' +
+              '<label class="choice"><input type="checkbox" data-gmr-mail-ack> <span>' + (hasBinary ? 'Mir ist bekannt, dass PDF/Bild-Dateien nicht automatisch geschwärzt wurden und E-Mails unverschlüsselt über Spacemail (USA) laufen' : 'Mir ist bekannt, dass meine Dateien nicht automatisch geschwärzt werden und E-Mails unverschlüsselt über Spacemail (USA) laufen') + ' – über meinen E-Mail-Anbieter an ' + esc(CONTACT) + ', gespeichert im Postfach der Spaceship Inc. Die Unterlagen können Angaben zu meinem Spielverhalten enthalten (Art. 9 DSGVO).</span></label>' +
+              '<div class="btn-row"><a class="btn" data-gmr-upload-mailto hidden>E-Mail an ' + esc(CONTACT) + ' vorbereiten</a></div></div>');
+            var email = el.email.value.trim();
+            gateMailto($('[data-gmr-mail-ack]', st), $('[data-gmr-upload-mailto]', st), function () {
+              return mailto('Unterlagen für GetMyRight', 'Hallo GetMyRight-Team,\n\nanbei ' + n + ' Datei(en) als Unterlagen zu meiner Wartelisten-Anmeldung.\nE-Mail der Anmeldung: ' + email + '\n\nCasino-relevante Buchungen (Ein- und Auszahlungen, Datum, Betrag, Zahlungsdienstleister/Empfänger) sind ungeschwärzt lesbar.\n\nViele Grüße');
+            });
             return;
           }
           i++; bar.value = Math.round(i / n * 100); setTimeout(next, 120);
@@ -499,42 +656,45 @@
       r.ok.forEach(function (f) { fd.append('files', f, f.name); });
       var xhr = new XMLHttpRequest(); xhr.open('POST', CFG.uploadEndpoint);
       xhr.upload.onprogress = function (ev) { if (ev.lengthComputable) bar.value = Math.round(ev.loaded / ev.total * 100); };
-      xhr.onload = function () { if (xhr.status >= 200 && xhr.status < 300) status(st, 'ok', 'Upload abgeschlossen. Vielen Dank – Ihre Dateien sind sicher bei uns eingegangen.'); else status(st, 'err', 'Upload fehlgeschlagen (Status ' + xhr.status + '). Bitte erneut versuchen oder Kanal 1 nutzen.'); };
-      xhr.onerror = function () { status(st, 'err', 'Verbindung zum Upload-Dienst fehlgeschlagen. Bitte erneut versuchen oder Kanal 1 nutzen.'); };
+      xhr.onload = function () { if (xhr.status >= 200 && xhr.status < 300) status(st, 'ok', 'Upload abgeschlossen. Vielen Dank – Ihre Dateien sind sicher bei uns eingegangen.'); else status(st, 'err', 'Upload fehlgeschlagen (Status ' + xhr.status + '). Bitte erneut versuchen.'); };
+      xhr.onerror = function () { status(st, 'err', 'Verbindung zum Upload-Dienst fehlgeschlagen. Bitte erneut versuchen.'); };
       xhr.send(fd);
-      }
     });
   }
-  /* Textbasierte Dateien (CSV/TXT/JSON) vor dem Upload teilmaskieren */
-  var TEXT_EXT = ['csv', 'txt', 'json'];
-  function prepareFiles(files, doRedact, report) {
-    if (!doRedact || !window.GMRRedactor) return Promise.resolve(files);
-    var rows = [];
-    return Promise.all(files.map(function (f) {
-      var ext = (f.name.split('.').pop() || '').toLowerCase();
-      if (TEXT_EXT.indexOf(ext) < 0) { rows.push('<tr><td>' + esc(f.name) + '</td><td colspan="2"><span class="badge warn">nicht automatisch maskierbar (' + ext.toUpperCase() + ')</span></td></tr>'); return Promise.resolve(f); }
-      return f.text().then(function (txt) {
-        var res = window.GMRRedactor.redact(txt);
-        var nf = new File([res.text], f.name.replace(/(\.[^.]+)$/, '_maskiert$1'), { type: f.type || 'text/plain' });
-        var url = URL.createObjectURL(nf);
-        rows.push('<tr><td>' + esc(f.name) + '</td><td>' + res.counts.karte + ' Karten · ' + res.counts.iban + ' IBAN · ' + res.counts.transaktion + ' Transaktions-/Buchungskennungen</td><td><a href="' + url + '" download="' + esc(nf.name) + '" data-gmr-redacted>maskierte Kopie</a></td></tr>');
-        return nf;
-      });
-    })).then(function (out) {
-      if (report) report.innerHTML = '<h4 style="margin-top:14px">Teilmaskierung</h4><div class="table-wrap"><table><thead><tr><th>Datei</th><th>Maskiert</th><th>Ergebnis</th></tr></thead><tbody>' + rows.join('') + '</tbody></table></div>';
-      return out;
-    });
-  }
+  /* Portal: optionale Selbstschwärzung für eingefügten Text */
   function initRedactTool() {
     $$('[data-gmr-redact-tool]').forEach(function (w) {
-      var ta = $('textarea', w), out = $('[data-gmr-redact-out]', w);
+      var ta = $('textarea', w), out = $('[data-gmr-redact-out]', w), picker = $('[data-gmr-row-picker]', w);
       $('[data-gmr-redact-run]', w).addEventListener('click', function () {
         if (!ta.value.trim()) { status(out, 'err', 'Bitte fügen Sie zuerst einen Text ein, z. B. Zeilen aus einem CSV-Umsatzexport.'); return; }
-        var r = window.GMRRedactor.redact(ta.value);
-        status(out, 'ok', '<strong>' + r.total + ' Kennung(en) teilmaskiert</strong> (' + r.counts.karte + ' Karten, ' + r.counts.iban + ' IBAN, ' + r.counts.transaktion + ' Transaktions-/Buchungskennungen, ' + r.counts.name + ' Namen gekürzt, ' + r.counts.adresse + ' Adressen entfernt).<pre style="white-space:pre-wrap;margin:8px 0 0" data-gmr-redact-result>' + esc(r.text) + '</pre>');
+        out.hidden = true;
+        renderPicker(picker, 'Zeilen auswählen', ta.value, function (res) {
+          status(out, 'ok', '<strong>' + res.redacted + ' private Zeile(n) von Ihnen geschwärzt</strong> – Zeilen mit Glücksspielbezug bleiben im Klartext.<pre style="white-space:pre-wrap;margin:8px 0 0" data-gmr-redact-result>' + esc(res.text) + '</pre>');
+        });
       });
     });
   }
+
+  /* ---------- Alle lokalen Browser-Daten löschen (§ 25 TDDDG / Art. 17 DSGVO) ---------- */
+  function initWipe() {
+    $$('[data-gmr-wipe-local]').forEach(function (btn) {
+      var out = $('[data-gmr-wipe-status]');
+      btn.addEventListener('click', function () {
+        var n = 0;
+        try { Object.keys(localStorage).forEach(function (k) { if (k.indexOf('gmr_') === 0 || k.indexOf('gmr-') === 0) { localStorage.removeItem(k); n++; } }); } catch (e) { /* ignorieren */ }
+        try { Object.keys(sessionStorage).forEach(function (k) { if (k.indexOf('gmr') === 0) { sessionStorage.removeItem(k); n++; } }); } catch (e) { /* ignorieren */ }
+        openDbs.forEach(function (d) { try { d.close(); } catch (e) { /* ignorieren */ } }); openDbs = []; deviceKeyP = null;
+        function done(ok) { status(out, ok ? 'ok' : 'warn', ok ? '<strong>Erledigt.</strong> ' + n + ' lokale Einträge (localStorage/sessionStorage) sowie die IndexedDB-Datenbank „gmr-secure“ mit dem Geräteschlüssel wurden von diesem Gerät gelöscht.' : 'Die lokalen Einträge wurden gelöscht; die IndexedDB „gmr-secure“ konnte nicht entfernt werden. Bitte löschen Sie die Websitedaten in Ihren Browser-Einstellungen.'); }
+        if (!window.indexedDB) return done(true);
+        var rq = indexedDB.deleteDatabase('gmr-secure');
+        rq.onsuccess = function () { done(true); };
+        rq.onerror = function () { done(false); };
+        rq.onblocked = function () { status(out, 'warn', 'Lokale Einträge gelöscht. Der Geräteschlüssel wird entfernt, sobald andere geöffnete GetMyRight-Tabs geschlossen sind.'); };
+      });
+    });
+  }
+  /* Formulare erst mit JavaScript freischalten (Art.-9-Fieldsets bleiben einwilligungsgebunden) */
+  function initJsOnly() { $$('fieldset[data-gmr-js-only]').forEach(function (fs) { fs.disabled = false; }); }
 
   /* ---------- Kanzlei-Dashboard: Filter & Reservierung (Claim) ---------- */
   function initDashboard() {
@@ -566,6 +726,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    initNav(); initGoogle(); initMagic(); initRegister(); initLogin(); initSession(); initWaitlist(); initCopy(); initUpload(); initDashboard(); initRedactTool();
+    initJsOnly(); initNav(); initGoogle(); initMagic(); initRegister(); initLogin(); initSession(); initWaitlist(); initCopy(); initUpload(); initDashboard(); initRedactTool(); initWipe();
   });
 })();

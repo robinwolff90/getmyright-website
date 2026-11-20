@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.googleusercontent.com; media-src 'self'; connect-src 'self' https://3304f71f.sibforms.com https://accounts.google.com; frame-src https://accounts.google.com; form-action 'self' https://3304f71f.sibforms.com; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://3304f71f.sibforms.com; frame-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Warteliste & Fragebogen – Mandantenbereich · GetMyRight</title>
 <meta name="description" content="Kostenlos auf die Warteliste von GetMyRight: nur Name, E-Mail und Einwilligung sind Pflicht, alle weiteren Fragen sind freiwillig.">
@@ -19,9 +19,8 @@
 <link rel="icon" type="image/svg+xml" href="/icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Outfit:wght@400;500;600&amp;display=swap">
+<link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/gmr.css">
 </head>
 <body>
@@ -43,7 +42,8 @@
 </section>
 <section class="section cream">
 <div class="wrap narrow">
-<form class="form" data-gmr-waitlist novalidate>
+<form class="form" method="post" data-gmr-waitlist novalidate>
+<fieldset class="js-only" data-gmr-js-only disabled>
 <fieldset>
 <legend>1 · Ihre Kontaktdaten <span class="req">(Pflicht)</span></legend>
 <div class="row-2">
@@ -53,8 +53,20 @@
 <input class="hp" type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true">
 </fieldset>
 
-<fieldset>
-<legend>2 · OASIS-Spielersperre <span class="opt">(optional · überspringbar)</span></legend>
+<fieldset class="consent-box">
+<legend>2 · Einwilligungen <span class="opt">(nur die erste ist Pflicht)</span></legend>
+<div style="display:grid;gap:12px">
+<label class="choice"><input type="checkbox" name="OPT_IN" value="1" required> <span><strong>Warteliste (Pflicht):</strong> Ich möchte auf die Warteliste. GetMyRight darf dafür meinen Namen und meine E-Mail-Adresse verarbeiten und über Brevo eine Double-Opt-in-Bestätigungsmail senden (Art. 6 Abs. 1 lit. b und a DSGVO). <span class="req">*</span></span></label>
+<label class="choice"><input type="checkbox" name="optin_updates" value="1"> <span><strong>Updates (freiwillig):</strong> Ich möchte zusätzlich Start- und Produkt-Updates per E-Mail erhalten (Art. 6 Abs. 1 lit. a DSGVO, jederzeit abbestellbar). <span class="opt">optional</span></span></label>
+<label class="choice"><input type="checkbox" name="optin_art9" value="1" data-gmr-art9-toggle> <span><strong>Sensible Angaben (freiwillig):</strong> Ich willige ausdrücklich nach Art. 9 Abs. 2 lit. a DSGVO ein, dass meine freiwilligen Angaben zu einer OASIS-Sperre, zu meinem Spielverhalten, zur Verlusthöhe und zu einer Insolvenz in diesem Browser verschlüsselt gespeichert und für eine Vorab-Einstufung meines Anliegens genutzt werden. Eine Weitergabe an Partnerkanzleien erfolgt erst nach einer gesonderten, späteren Einwilligung. <span class="opt">optional</span></span></label>
+</div>
+<p class="small" style="margin:10px 0 0">Jede Einwilligung ist einzeln widerrufbar, formlos per E-Mail an info@getmyright.de oder über den Abmeldelink. Details: <a href="/datenschutz.html">Datenschutzerklärung</a>, <a href="/agb.html">AGB</a>.</p>
+</fieldset>
+
+<div class="note warn small" data-gmr-art9-notice role="status"><strong>Sensible Fragen gesperrt:</strong> Die Fragen zu OASIS-Sperre, Verlusten, Insolvenz und Belegen (Abschnitte 3, 7, 8 und 9) werden erst freigeschaltet, wenn Sie oben die freiwillige Einwilligung für sensible Angaben (Art. 9 DSGVO) erteilen. Für die Warteliste ist das nicht nötig.</div>
+
+<fieldset data-gmr-art9 disabled>
+<legend>3 · OASIS-Spielersperre <span class="opt">(optional · nur mit Art.-9-Einwilligung)</span></legend>
 <p class="small">Hatten Sie während Ihres Spielzeitraums eine Sperre im bundesweiten Sperrsystem OASIS? Unsicher? <a href="/spieler/hilfe.html#oasis-auskunft">So erhalten Sie Ihre offizielle OASIS-Selbstauskunft</a>.</p>
 <div class="choices"><label class="choice"><input type="radio" name="oasis" value="Ja" data-gmr-q="oasis_sperre"> Ja</label><label class="choice"><input type="radio" name="oasis" value="Nein" data-gmr-q="oasis_sperre"> Nein</label><label class="choice"><input type="radio" name="oasis" value="Weiß nicht" data-gmr-q="oasis_sperre"> Weiß nicht</label></div>
 <div data-gmr-oasis-follow hidden style="margin-top:14px">
@@ -66,7 +78,7 @@
 </fieldset>
 
 <fieldset>
-<legend>3 · Kontaktweg <span class="opt">(optional · überspringbar)</span></legend>
+<legend>4 · Kontaktweg <span class="opt">(optional · überspringbar)</span></legend>
 <div class="row-2">
 <div class="field"><label for="w-tel">Telefon <span class="opt">(optional)</span></label><input id="w-tel" type="tel" maxlength="40" autocomplete="tel" data-gmr-q="telefon" placeholder="+49 …"></div>
 <div class="field"><label for="w-weg">Bevorzugter Kontaktweg</label><select id="w-weg" data-gmr-q="kontaktweg"><option value="">Bitte wählen</option><option>E-Mail</option><option>Telefon</option><option>Egal</option></select></div>
@@ -75,7 +87,7 @@
 </fieldset>
 
 <fieldset>
-<legend>4 · Wohnsitz &amp; Spielart <span class="opt">(optional · überspringbar)</span></legend>
+<legend>5 · Wohnsitz &amp; Spielart <span class="opt">(optional · überspringbar)</span></legend>
 <p class="legend" style="margin:0 0 6px">Hatten Sie während des Spielzeitraums Ihren Wohnsitz in Deutschland?</p>
 <div class="choices"><label class="choice"><input type="radio" name="wohnsitz" value="Ja" data-gmr-q="wohnsitz_de"> Ja</label><label class="choice"><input type="radio" name="wohnsitz" value="Nein" data-gmr-q="wohnsitz_de"> Nein</label><label class="choice"><input type="radio" name="wohnsitz" value="Weiß nicht" data-gmr-q="wohnsitz_de"> Weiß nicht</label></div>
 <div class="field" style="margin-top:12px"><label for="w-land">Bundesland</label><select id="w-land" data-gmr-q="bundesland"><option value="">Bitte wählen</option><option>Baden-Württemberg</option><option>Bayern</option><option>Berlin</option><option>Brandenburg</option><option>Bremen</option><option>Hamburg</option><option>Hessen</option><option>Mecklenburg-Vorpommern</option><option>Niedersachsen</option><option>Nordrhein-Westfalen</option><option>Rheinland-Pfalz</option><option>Saarland</option><option>Sachsen</option><option>Sachsen-Anhalt</option><option>Schleswig-Holstein</option><option>Thüringen</option></select></div>
@@ -86,12 +98,12 @@
 </fieldset>
 
 <fieldset>
-<legend>5 · Anbieter &amp; Zeitraum <span class="opt">(optional · überspringbar)</span></legend>
+<legend>6 · Anbieter &amp; Zeitraum <span class="opt">(optional · überspringbar)</span></legend>
 <div class="field"><label for="w-anbieter">Anbieter-Name(n)</label><input id="w-anbieter" type="text" list="casino-liste" maxlength="300" data-gmr-q="anbieter" placeholder="Tippen zum Suchen, z. B. Casino-Name – mehrere mit Komma trennen" autocomplete="off">
 <datalist id="casino-liste"><option value="22Bet"><option value="888casino"><option value="bet-at-home"><option value="bet365"><option value="Betano"><option value="Bethard"><option value="Betsson"><option value="Betway"><option value="BitStarz"><option value="bwin"><option value="Bwin Casino"><option value="CasinoClub"><option value="Casumo"><option value="ComeOn"><option value="DrückGlück"><option value="Dunder"><option value="Energy Casino"><option value="GGPoker"><option value="Hyperino"><option value="Interwetten"><option value="Jackpot City"><option value="Karamba"><option value="Lapalingo"><option value="LeoVegas"><option value="Lottoland"><option value="Mr Bet"><option value="Mr Green"><option value="Mr Play"><option value="neo.bet"><option value="NetBet"><option value="partypoker"><option value="Platincasino"><option value="PlayAmo"><option value="PokerStars"><option value="Rizk"><option value="Royal Panda"><option value="Spin Casino"><option value="Sportingbet"><option value="Stake"><option value="Sunmaker"><option value="Tipico"><option value="Tipwin"><option value="Unibet"><option value="Vavada"><option value="Vera&amp;John"><option value="Videoslots"><option value="Vulkan Vegas"><option value="Wazamba"><option value="Wheelz"><option value="Wildz"><option value="William Hill"><option value="Wunderino"><option value="Anderer Anbieter"></datalist>
 <p class="small">Suchliste mit 52 häufig genannten Anbietern als Eingabehilfe. Sie enthält keine Aussage über Lizenzstatus oder Rechtmäßigkeit eines Anbieters; fehlende Namen tragen Sie einfach selbst ein.</p></div>
 <div class="field"><label for="w-lizenz">Lizenzsitz des Anbieters <span class="opt">(falls bekannt)</span></label><select id="w-lizenz" data-gmr-q="lizenzsitz"><option value="">Weiß nicht / keine Angabe</option><option>Malta (MGA)</option><option>Curaçao</option><option>Gibraltar</option><option>Isle of Man</option><option>Schleswig-Holstein (Landeslizenz bis 2021)</option><option>Deutschland (GGL-Erlaubnis / Whitelist)</option><option>Anderer Sitz</option></select>
-<p class="small">Den Lizenzhinweis finden Sie meist ganz unten auf der Website des Anbieters. Erlaubte Anbieter listet die <a href="https://www.gluecksspiel-behoerde.de/de/fuer-spielende/uebersicht-erlaubter-anbieter-whitelist" target="_blank" rel="noopener">amtliche Whitelist der GGL</a>.</p></div>
+<p class="small">Den Lizenzhinweis finden Sie meist ganz unten auf der Website des Anbieters. Erlaubte Anbieter listet die <a href="https://www.gluecksspiel-behoerde.de/de/fuer-spielende/uebersicht-erlaubter-anbieter-whitelist" target="_blank" rel="noopener noreferrer">amtliche Whitelist der GGL</a>.</p></div>
 <div class="row-2">
 <div class="field"><label for="w-von">Spielzeitraum von</label><input id="w-von" type="month" data-gmr-q="zeitraum_von"></div>
 <div class="field"><label for="w-bis">bis</label><input id="w-bis" type="month" data-gmr-q="zeitraum_bis"></div>
@@ -99,39 +111,41 @@
 <button type="button" class="btn ghost" style="padding:6px 12px;font-size:.85rem;margin-top:12px" data-gmr-skip>Frage überspringen</button>
 </fieldset>
 
-<fieldset>
-<legend>6 · Verluste &amp; Einzahlungen <span class="opt">(optional · überspringbar)</span></legend>
+<fieldset data-gmr-art9 disabled>
+<legend>7 · Verluste &amp; Einzahlungen <span class="opt">(optional · nur mit Art.-9-Einwilligung)</span></legend>
 <div class="field"><label for="w-verlust">Geschätzter Netto-Verlust (Einzahlungen minus Auszahlungen)</label><select id="w-verlust" data-gmr-q="verlust"><option value="">Bitte wählen</option><option>unter 1.000 €</option><option>1.000 – 5.000 €</option><option>5.000 – 10.000 €</option><option>10.000 – 25.000 €</option><option>25.000 – 50.000 €</option><option>50.000 – 100.000 €</option><option>über 100.000 €</option><option>Weiß ich nicht</option></select></div>
 <p class="legend" style="margin:6px 0 6px">Haben Sie bei einem Anbieter mehr als 1.000 € im Monat eingezahlt?</p>
 <div class="choices"><label class="choice"><input type="radio" name="einz" value="Ja" data-gmr-q="einzahlung_1000"> Ja</label><label class="choice"><input type="radio" name="einz" value="Nein" data-gmr-q="einzahlung_1000"> Nein</label><label class="choice"><input type="radio" name="einz" value="Weiß nicht" data-gmr-q="einzahlung_1000"> Weiß nicht</label></div>
 <button type="button" class="btn ghost" style="padding:6px 12px;font-size:.85rem;margin-top:12px" data-gmr-skip>Frage überspringen</button>
 </fieldset>
 
-<fieldset>
-<legend>7 · Weitere Umstände <span class="opt">(optional · überspringbar)</span></legend>
+<fieldset data-gmr-art9 disabled>
+<legend>8 · Weitere Umstände <span class="opt">(optional · nur mit Art.-9-Einwilligung)</span></legend>
 <p class="legend" style="margin:0 0 6px">Rechtsschutzversicherung vorhanden?</p><div class="choices"><label class="choice"><input type="radio" name="rs" value="Ja" data-gmr-q="rechtsschutz"> Ja</label><label class="choice"><input type="radio" name="rs" value="Nein" data-gmr-q="rechtsschutz"> Nein</label><label class="choice"><input type="radio" name="rs" value="Weiß nicht" data-gmr-q="rechtsschutz"> Weiß nicht</label></div>
 <p class="legend" style="margin:12px 0 6px">Läuft oder lief ein Insolvenzverfahren?</p><div class="choices"><label class="choice"><input type="radio" name="ins" value="Ja" data-gmr-q="insolvenz"> Ja</label><label class="choice"><input type="radio" name="ins" value="Nein" data-gmr-q="insolvenz"> Nein</label><label class="choice"><input type="radio" name="ins" value="Weiß nicht" data-gmr-q="insolvenz"> Weiß nicht</label></div>
 <p class="legend" style="margin:12px 0 6px">Haben Sie bereits einen Anwalt oder Prozessfinanzierer beauftragt?</p><div class="choices"><label class="choice"><input type="radio" name="anw" value="Ja" data-gmr-q="anwalt"> Ja</label><label class="choice"><input type="radio" name="anw" value="Nein" data-gmr-q="anwalt"> Nein</label><label class="choice"><input type="radio" name="anw" value="Weiß nicht" data-gmr-q="anwalt"> Weiß nicht</label></div>
 <button type="button" class="btn ghost" style="padding:6px 12px;font-size:.85rem;margin-top:12px" data-gmr-skip>Frage überspringen</button>
 </fieldset>
 
-<fieldset>
-<legend>8 · Belege &amp; Kontoauszüge <span class="opt">(ausdrücklich optional)</span></legend>
+<fieldset data-gmr-art9 disabled>
+<legend>9 · Belege &amp; Hinweise <span class="opt">(optional · nur mit Art.-9-Einwilligung)</span></legend>
 <p class="small">Belege brauchen Sie jetzt nicht. Sie können sie jederzeit später nachreichen. Wie Sie Kontoauszüge und Abrechnungen bekommen, erklärt unsere <a href="/spieler/kontoauszuege.html">Anleitung für Kontoauszüge</a>.</p>
 <div class="choices"><label class="choice"><input type="radio" name="belege" value="Habe ich bereits" data-gmr-q="belege"> Habe ich bereits</label><label class="choice"><input type="radio" name="belege" value="Besorge ich später" data-gmr-q="belege"> Besorge ich später</label><label class="choice"><input type="radio" name="belege" value="Weiß nicht" data-gmr-q="belege"> Weiß nicht</label></div>
 <div class="field" style="margin-top:12px"><label for="w-notiz">Weitere Hinweise <span class="opt">(optional)</span></label><textarea id="w-notiz" maxlength="2000" data-gmr-q="notiz"></textarea></div>
-<div class="field"><label for="w-pass">Eigene Passphrase für die lokale Verschlüsselung <span class="opt">(optional)</span></label><input id="w-pass" name="passphrase" type="password" autocomplete="new-password" maxlength="200" placeholder="Leer lassen = gerätegebundener Schlüssel"><p class="small">Ihre freiwilligen Angaben werden in diesem Browser mit AES-GCM (256 Bit) verschlüsselt zwischengespeichert.</p></div>
 <button type="button" class="btn ghost" style="padding:6px 12px;font-size:.85rem;margin-top:12px" data-gmr-skip>Frage überspringen</button>
 </fieldset>
 
 <fieldset>
-<legend>Einwilligung <span class="req">(Pflicht)</span></legend>
-<label class="choice"><input type="checkbox" name="OPT_IN" value="1" required> <span>Ich willige ein, dass GetMyRight meinen Namen und meine E-Mail-Adresse zur Aufnahme in die Warteliste und für Informationen zum Start verarbeitet (Double-Opt-in über Brevo). Soweit ich freiwillig Angaben zu einer OASIS-Sperre oder zu meinem Spielverhalten mache, willige ich ausdrücklich in deren Verarbeitung zur Vorbereitung meines Anliegens ein (Art. 9 Abs. 2 lit. a DSGVO). Die Einwilligung kann ich jederzeit widerrufen. Details: <a href="/datenschutz.html">Datenschutzerklärung</a>, <a href="/agb.html">AGB</a>.</span></label>
+<legend>10 · Lokale Verschlüsselung <span class="opt">(optional)</span></legend>
+<div class="field"><label for="w-pass">Eigene Passphrase für die lokale Verschlüsselung <span class="opt">(optional)</span></label><input id="w-pass" name="passphrase" type="password" autocomplete="new-password" maxlength="200" placeholder="Leer lassen = gerätegebundener Schlüssel"><p class="small">Ihre freiwilligen Angaben werden in diesem Browser mit AES-GCM (256 Bit) verschlüsselt zwischengespeichert und nicht automatisch übertragen.</p></div>
 </fieldset>
 
-<p class="note small">Name &amp; E-Mail werden verschlüsselt per HTTPS an Brevo übermittelt. Auf der statischen Website werden optionale Detailangaben lokal mit AES-GCM verschlüsselt zwischengespeichert und nicht automatisch auf einen eigenen Server übertragen; für die Übermittlung an unser Team nutzen Sie den E-Mail-Button oder das spätere Backend.</p>
+
+<p class="note small">Beim Absenden sendet Ihr Browser nur Name, E-Mail und die Warteliste-Einwilligung per HTTPS direkt an Brevo (3304f71f.sibforms.com; dabei werden technisch auch IP-Adresse und Browserkennung übertragen). Optionale Angaben bleiben AES-GCM-verschlüsselt in diesem Browser und werden nicht automatisch übertragen – auch nicht per E-Mail.</p>
 <div><button type="submit" class="btn accent">Kostenlos auf die Warteliste</button></div>
+</fieldset>
 </form>
+<noscript><p class="note err">Für dieses Formular und die lokale Verschlüsselung muss JavaScript aktiviert sein.</p></noscript>
 <div class="status" data-gmr-status aria-live="polite" style="margin-top:18px"></div>
 
 <div data-gmr-result hidden style="margin-top:24px">
@@ -139,7 +153,12 @@
 <h3>Ihre Zusammenfassung <span data-gmr-result-badge></span></h3>
 <div class="table-wrap"><table><tbody data-gmr-result-table></tbody></table></div>
 <p class="small" data-gmr-result-saved style="margin-top:10px"></p>
-<div class="btn-row"><a class="btn accent" data-gmr-result-mailto href="mailto:info@getmyright.de">Angaben per E-Mail an das Team senden</a></div>
+<div class="card cream" style="margin-top:14px">
+<h4>Optional: Kurzmitteilung per E-Mail</h4>
+<p class="small">Die E-Mail enthält nur Ihre Referenz-ID und Ihren Vornamen – keine sensiblen Angaben. Ihre Detailangaben bleiben verschlüsselt in diesem Browser, bis ein EU-Backend bzw. ein sicherer Upload verfügbar ist.</p>
+<label class="choice"><input type="checkbox" data-gmr-mail-ack> <span>Mir ist bekannt, dass E-Mails unverschlüsselt über meinen E-Mail-Anbieter an info@getmyright.de übertragen und dort im Postfach von Spacemail (Spaceship Inc., USA) gespeichert werden.</span></label>
+<div class="btn-row"><a class="btn accent" data-gmr-result-mailto hidden>Kurzmitteilung per E-Mail vorbereiten</a></div>
+</div>
 <div data-gmr-local style="margin-top:18px">
 <div class="btn-row" style="margin-top:0"><button type="button" class="btn ghost" data-gmr-local-show>Lokale Kopie anzeigen</button><button type="button" class="btn ghost" data-gmr-local-export>Verschlüsselt exportieren</button><button type="button" class="btn ghost" data-gmr-local-delete>Lokale Kopie löschen</button></div>
 <div class="status" data-gmr-local-out style="margin-top:12px"></div>
@@ -148,11 +167,11 @@
 <h3 style="margin-top:32px">Unterlagen später nachreichen</h3>
 <div class="grid-2" aria-label="Zwei Wege, Unterlagen einzureichen">
 <div class="card">
-<span class="eyebrow">Kanal 1 · Per E-Mail</span>
+<span class="eyebrow">Kanal 1 · Per E-Mail – nach Vorbereitung</span>
 <h3>Kleinere Dateien</h3>
-<p>Einzelne Kontoauszüge, Kreditkartenabrechnungen oder Belege (PDF, CSV, Fotos) schicken Sie einfach per E-Mail.</p>
-<p><strong>info@getmyright.de</strong></p>
-<div class="btn-row"><a class="btn" href="mailto:info@getmyright.de?subject=Unterlagen%20f%C3%BCr%20GetMyRight&amp;body=Hallo%20GetMyRight-Team%2C%0A%0Aanbei%20meine%20Unterlagen.%0A%0AName%3A%0AE-Mail%20meiner%20Wartelisten-Anmeldung%3A%0A%0AViele%20Gr%C3%BC%C3%9Fe">E-Mail vorbereiten</a><button type="button" class="btn ghost" data-gmr-copy="info@getmyright.de">Adresse kopieren</button></div>
+<p>Einzelne Kontoauszüge, Kreditkartenabrechnungen oder Belege können Sie per E-Mail an <strong>info@getmyright.de</strong> senden. Bitte bereiten Sie sie vorher im Upload-Bereich vor und bestätigen Sie dort die Hinweise zum unverschlüsselten E-Mail-Versand. Es gibt keine automatische Schwärzung.</p>
+<p class="small">Wichtig: E-Mails laufen unverschlüsselt über Ihren E-Mail-Anbieter und unser Postfach bei Spacemail (Spaceship Inc., USA). Private Buchungen ohne Glücksspielbezug dürfen Sie vorher selbst schwärzen; Ein- und Auszahlungen zum bzw. vom Casino oder Wettanbieter müssen lesbar bleiben.</p>
+<div class="btn-row"><a class="btn" href="/spieler/upload.html">Unterlagen vorbereiten</a></div>
 <p class="small" style="margin-top:12px">Tipp: Viele E-Mail-Anbieter begrenzen Anhänge auf 20–25 MB.</p>
 </div>
 <div class="card">

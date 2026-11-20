@@ -23,4 +23,5 @@ Bei neuen Endpunkten die Content-Security-Policy (`connect-src`) in den HTML-Kö
 
 - `css/gmr.css` – Designsystem (Fraunces/Outfit, Cream/Navy/Terracotta)
 - `js/gmr-app.js` – Formulare, Login, 2FA (TOTP), Google-Login-Hook, Warteliste (Brevo + AES-GCM lokal), Upload, Dashboard
-- `js/gmr-redactor.js` – Teilmaskierung von Karten-, IBAN- und Transaktionskennungen
+- `js/gmr-redactor.js` – optionale Selbstschwärzung privater Buchungszeilen durch den Spieler (keine automatische Schwärzung; Glücksspielzeilen bleiben im Klartext)
+- `assets/fonts/` – lokal eingebundene Schriften Fraunces & Outfit (SIL OFL 1.1, keine Google-Fonts-Verbindung)

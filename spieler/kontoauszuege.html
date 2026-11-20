@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.googleusercontent.com; media-src 'self'; connect-src 'self' https://3304f71f.sibforms.com https://accounts.google.com; frame-src https://accounts.google.com; form-action 'self' https://3304f71f.sibforms.com; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://3304f71f.sibforms.com; frame-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Kontoauszüge & Abrechnungen besorgen – Anleitung · GetMyRight</title>
 <meta name="description" content="Allgemeine Schritt-für-Schritt-Anleitung für Kreditkarte, Lastschrift und E-Wallet: Abrechnungsbereich finden, Zeitraum filtern, PDF und CSV herunterladen.">
@@ -19,9 +19,8 @@
 <link rel="icon" type="image/svg+xml" href="/icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Outfit:wght@400;500;600&amp;display=swap">
+<link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/gmr.css">
 </head>
 <body>
@@ -47,7 +46,7 @@
 <section class="section cream">
 <div class="wrap narrow">
 <div class="card" id="vorab"><h3>Vorab: Diese drei Dinge erleichtern alles</h3>
-<ol class="steps"><li><strong>Zeitraum festlegen:</strong> vom ersten bis zum letzten Monat, in dem Sie gespielt haben – lieber etwas großzügiger.</li><li><strong>Ordner anlegen:</strong> pro Zahlungsart ein Ordner, Dateien nach dem Muster <em>2022-03_Kreditkarte.pdf</em> benennen.</li><li><strong>Nichts verändern:</strong> Laden Sie die Originaldateien herunter und bearbeiten oder schwärzen Sie sie nicht.</li></ol></div>
+<ol class="steps"><li><strong>Zeitraum festlegen:</strong> vom ersten bis zum letzten Monat, in dem Sie gespielt haben – lieber etwas großzügiger.</li><li><strong>Ordner anlegen:</strong> pro Zahlungsart ein Ordner, Dateien nach dem Muster <em>2022-03_Kreditkarte.pdf</em> benennen.</li><li><strong>Optional selbst schwärzen – Casino-Buchungen bleiben lesbar:</strong> Private Buchungen ohne Glücksspielbezug (z. B. Alltagseinkäufe, Bestellungen, Arzt, Gehalt) dürfen Sie vor dem Hochladen freiwillig selbst schwärzen – in Ihrem PDF-Programm oder bei CSV-/TXT-Dateien mit dem optionalen Werkzeug im <a href="/spieler/upload.html">Upload-Bereich</a>. <strong>Alle casino-relevanten Buchungen</strong> (Ein- und Auszahlungen zum bzw. vom Casino oder Sportwettenanbieter mit Datum, Betrag und Zahlungsdienstleister/Empfänger) <strong>müssen ungeschwärzt im Klartext bleiben</strong>, damit die Partnerkanzlei sie prüfen kann.</li></ol></div>
 </div>
 </section>
 
@@ -60,9 +59,10 @@
 <li><strong>Abrechnungsbereich finden:</strong> Gesucht wird ein Menüpunkt wie <em>Abrechnungen</em>, <em>Kreditkartenabrechnung</em>, <em>Monatsabrechnung</em> oder <em>Dokumente / Postfach</em>. Die <em>Umsätze</em>-Ansicht zeigt dagegen Einzelbuchungen.</li>
 <li><strong>Monatsabrechnungen vs. Einzelumsätze:</strong> Monatsabrechnungen sind die offiziellen Belege (meist PDF). Einzelumsätze sind gut zum Durchsuchen, reichen online aber oft nur einige Monate zurück.</li>
 <li><strong>Zeitraum filtern:</strong> Stellen Sie im Filter <em>Zeitraum</em> oder <em>Von–Bis</em> Ihren Spielzeitraum ein. Ältere Abrechnungen finden Sie oft im Archiv oder müssen sie beim Kundenservice anfordern.</li>
-<li><strong>Herunterladen:</strong> Laden Sie jede Monatsabrechnung als <strong>PDF</strong> und – falls angeboten – die Umsätze zusätzlich als <strong>CSV</strong> herunter.</li>
+<li><strong>Herunterladen:</strong> Laden Sie die Monatsabrechnungen Ihres Spielzeitraums als <strong>PDF</strong> und – falls angeboten – die Umsätze zusätzlich als <strong>CSV</strong> herunter. Für die Weitergabe genügen die Monate mit Glücksspielbuchungen.</li>
 <li><strong>Worauf achten:</strong> Händlername (oft abweichend vom Casino-Namen, z. B. ein Zahlungsdienstleister), Belastungsdatum, Betrag und gegebenenfalls Auslandseinsatzentgelte.</li>
 </ol>
+<div class="note warn small" data-gmr-plaintext-rule><strong>Pflicht:</strong> Ein- und Auszahlungen zum bzw. vom Casino oder Sportwettenanbieter (Datum, Betrag, Zahlungsdienstleister/Empfänger) niemals schwärzen.</div>
 <p class="note small">Gut zu wissen: Händlername und Händlerkategorie (MCC) helfen der Kanzlei, Glücksspielzahlungen zuzuordnen. Fehlen ältere Abrechnungen, können Sie bei der Bank eine Kopie anfordern – das kann kostenpflichtig sein.</p>
 </div>
 </section>
@@ -104,15 +104,15 @@
 <div class="table-wrap"><table>
 <thead><tr><th>Format</th><th>Wofür</th><th>Empfehlung</th></tr></thead>
 <tbody>
-<tr><td>PDF (Monatsabrechnung / Kontoauszug)</td><td>Offizieller Beleg mit Bank-Layout, gut als Nachweis</td><td><span class="badge ok">Immer mitnehmen</span></td></tr>
-<tr><td>CSV / Excel (Umsatzexport)</td><td>Durchsuchbar und gut auszuwerten</td><td><span class="badge ok">Zusätzlich ideal</span></td></tr>
+<tr><td>PDF (Monatsabrechnung / Kontoauszug)</td><td>Offizieller Beleg mit Bank-Layout, gut als Nachweis – private Buchungen optional selbst schwärzen, Casino-Buchungen lesbar lassen</td><td><span class="badge ok">Nur relevante Seiten</span></td></tr>
+<tr><td>CSV (Umsatzexport)</td><td>Durchsuchbar, gut auszuwerten; private Zeilen optional im Upload-Bereich selbst schwärzbar</td><td><span class="badge ok">Ideal</span></td></tr>
 <tr><td>Screenshot / Foto</td><td>Notlösung, wenn kein Export möglich ist</td><td><span class="badge warn">Nur ergänzend</span></td></tr>
 <tr><td>DSGVO-Datenauskunft des Casinos</td><td>Vollständige Spiel- und Einzahlungshistorie direkt vom Anbieter</td><td><span class="badge ok">Sehr hilfreich</span></td></tr>
 </tbody></table></div>
 <h3 style="margin-top:32px">Häufige Fragen</h3>
 <details><summary>Ich finde keine Auszüge mehr, die älter als ein Jahr sind.</summary><p>Fragen Sie Ihre Bank nach Kontoauszugs-Duplikaten oder einer Umsatzaufstellung für den Zeitraum. Das geht meist per Nachricht im Online-Banking oder telefonisch.</p></details>
 <details><summary>Der Casino-Name taucht in den Umsätzen nicht auf.</summary><p>Häufig wird über Zahlungsdienstleister abgerechnet, deren Name abweicht. Exportieren Sie trotzdem den ganzen Zeitraum – die Kanzlei kann die Buchungen zuordnen.</p></details>
-<details><summary>Muss ich Auszüge schwärzen?</summary><p>Bitte bearbeiten Sie die Originale nicht von Hand. Beim Upload von CSV-, TXT- oder JSON-Dateien maskiert unser Werkzeug Kartennummern, IBAN sowie Transaktions- und Buchungskennungen automatisch bis auf die letzten 4 Zeichen (z. B. ••••78A2) – die Buchungen bleiben für die Kanzlei zuordenbar. Ob weitere private Buchungen geschwärzt werden sollen, klären Sie später mit der Kanzlei.</p></details>
+<details><summary>Muss ich Auszüge schwärzen?</summary><p>Nein, GetMyRight schwärzt nichts automatisch. Sie <strong>dürfen</strong> private Buchungen ohne Glücksspielbezug (z. B. Alltagseinkäufe oder Bestellungen) vorher selbst schwärzen – das ist freiwillig und dient Ihrer Privatsphäre. In PDFs nutzen Sie dafür die Schwärzen-Funktion Ihres PDF-Programms (nicht nur einen schwarzen Kasten darüberlegen); bei CSV-/TXT-Dateien hilft das optionale Werkzeug im Upload-Bereich, das nur eine Kopie verändert. <strong>Nicht schwärzen dürfen Sie</strong> alle Ein- und Auszahlungen zum bzw. vom Casino oder Sportwettenanbieter – Datum, Betrag und Zahlungsdienstleister bzw. Empfänger müssen lesbar bleiben, sonst kann die Kanzlei den Fall nicht prüfen. Ihre Originale bewahren Sie selbst auf.</p></details>
 <details><summary>Wie bekomme ich meine Daten vom Casino?</summary><p>Sie haben nach Art. 15 DSGVO ein Recht auf Auskunft. Eine kurze E-Mail an den Kundenservice oder Datenschutzbeauftragten des Anbieters mit der Bitte um vollständige Kopie Ihrer Daten inklusive Ein- und Auszahlungen und Spielhistorie genügt meist.</p></details>
 </div>
 </section>
@@ -123,11 +123,11 @@
 <h2>Fertig? So senden Sie uns Ihre Unterlagen</h2>
 <div class="grid-2" aria-label="Zwei Wege, Unterlagen einzureichen">
 <div class="card">
-<span class="eyebrow">Kanal 1 · Per E-Mail</span>
+<span class="eyebrow">Kanal 1 · Per E-Mail – nach Vorbereitung</span>
 <h3>Kleinere Dateien</h3>
-<p>Einzelne Kontoauszüge, Kreditkartenabrechnungen oder Belege (PDF, CSV, Fotos) schicken Sie einfach per E-Mail.</p>
-<p><strong>info@getmyright.de</strong></p>
-<div class="btn-row"><a class="btn" href="mailto:info@getmyright.de?subject=Unterlagen%20f%C3%BCr%20GetMyRight&amp;body=Hallo%20GetMyRight-Team%2C%0A%0Aanbei%20meine%20Unterlagen.%0A%0AName%3A%0AE-Mail%20meiner%20Wartelisten-Anmeldung%3A%0A%0AViele%20Gr%C3%BC%C3%9Fe">E-Mail vorbereiten</a><button type="button" class="btn ghost" data-gmr-copy="info@getmyright.de">Adresse kopieren</button></div>
+<p>Einzelne Kontoauszüge, Kreditkartenabrechnungen oder Belege können Sie per E-Mail an <strong>info@getmyright.de</strong> senden. Bitte bereiten Sie sie vorher im Upload-Bereich vor und bestätigen Sie dort die Hinweise zum unverschlüsselten E-Mail-Versand. Es gibt keine automatische Schwärzung.</p>
+<p class="small">Wichtig: E-Mails laufen unverschlüsselt über Ihren E-Mail-Anbieter und unser Postfach bei Spacemail (Spaceship Inc., USA). Private Buchungen ohne Glücksspielbezug dürfen Sie vorher selbst schwärzen; Ein- und Auszahlungen zum bzw. vom Casino oder Wettanbieter müssen lesbar bleiben.</p>
+<div class="btn-row"><a class="btn" href="/spieler/upload.html">Unterlagen vorbereiten</a></div>
 <p class="small" style="margin-top:12px">Tipp: Viele E-Mail-Anbieter begrenzen Anhänge auf 20–25 MB.</p>
 </div>
 <div class="card">

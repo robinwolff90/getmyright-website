@@ -3,6 +3,11 @@
  * googleClientId: OAuth-2.0-Client-ID aus der Google Cloud Console (Typ "Webanwendung",
  *   autorisierter JavaScript-Ursprung: https://getmyright.de). Leer = Google-Login nicht aktiv;
  *   die Seiten zeigen dann einen ehrlichen Hinweis statt eines Fake-Logins.
+ *   WICHTIG (DSGVO/CSP): Solange googleClientId leer ist, sind https://accounts.google.com und
+ *   https://*.googleusercontent.com bewusst NICHT in der Content-Security-Policy (<meta>-Tag
+ *   in allen HTML-Seiten). Wird eine Client-ID eingetragen, diese Ursprünge
+ *   wieder in script-src, style-src, img-src, connect-src und frame-src aufnehmen und den
+ *   Zwei-Klick-Hinweis am Google-Button beibehalten (Google wird erst nach Klick geladen).
  * authEndpoint: HTTPS-Endpunkt eines Backends, das das Google-ID-Token serverseitig prüft
  *   (z. B. POST { credential, role }). Ohne Backend bleibt der Google-Login eine Vorschau.
  * uploadEndpoint: HTTPS-Endpunkt für große Dateien (z. B. vorsignierte S3-/R2-URL-Ausgabe oder Backend).

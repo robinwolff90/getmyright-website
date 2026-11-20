@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.googleusercontent.com; media-src 'self'; connect-src 'self' https://3304f71f.sibforms.com https://accounts.google.com; frame-src https://accounts.google.com; form-action 'self' https://3304f71f.sibforms.com; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://3304f71f.sibforms.com; frame-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Mein Bereich – Mandantenbereich · GetMyRight</title>
 <meta name="description" content="Persönlicher Mandantenbereich bei GetMyRight: Stand der Angaben, Unterlagen einreichen und Sicherheitseinstellungen.">
@@ -19,9 +19,8 @@
 <link rel="icon" type="image/svg+xml" href="/icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Outfit:wght@400;500;600&amp;display=swap">
+<link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/gmr.css">
 </head>
 <body>
@@ -54,11 +53,11 @@
 <h2>Wählen Sie Ihren Weg</h2>
 <div class="grid-2" aria-label="Zwei Wege, Unterlagen einzureichen">
 <div class="card">
-<span class="eyebrow">Kanal 1 · Per E-Mail</span>
+<span class="eyebrow">Kanal 1 · Per E-Mail – nach Vorbereitung</span>
 <h3>Kleinere Dateien</h3>
-<p>Einzelne Kontoauszüge, Kreditkartenabrechnungen oder Belege (PDF, CSV, Fotos) schicken Sie einfach per E-Mail.</p>
-<p><strong>info@getmyright.de</strong></p>
-<div class="btn-row"><a class="btn" href="mailto:info@getmyright.de?subject=Unterlagen%20f%C3%BCr%20GetMyRight&amp;body=Hallo%20GetMyRight-Team%2C%0A%0Aanbei%20meine%20Unterlagen.%0A%0AName%3A%0AE-Mail%20meiner%20Wartelisten-Anmeldung%3A%0A%0AViele%20Gr%C3%BC%C3%9Fe">E-Mail vorbereiten</a><button type="button" class="btn ghost" data-gmr-copy="info@getmyright.de">Adresse kopieren</button></div>
+<p>Einzelne Kontoauszüge, Kreditkartenabrechnungen oder Belege können Sie per E-Mail an <strong>info@getmyright.de</strong> senden. Bitte bereiten Sie sie vorher im Upload-Bereich vor und bestätigen Sie dort die Hinweise zum unverschlüsselten E-Mail-Versand. Es gibt keine automatische Schwärzung.</p>
+<p class="small">Wichtig: E-Mails laufen unverschlüsselt über Ihren E-Mail-Anbieter und unser Postfach bei Spacemail (Spaceship Inc., USA). Private Buchungen ohne Glücksspielbezug dürfen Sie vorher selbst schwärzen; Ein- und Auszahlungen zum bzw. vom Casino oder Wettanbieter müssen lesbar bleiben.</p>
+<div class="btn-row"><a class="btn" href="/spieler/upload.html">Unterlagen vorbereiten</a></div>
 <p class="small" style="margin-top:12px">Tipp: Viele E-Mail-Anbieter begrenzen Anhänge auf 20–25 MB.</p>
 </div>
 <div class="card">
@@ -76,15 +75,16 @@
 <div class="wrap grid-2">
 <div class="card" data-gmr-2fa-settings="spieler">
 <h3>Sicherheit · Zwei-Faktor-Authentifizierung</h3>
-<p class="small">Status: <span data-gmr-2fa-state></span></p>
+<p class="small">Status: <span data-gmr-2fa-state><span class="badge warn">Anmeldung erforderlich</span></span></p>
+<p class="small" data-gmr-2fa-login-hint>Die Zwei-Faktor-Einstellungen sind nur nach Anmeldung mit Ihrem eigenen Konto änderbar. In der Demo-Ansicht ohne Anmeldung wird nichts gespeichert.</p>
 <div class="row-2" style="align-items:end">
-<div class="field"><label for="spieler-s-method">Verfahren</label><select id="spieler-s-method" data-gmr-2fa-method><option value="app">Authenticator-App (empfohlen)</option><option value="sms">SMS-Code</option></select></div>
-<label class="choice" style="margin-bottom:12px"><input type="checkbox" data-gmr-2fa-toggle> <span>2FA aktivieren</span></label>
+<div class="field"><label for="spieler-s-method">Verfahren</label><select id="spieler-s-method" data-gmr-2fa-method disabled><option value="app">Authenticator-App (empfohlen)</option><option value="sms">SMS-Code</option></select></div>
+<label class="choice" style="margin-bottom:12px"><input type="checkbox" data-gmr-2fa-toggle disabled> <span>2FA aktivieren</span></label>
 </div>
 <div data-gmr-2fa-setup id="spieler-settings-2fa" hidden class="card cream" style="margin-top:18px"><div data-gmr-2fa-box></div></div>
 <p class="small" style="margin-top:12px">Vorschau: Authenticator-Codes werden im Browser nach RFC 6238 geprüft; ein echter SMS-Versand und die serverseitige Speicherung folgen mit dem Backend.</p>
 </div>
-<div class="card" data-gmr-redact-tool><h3>Datenschutz-Werkzeug: Kennungen maskieren</h3><p class="small">Fügen Sie Zeilen aus einem Umsatzexport ein. Kartennummern, IBAN und alle Transaktions- und Buchungskennungen (Buchungsnummer, ARN, Auth-Code, SEPA-End-to-End-/Referenznummer, Transaktions-ID) werden bis auf die letzten 4 Zeichen maskiert, Inhabernamen auf Initialen gekürzt und Adressen entfernt – direkt in Ihrem Browser, ohne Übertragung.</p><div class="field"><label for="redact-in">Text</label><textarea id="redact-in" placeholder="z. B. 15.03.2022;CASINO LTD;Buchungsnummer 2023114578A2;-250,00"></textarea></div><div class="btn-row" style="margin-top:10px"><button type="button" class="btn" data-gmr-redact-run>Maskieren</button></div><div class="status" data-gmr-redact-out style="margin-top:12px"></div></div>
+<div class="card" data-gmr-redact-tool><h3>Optionale Selbstschwärzung privater Buchungen</h3><p class="small">Freiwilliges Hilfswerkzeug, keine automatische Schwärzung: Fügen Sie Zeilen aus einem Umsatzexport ein, wählen Sie selbst private Buchungen ohne Glücksspielbezug aus (z. B. Alltagseinkäufe, Bestellungen) und erstellen Sie eine geschwärzte Kopie – direkt in Ihrem Browser, ohne Übertragung. Zeilen mit erkennbarem Glücksspielbezug sind gesperrt: Ein- und Auszahlungen zum bzw. vom Casino oder Wettanbieter (Datum, Betrag, Zahlungsdienstleister/Empfänger) müssen im Klartext bleiben.</p><div class="field"><label for="redact-in">Text</label><textarea id="redact-in" placeholder="z. B. 15.03.2022;CASINO LTD Einzahlung;-250,00"></textarea></div><div class="btn-row" style="margin-top:10px"><button type="button" class="btn ghost" data-gmr-redact-run>Zeilen zur Auswahl anzeigen</button></div><div data-gmr-row-picker></div><div class="status" data-gmr-redact-out style="margin-top:12px"></div></div>
 <div class="card"><h3>Ihre Rechte</h3><p class="small">Sie können Ihre Angaben jederzeit einsehen, berichtigen oder löschen lassen und Ihre Einwilligung widerrufen – formlos per E-Mail an <a href="mailto:info@getmyright.de">info@getmyright.de</a>.</p><p class="small">Bei Fragen zum Spielverhalten finden Sie unabhängige Unterstützung unter <a href="/spieler/hilfe.html">Hilfeangebote</a>.</p></div>
 </div>
 </section></main>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.googleusercontent.com; media-src 'self'; connect-src 'self' https://3304f71f.sibforms.com https://accounts.google.com; frame-src https://accounts.google.com; form-action 'self' https://3304f71f.sibforms.com; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://3304f71f.sibforms.com; frame-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Auftragsverarbeitungsvertrag (Entwurf) – Anwaltsbereich · GetMyRight</title>
 <meta name="description" content="AVV-Entwurf nach Art. 28 DSGVO für Partnerkanzleien von GetMyRight: Gegenstand, Datenarten, TOM, Unterauftragsverarbeiter, Löschung.">
@@ -19,9 +19,8 @@
 <link rel="icon" type="image/svg+xml" href="/icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Outfit:wght@400;500;600&amp;display=swap">
+<link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/gmr.css">
 </head>
 <body>
@@ -50,14 +49,14 @@
 <p>(3) GetMyRight erbringt keine Rechtsdienstleistungen (§ 2 RDG) und erhält keine Vergütung für die Vermittlung von Mandaten (§ 49b Abs. 3 BRAO).</p>
 
 <h2>§ 2 Gegenstand und Dauer</h2>
-<p>(1) Gegenstand ist die Bereitstellung, der Betrieb und die Wartung der GetMyRight-Software (Kanzlei-Dashboard, Claim-System, sichere Bereitstellung geschwärzter Unterlagen, Nutzerverwaltung mit Zwei-Faktor-Authentifizierung).</p>
+<p>(1) Gegenstand ist die Bereitstellung, der Betrieb und die Wartung der GetMyRight-Software (Kanzlei-Dashboard, Claim-System, sichere Bereitstellung vom Spieler freigegebener Unterlagen, Nutzerverwaltung mit Zwei-Faktor-Authentifizierung).</p>
 <p>(2) Die Laufzeit entspricht der Laufzeit des Software-Vertrags. Die Pflichten zur Löschung und Rückgabe nach § 9 gelten über das Vertragsende hinaus.</p>
 
 <h2>§ 3 Art und Zweck der Verarbeitung, Datenarten, Betroffene</h2>
 <div class="table-wrap"><table><tbody>
-<tr><th>Zweck</th><td>Bereitstellung pseudonymisierter Fälle zur Auswahl; nach Claim und Einwilligung verschlüsselte, zeitlich begrenzte Bereitstellung von Kontaktdaten und geschwärzten Unterlagen an die Kanzlei; Nutzer- und Zugriffsverwaltung</td></tr>
-<tr><th>Art der Verarbeitung</th><td>Speichern, Ordnen, Pseudonymisieren, Schwärzen/Kürzen, Bereitstellen, Übermitteln, Protokollieren, Löschen</td></tr>
-<tr><th>Datenarten</th><td>Fallkennung, Anbieter/Casino, Lizenzsitz, Spielzeitraum, Verlusthöhe (Stufe), Wohnregion, OASIS-Angaben, Name, E-Mail, Telefon, geschwärzte Kontoauszüge und Spielhistorien; Nutzerdaten der Kanzlei (Name, E-Mail, 2FA-Daten, Zugriffsprotokolle)</td></tr>
+<tr><th>Zweck</th><td>Bereitstellung pseudonymisierter Fälle zur Auswahl; nach Claim und Einwilligung verschlüsselte, zeitlich begrenzte Bereitstellung von Kontaktdaten und vom Spieler freigegebenen Unterlagen an die Kanzlei; Nutzer- und Zugriffsverwaltung</td></tr>
+<tr><th>Art der Verarbeitung</th><td>Speichern, Ordnen, Pseudonymisieren, Bereitstellen, Übermitteln, Protokollieren, Löschen</td></tr>
+<tr><th>Datenarten</th><td>Fallkennung, Anbieter/Casino, Lizenzsitz, Spielzeitraum, Verlusthöhe (Stufe), Wohnregion, OASIS-Angaben, Name, E-Mail, Telefon, vom Spieler freigegebene (ggf. selbst teilgeschwärzte) Kontoauszüge und Spielhistorien; Nutzerdaten der Kanzlei (Name, E-Mail, 2FA-Daten, Zugriffsprotokolle)</td></tr>
 <tr><th>Besondere Kategorien</th><td>Angaben zu Spielersperren und Spielverhalten (Art. 9 DSGVO), nur auf Grundlage ausdrücklicher Einwilligung der betroffenen Person</td></tr>
 <tr><th>Betroffene</th><td>Spielerinnen und Spieler, die eingewilligt haben; Mitarbeitende der Kanzlei</td></tr>
 </tbody></table></div>
@@ -78,7 +77,7 @@
 <li><strong>Verschlüsselung:</strong> Transportverschlüsselung per TLS für alle Verbindungen; Verschlüsselung ruhender Daten (AES-GCM, 256 Bit); clientseitige AES-GCM-Verschlüsselung lokaler Zwischenspeicher.</li>
 <li><strong>Zugriffsbeschränkung:</strong> rollenbasierte Rechte (Spieler, Kanzlei, Betreiber); Kanzleien sehen vor einem Claim nur pseudonymisierte Fälle; Zugriff auf Unterlagen nur für die claimende Kanzlei und zeitlich begrenzt.</li>
 <li><strong>Authentifizierung:</strong> Passwörter ausschließlich als gesalzener Hash (PBKDF2 oder vergleichbar); Zwei-Faktor-Authentifizierung (TOTP/SMS), für Betreiberzugänge verpflichtend; zeitlich begrenzte Magic-Links.</li>
-<li><strong>Schwärzung und Datenminimierung:</strong> automatische Kürzung von IBAN, Karten-, Buchungs- und Transaktionskennungen auf die letzten 4 Stellen, Kürzung von Namen, Entfernung von Adressen; keine Speicherung ungeschwärzter Originale; Inhaberprüfung vor der Schwärzung.</li>
+<li><strong>Datenminimierung:</strong> keine automatische Schwärzung; Spieler können private Buchungen ohne Glücksspielbezug optional selbst schwärzen, casino-relevante Buchungen (Ein-/Auszahlungen, Datum, Betrag, Zahlungsdienstleister/Empfänger) bleiben im Klartext; Pseudonymisierung der Fallübersicht; Anzeige des OASIS-Status nur bei ausdrücklicher Art.-9- und Weitergabe-Einwilligung;</li>
 <li><strong>Protokollierung:</strong> Protokollierung von Anmeldungen, Claims, Downloads und Freigaben; regelmäßige Auswertung.</li>
 <li><strong>Integrität und Verfügbarkeit:</strong> Content-Security-Policy, regelmäßige Updates, verschlüsselte Backups, Wiederherstellungstests.</li>
 <li><strong>Trennungskontrolle:</strong> logische Trennung der Daten je Kanzlei.</li>
@@ -90,8 +89,9 @@
 <div class="table-wrap"><table>
 <thead><tr><th>Unterauftragsverarbeiter</th><th>Leistung</th><th>Ort</th></tr></thead>
 <tbody>
-<tr><td>Sendinblue GmbH (Brevo), Köpenicker Straße 126, 10179 Berlin</td><td>E-Mail-Versand, Double-Opt-in, Benachrichtigungen</td><td>EU</td></tr>
-<tr><td>GitHub Inc. (GitHub Pages)</td><td>Hosting der öffentlichen Website (ohne Falldaten)</td><td>USA (EU-US Data Privacy Framework)</td></tr>
+<tr><td>Brevo GmbH (vormals Sendinblue GmbH), Köpenicker Straße 126, 10179 Berlin</td><td>E-Mail-Versand, Double-Opt-in, Benachrichtigungen</td><td>EU</td></tr>
+<tr><td>GitHub, Inc. (GitHub Pages, CDN Fastly, Inc.)</td><td>Hosting der öffentlichen Website (ohne Falldaten)</td><td>USA (EU-US Data Privacy Framework / Standardvertragsklauseln)</td></tr>
+<tr><td>Spaceship, Inc. (Spacemail)</td><td>E-Mail-Postfach info@getmyright.de</td><td>USA (Standardvertragsklauseln; Prüfung vor Produktivbetrieb)</td></tr>
 <tr><td>[Platzhalter: Hosting-/Datenbankanbieter für das Backend]</td><td>Betrieb von Datenbank und Upload-Speicher</td><td>[EU – wird vor Start benannt]</td></tr>
 <tr><td>[Platzhalter: SMS-Dienstleister]</td><td>Versand von 2FA-Codes</td><td>[EU – wird vor Start benannt]</td></tr>
 </tbody></table></div>
