@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 440" role="img" aria-labelledby="t"><title id="t">Illustration: geschützter Datenbereich mit Schloss</title>
+<rect width="600" height="440" fill="#F3EEE6"/>
+<g fill="none" stroke="#152A32" stroke-width="2">
+<ellipse cx="300" cy="120" rx="130" ry="34" fill="#FAF7F2"/>
+<path d="M170 120v190c0 19 58 34 130 34s130-15 130-34V120"/>
+<path d="M170 183c0 19 58 34 130 34s130-15 130-34M170 246c0 19 58 34 130 34s130-15 130-34" stroke="#DDD6CA"/>
+<rect x="262" y="210" width="76" height="62" rx="8" fill="#152A32"/>
+<path d="M278 210v-20a22 22 0 0 1 44 0v20" stroke="#A9563F" stroke-width="3"/>
+<circle cx="300" cy="236" r="7" fill="#F3EEE6" stroke="none"/><path d="M300 242v14" stroke="#F3EEE6" stroke-width="3"/>
+</g>
+<path d="M0 400h600" stroke="#DDD6CA" stroke-width="2"/>
+</svg>

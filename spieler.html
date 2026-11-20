@@ -2,88 +2,19 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="dark">
-<title>Spieler-Portal – GetMyRight Mockup</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="0; url=/spieler/portal.html">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://getmyright.de/spieler/portal.html">
+<title>Weiterleitung – Mein Bereich · GetMyRight</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="stylesheet" href="/css/gmr.css">
+<script src="/js/gmr-redirect.js" data-target="/spieler/portal.html"></script>
 </head>
-<body class="bg-slate-950 min-h-screen">
-
-  <nav class="bg-slate-900 border-b border-slate-800">
-    <div class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
-      <a href="index.html" class="text-slate-500 hover:text-slate-300 text-sm">← Mockup-Übersicht</a>
-      <div class="flex gap-2 text-sm">
-        <span class="px-3 py-1.5 rounded-lg bg-emerald-950/60 text-emerald-300 font-medium">Spieler-Portal</span>
-        <a href="kanzlei-login.html" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800">Kanzlei-Dashboard</a>
-        <a href="admin.html" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800">Admin-Bereich</a>
-      </div>
-    </div>
-  </nav>
-
-  <div class="bg-amber-950/60 border-b border-amber-800/60 text-amber-100 text-sm">
-    <div class="max-w-5xl mx-auto px-6 py-2 flex flex-wrap items-center justify-between gap-2">
-      <span><strong>Demo-Ansicht</strong> mit Beispieldaten – noch kein echtes Konto, keine echten Fälle.</span>
-      <span class="flex gap-3"><a href="spieler-info.html" class="underline hover:text-white">Info &amp; Erklärvideo</a><a href="spieler-login.html" data-gmr-demo-logout class="underline hover:text-white">Demo beenden</a></span>
-    </div>
-  </div>
-
-  <main class="max-w-2xl mx-auto px-6 py-10">
-    <div class="flex items-center justify-between mb-6">
-      <div>
-        <h1 class="text-2xl font-bold text-slate-100">Mein Fall</h1>
-        <p class="text-slate-400 text-sm mt-1">Demo-Zugang · Beispieldaten (max***@web.de)</p>
-      </div>
-      <span class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-400 font-mono">UUID a1b2…e91f</span>
-    </div>
-
-    <!-- Status-Karte -->
-    <div class="bg-slate-900 rounded-xl border border-slate-800 p-6 mb-6">
-      <div class="flex items-center gap-2 mb-4">
-        <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-        <span class="font-semibold text-slate-100">Status: wieder offen (zuvor abgelehnt)</span>
-      </div>
-      <dl class="grid grid-cols-2 gap-y-3 text-sm">
-        <dt class="text-slate-500">Region</dt><dd class="text-slate-200">Nordrhein-Westfalen</dd>
-        <dt class="text-slate-500">Streitwert (geschätzt)</dt><dd class="text-slate-200">4.200 €</dd>
-        <dt class="text-slate-500">Eingereicht am</dt><dd class="text-slate-200">02.08.2026</dd>
-        <dt class="text-slate-500">Erfassungskanal</dt><dd class="text-slate-200">Telegram-Bot</dd>
-      </dl>
-    </div>
-
-    <!-- Verlauf -->
-    <div class="bg-slate-900 rounded-xl border border-slate-800 p-6 mb-6">
-      <h2 class="font-semibold text-slate-100 mb-4">Verlauf</h2>
-      <ol class="relative border-l border-slate-700 ml-2 space-y-6">
-        <li class="ml-4">
-          <div class="absolute w-2.5 h-2.5 rounded-full bg-emerald-500 -left-[5px] mt-1.5"></div>
-          <p class="text-sm text-slate-100 font-medium">Fall angelegt</p>
-          <p class="text-xs text-slate-500">02.08.2026, 14:12 Uhr</p>
-        </li>
-        <li class="ml-4">
-          <div class="absolute w-2.5 h-2.5 rounded-full bg-violet-500 -left-[5px] mt-1.5"></div>
-          <p class="text-sm text-slate-100 font-medium">Von Partnerkanzlei übernommen (Claim)</p>
-          <p class="text-xs text-slate-500">03.08.2026, 09:47 Uhr</p>
-        </li>
-        <li class="ml-4">
-          <div class="absolute w-2.5 h-2.5 rounded-full bg-rose-500 -left-[5px] mt-1.5"></div>
-          <p class="text-sm text-slate-100 font-medium">Von Partnerkanzlei abgelehnt</p>
-          <p class="text-xs text-slate-500">05.08.2026, 16:03 Uhr</p>
-        </li>
-        <li class="ml-4">
-          <div class="absolute w-2.5 h-2.5 rounded-full bg-amber-500 -left-[5px] mt-1.5"></div>
-          <p class="text-sm text-slate-100 font-medium">Automatisch wieder freigegeben, sichtbar für andere Kanzleien</p>
-          <p class="text-xs text-slate-500">05.08.2026, 16:03 Uhr</p>
-        </li>
-      </ol>
-    </div>
-
-    <!-- Zurückziehen -->
-    <div class="bg-slate-900 rounded-xl border border-slate-800 p-6">
-      <h2 class="font-semibold text-slate-100 mb-1">Fall zurückziehen</h2>
-      <p class="text-sm text-slate-400 mb-4">Dein Fall wird dauerhaft aus der Liste entfernt und ist für keine Kanzlei mehr claimbar. Das kann nicht rückgängig gemacht werden.</p>
-      <button class="px-4 py-2 rounded-lg bg-rose-600 text-white text-sm font-medium hover:bg-rose-500">Fall dauerhaft zurückziehen</button>
-    </div>
-  </main>
-  <script src="js/gmr-forms.js"></script>
+<body>
+<main class="wrap narrow" style="padding:80px 22px">
+<h1 style="font-size:2rem">Diese Seite ist umgezogen</h1>
+<p>Sie werden automatisch weitergeleitet. Falls nicht, öffnen Sie bitte: <a href="/spieler/portal.html">Mein Bereich</a>.</p>
+</main>
 </body>
 </html>

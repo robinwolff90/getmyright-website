@@ -1,120 +1,26 @@
-# GetMyRight Plattform
+# GetMyRight – Website
 
-Eine moderne Plattform zur Vermittlung von Rechtsfällen zwischen Spielern und Kanzleien.
+Statische Website für **getmyright.de** (GitHub Pages, `CNAME`).
 
-## Projektübersicht
+## Struktur
 
-GetMyRight ist eine Webanwendung, die drei Hauptbereiche umfasst:
-1. **Spieler-Portal** - Für Endnutzer zur Verfolgung ihres Falles
-2. **Kanzlei-Dashboard** - Für Rechtsanwälte zur Claim- und Bearbeitung von Fällen
-3. **Admin-Bereich** - Für Plattformbetreiber zur Verwaltung der Systeme
+| Bereich | Pfad | Inhalt |
+|---|---|---|
+| Neutraler Einstieg | `/` | Startseite, `impressum.html`, `datenschutz.html`, `agb.html` |
+| Mandantenbereich | `/spieler/` | Übersicht & Erklärvideo, `warteliste.html`, `kontoauszuege.html`, `upload.html`, `hilfe.html`, `login.html`, `registrierung.html`, `portal.html` |
+| Anwaltsbereich | `/kanzlei/` | Übersicht & Erklärvideo, `login.html`, `registrierung.html`, `dashboard.html` |
+| Betrieb | `/admin.html` | Betreiberzugang (noindex) |
 
-## Technologie-Stack
+Spieler- und Kanzleibereich haben eigene Header/Footer und verlinken sich nicht gegenseitig.
+Alte Adressen (`spieler.html`, `kanzlei.html`, `warteliste.html` …) leiten auf die neue Struktur weiter.
 
-- HTML5, CSS3, JavaScript (ES6+)
-- Responsives Design für alle Geräte
-- Keine externen Framework-Abhängigkeiten
+## Konfiguration
 
-## Projektstruktur
+`js/gmr-config.js`: `googleClientId`, `authEndpoint`, `otpEndpoint`, `uploadEndpoint`, `maxUploadMb`, Brevo-Formular.
+Bei neuen Endpunkten die Content-Security-Policy (`connect-src`) in den HTML-Köpfen ergänzen.
 
-```
-getmyright/
-├── index.html
-├── spieler.html
-├── kanzlei.html
-├── admin.html
-├── css/
-│   ├── styles.css
-│   └── responsive.css
-├── js/
-│   ├── main.js
-│   ├── spieler.js
-│   ├── kanzlei.js
-│   └── admin.js
-├── assets/
-│   ├── images/
-│   └── documents/
-└── README.md
-```
+## Technik
 
-## Setup-Anleitung
-
-1. **Lokales Setup**
-   - Laden Sie alle Dateien herunter
-   - Öffnen Sie `index.html` in Ihrem Browser
-
-2. **Server-Setup**
-   - Platzieren Sie alle Dateien in Ihrem Webserver-Verzeichnis
-   - Stellen Sie sicher, dass der Webserver statische Dateien ausliefern kann
-
-3. **Konfiguration**
-   - Passen Sie die Kontaktdaten in den HTML-Dateien an
-   - Aktualisieren Sie die Domainnamen in den Links
-
-## Bereitstellung
-
-### Option 1: Statisches Hosting
-- GitHub Pages
-- Netlify
-- Vercel
-- Firebase Hosting
-
-### Option 2: Traditionelles Webhosting
-- Apache
-- Nginx
-- IIS
-
-## Wichtige Funktionen
-
-### Spieler-Portal
-- Fallstatus-Einsehen
-- Fallverlauf
-- Fall-Zurückziehen-Funktion
-
-### Kanzlei-Dashboard
-- Fall-Liste mit Filtern
-- Claim-Funktion
-- Fallannahme/-ablehnung
-- Dokumenten-Download
-
-### Admin-Bereich
-- Fall-Übersicht
-- Manuelle Entsperrung
-- Kanzleimanagement
-- Feldkonfiguration
-
-## Entwicklung
-
-### Lokaler Entwicklungsserver
-Wenn Sie Node.js installiert haben, können Sie einen lokalen Server starten:
-
-```bash
-npx serve
-```
-
-Oder mit Python:
-
-```bash
-python -m http.server 8000
-```
-
-## Wartung
-
-### Updates
-1. Neue Funktionen können durch Hinzufügen von HTML, CSS und JavaScript implementiert werden
-2. Die bestehenden Dateien können direkt bearbeitet werden
-3. Bei größeren Änderungen empfehlen wir das Erstellen von Backups
-
-### Sicherheit
-- Halten Sie die Software auf dem neuesten Stand
-- Überprüfen Sie regelmäßig die Zugriffsrechte
-- Sichern Sie regelmäßig alle Daten
-
-## Support
-
-Für technischen Support wenden Sie sich bitte an:
-info@getmyright.de
-
-## Lizenz
-
-Copyright (c) 2026 GetMyRight. Alle Rechte vorbehalten.
+- `css/gmr.css` – Designsystem (Fraunces/Outfit, Cream/Navy/Terracotta)
+- `js/gmr-app.js` – Formulare, Login, 2FA (TOTP), Google-Login-Hook, Warteliste (Brevo + AES-GCM lokal), Upload, Dashboard
+- `js/gmr-redactor.js` – Teilmaskierung von Karten-, IBAN- und Transaktionskennungen

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 440" role="img" aria-labelledby="t"><title id="t">Illustration: Kanzlei-Software mit strukturierten Datensätzen und Filtern</title>
+<rect width="600" height="440" fill="#152A32"/>
+<rect x="56" y="54" width="488" height="330" rx="10" fill="#FAF7F2"/>
+<rect x="56" y="54" width="120" height="330" rx="10" fill="#F3EEE6"/><path d="M176 54v330" stroke="#DDD6CA" stroke-width="2"/>
+<g stroke="#152A32" stroke-width="2"><path d="M78 96h76M78 126h60M78 156h70M78 186h50"/></g>
+<rect x="72" y="84" width="4" height="24" fill="#A9563F"/>
+<g fill="none" stroke="#DDD6CA" stroke-width="2">
+<rect x="198" y="78" width="96" height="30" rx="6"/><rect x="304" y="78" width="96" height="30" rx="6"/><rect x="410" y="78" width="110" height="30" rx="6" stroke="#A9563F"/>
+</g>
+<g stroke="#DDD6CA" stroke-width="2"><path d="M198 140h322M198 190h322M198 240h322M198 290h322M198 340h322"/></g>
+<g stroke="#152A32" stroke-width="2"><path d="M210 165h90M330 165h60M210 215h110M330 215h50M210 265h80M330 265h70M210 315h100M330 315h40"/></g>
+<g><rect x="440" y="156" width="64" height="18" rx="9" fill="#E7F0EA"/><rect x="440" y="206" width="64" height="18" rx="9" fill="#F7EEDC"/><rect x="440" y="256" width="64" height="18" rx="9" fill="#E7F0EA"/><rect x="440" y="306" width="64" height="18" rx="9" fill="#F8E5E0"/></g>
+</svg>

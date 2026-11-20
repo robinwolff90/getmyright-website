@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /spieler/portal.html
+Disallow: /kanzlei/dashboard.html
+
+Sitemap: https://getmyright.de/sitemap.xml

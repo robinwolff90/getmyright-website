@@ -1,174 +1,119 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datenschutz - GetMyRight</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" type="image/svg+xml" href="/icon.svg">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.googleusercontent.com; media-src 'self'; connect-src 'self' https://3304f71f.sibforms.com https://accounts.google.com; frame-src https://accounts.google.com; form-action 'self' https://3304f71f.sibforms.com; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Datenschutzerklärung · GetMyRight</title>
+<meta name="description" content="Datenschutzerklärung von GetMyRight: Warteliste über Brevo, freiwillige Angaben, lokale AES-GCM-Verschlüsselung, 2FA, optionaler Google-Login und Upload.">
+<link rel="canonical" href="https://getmyright.de/datenschutz.html">
+<meta property="og:title" content="Datenschutzerklärung · GetMyRight">
+<meta property="og:description" content="Datenschutzerklärung von GetMyRight: Warteliste über Brevo, freiwillige Angaben, lokale AES-GCM-Verschlüsselung, 2FA, optionaler Google-Login und Upload.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://getmyright.de/datenschutz.html">
+<meta property="og:image" content="https://getmyright.de/icon-512.png">
+<meta name="theme-color" content="#152A32">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Outfit:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="/css/gmr.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html" aria-label="GetMyRight">
-                    <img src="/logo-wortmarke.svg" alt="GetMyRight">
-                </a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">Über Uns</a></li>
-                    <li><a href="index.html#services">Für Spieler</a></li>
-                    <li><a href="kanzlei.html">Für Kanzleien</a></li>
-                    <li><a href="index.html#contact">Kontakt</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="/" aria-label="GetMyRight"><img src="/logo-wortmarke.svg" alt="" width="55" height="48"><span class="wordmark">GetMyRight</span></a>
+<button class="nav-toggle" type="button" data-gmr-nav-toggle aria-controls="hauptnav" aria-expanded="false">Menü</button>
+<nav class="nav" id="hauptnav" aria-label="Hauptnavigation"><a href="/#ueber-uns">Über uns</a><a href="/#ablauf">Ablauf</a><a href="/#grenzen">Was wir nicht tun</a><a href="/spieler/">Für Spieler</a><a href="/kanzlei/">Für Kanzleien</a></nav>
+</div>
+</header>
+<main id="inhalt">
+<section class="section"><div class="wrap narrow legal">
+<span class="eyebrow">Rechtliches</span><h1>Datenschutzerklärung</h1>
+<p class="small">Stand: November 2026</p>
+<ol class="toc"><li><a href="#d1">Überblick</a></li><li><a href="#d2">Verantwortlicher</a></li><li><a href="#d3">Ihre Rechte</a></li><li><a href="#d4">Hosting und Schriftarten</a></li><li><a href="#d5">Kontakt per E-Mail</a></li><li><a href="#d6">Zwecke und Rechtsgrundlagen</a></li><li><a href="#d7">Lead-Sammlung (Brevo)</a></li><li><a href="#d8">Dokumenten-Uploads</a></li><li><a href="#d9">Automatische Schwärzung</a></li><li><a href="#d10">Konten und 2FA</a></li><li><a href="#d11">Magic-Link-Login</a></li><li><a href="#d12">Google-Login (OAuth)</a></li><li><a href="#d13">Kanzlei-Dashboard und Claim</a></li><li><a href="#d14">Kanzlei-Registrierung</a></li><li><a href="#d15">Sicherheit und Zugriff</a></li><li><a href="#d16">Speicherdauer und Löschfristen</a></li></ol>
 
-    <main class="container" style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
-        <article>
-            <h1 style="color: var(--justice-blue); margin-bottom: 2rem;">Datenschutzerklärung</h1>
-            
-            <section style="margin-bottom: 2rem;">
-                <h2 style="color: var(--neutral-gray); margin-bottom: 1rem;">1. Datenschutz auf einen Blick</h2>
-                
-                <h3 style="color: var(--neutral-gray); margin: 1rem 0 0.5rem;">Allgemeine Hinweise</h3>
-                <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, 
-                wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. 
-                Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.</p>
-            </section>
-            
-            <section style="margin-bottom: 2rem;">
-                <h2 style="color: var(--neutral-gray); margin-bottom: 1rem;">2. Verantwortlicher</h2>
-                <p><strong>Verantwortlich für die Datenverarbeitung:</strong><br>
-                Robin Alexander Wolff<br>
-                Jahnstr. 2<br>
-                42579 Heiligenhaus<br>
-                Deutschland</p>
-                
-                <p><strong>Kontakt:</strong><br>
-                E-Mail: <a href="mailto:info@getmyright.de" style="color: var(--justice-blue);">info@getmyright.de</a></p>
-            </section>
-            
-            <section style="margin-bottom: 2rem;">
-                <h2 style="color: var(--neutral-gray); margin-bottom: 1rem;">3. Datenerfassung auf dieser Website</h2>
-                
-                <h3 style="color: var(--neutral-gray); margin: 1rem 0 0.5rem;">Wer (Verantwortlicher) ist für die Datenerfassung auf dieser Website?</h3>
-                <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt 
-                „Verantwortlicher“ dieser Datenschutzerklärung entnehmen.</p>
-                
-                <h3 style="color: var(--neutral-gray); margin: 1rem 0 0.5rem;">Wie erfassen wir Ihre Daten?</h3>
-                <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, 
-                die Sie uns per E-Mail übermitteln.</p>
-                
-                <p>Des Weiteren können wir im Rahmen der Nutzung der Website automatisch technische Daten erfassen (z. B. Internetbrowser, 
-                verwendetes Betriebssystem, Referrer URL, IP-Adresse).</p>
-                
-                <h3 style="color: var(--neutral-gray); margin: 1rem 0 0.5rem;">Welche Rechte haben Sie bezüglich Ihrer Daten?</h3>
-                <p>Sie haben jederzeit das Recht unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen 
-                Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. 
-                Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden. 
-                Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.</p>
-            </section>
-            
-            <section style="margin-bottom: 2rem;">
-                <h2 style="color: var(--neutral-gray); margin-bottom: 1rem;">4. Hosting und Content Delivery Networks (CDN)</h2>
-                <p>Wir hosten unsere Website bei GitHub Pages. Anbieter ist die GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA.</p>
-                
-                <p>Details entnehmen Sie der Datenschutzerklärung von GitHub: 
-                <a href="https://docs.github.com/en/github/site-policy/github-privacy-statement" target="_blank" style="color: var(--justice-blue);" rel="noopener noreferrer">
-                https://docs.github.com/en/github/site-policy/github-privacy-statement</a>.</p>
-                
-                <p>Für die Darstellung einiger Seiten (u. a. Login, Registrierung, Warteliste und Info-Seiten) laden wir das CSS-Framework Tailwind CSS von <code>cdn.tailwindcss.com</code>. Dabei wird Ihre IP-Adresse technisch bedingt an den Betreiber dieses Content Delivery Networks übermittelt. Grundlage ist unser berechtigtes Interesse an einer einheitlichen Darstellung der Website (Art. 6 Abs. 1 lit. f DSGVO).</p>
+<h2 id="d1">1. Datenschutz auf einen Blick</h2>
+<p>Die folgenden Hinweise geben einen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen oder unsere Formulare nutzen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Wir verarbeiten so wenig Daten wie möglich: Bei der Warteliste sind nur Name, E-Mail-Adresse und Ihre Einwilligung Pflicht.</p>
 
-                <p>Wir binden die Fonts von Google Fonts ein. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.</p>
-                
-                <p>Details entnehmen Sie der Datenschutzerklärung von Google: 
-                <a href="https://policies.google.com/privacy" target="_blank" style="color: var(--justice-blue);" rel="noopener noreferrer">
-                https://policies.google.com/privacy</a>.</p>
-            </section>
-            
-            <section style="margin-bottom: 2rem;">
-                <h2 style="color: var(--neutral-gray); margin-bottom: 1rem;">5. Kontaktaufnahme per E-Mail</h2>
-                <p>Wenn Sie uns per E-Mail kontaktieren, werden die von Ihnen übermittelten Daten (insbesondere Ihre E-Mail-Adresse und der Inhalt Ihrer Nachricht) 
-                ausschließlich zur Bearbeitung und Beantwortung Ihrer Anfrage verarbeitet. 
-                Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
-                
-                <p>Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, 
-                sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. 
-                In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen 
-                (Art. 6 Abs. 1 lit. f DSGVO).</p>
-                
-                <p>Die Daten werden gelöscht, sobald sie für die Beantwortung Ihrer Anfrage nicht mehr benötigt werden. 
-                Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungspflichten – bleiben unberührt.</p>
-            </section>
-            
-            <section style="margin-bottom: 2rem;">
-                <h2 style="color: var(--neutral-gray); margin-bottom: 1rem;">6. Analyse-Tools</h2>
-                <p>Die Internetseiten verwenden keine Analyse-Tools, die eine Analyse des Nutzerverhaltens ermöglichen.</p>
-            </section>
-            
-            <section style="margin-bottom: 2rem;">
-                <h2 style="color: var(--neutral-gray); margin-bottom: 1rem;">7. Plugins und Tools</h2>
-                
-                <h3 style="color: var(--neutral-gray); margin: 1rem 0 0.5rem;">Google Fonts</h3>
-                <p>Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Google Fonts, 
-                die von Google bereitgestellt werden. Die Einbindung erfolgt durch einen Link zu Google Fonts. 
-                Dabei wird Ihre IP-Adresse an Google übertragen.</p>
-                
-                <p>Weitere Informationen zu Google Fonts finden Sie unter: 
-                <a href="https://developers.google.com/fonts/faq" target="_blank" style="color: var(--justice-blue);" rel="noopener noreferrer">
-                https://developers.google.com/fonts/faq</a> und in der Datenschutzerklärung von Google: 
-                <a href="https://policies.google.com/privacy" target="_blank" style="color: var(--justice-blue);" rel="noopener noreferrer">
-                https://policies.google.com/privacy</a>.</p>
-            </section>
-            
-            <section style="margin-bottom: 2rem;">
-                <h2 style="color: var(--neutral-gray); margin-bottom: 1rem;">8. Newsletter / Informationen zum Plattformstart (Brevo)</h2>
-                <p>Wenn Sie sich über das Formular auf dieser Website für Informationen zum Start der Plattform anmelden, verarbeiten wir Ihre E-Mail-Adresse und gegebenenfalls Ihren Vornamen, um Ihnen diese Hinweise per E-Mail zu senden. Die Verarbeitung erfolgt auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO.</p>
+<h2 id="d2">2. Verantwortlicher</h2>
+<p>Robin Alexander Wolff<br>Jahnstr. 2<br>42579 Heiligenhaus<br>Deutschland<br>E-Mail: <a href="mailto:info@getmyright.de">info@getmyright.de</a></p>
 
-                <p>Die Anmeldung erfolgt im Double-Opt-in-Verfahren: Nach dem Absenden des Formulars erhalten Sie eine E-Mail mit einem Bestätigungslink. Erst nach der Bestätigung wird Ihre Anmeldung wirksam. Dabei werden der Zeitpunkt der Anmeldung, der Zeitpunkt der Bestätigung und Ihre IP-Adresse protokolliert.</p>
+<h2 id="d3">3. Ihre Rechte</h2>
+<p>Sie haben jederzeit das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21 DSGVO). Eine erteilte Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen (Art. 7 Abs. 3 DSGVO). Eine formlose E-Mail an info@getmyright.de genügt. Zudem steht Ihnen ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde zu, etwa bei der Landesbeauftragten für Datenschutz und Informationsfreiheit Nordrhein-Westfalen.</p>
 
-                <p>Für den Versand und die Verwaltung der Anmeldungen setzen wir den Auftragsverarbeiter Sendinblue GmbH (Brevo), Köpenicker Straße 126, 10179 Berlin, Deutschland, ein. Mit Brevo besteht ein Vertrag zur Auftragsverarbeitung gemäß Art. 28 DSGVO. Die Verarbeitung erfolgt auf Servern in der EU.</p>
+<h2 id="d4">4. Hosting und Schriftarten</h2>
+<p>Wir hosten diese Website bei GitHub Pages, Anbieter ist die GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA. Beim Aufruf werden technisch notwendige Daten (z. B. IP-Adresse, Zeitpunkt, Browser) in Server-Logfiles verarbeitet. Grundlage ist unser berechtigtes Interesse an einer sicheren Bereitstellung der Website (Art. 6 Abs. 1 lit. f DSGVO). Details: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
+<p>Zur einheitlichen Darstellung nutzen wir die Schriftarten Fraunces und Outfit über Google Fonts (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Dabei wird Ihre IP-Adresse an Google übertragen. Grundlage ist Art. 6 Abs. 1 lit. f DSGVO. Ist Google Fonts nicht erreichbar, verwendet Ihr Browser Systemschriften. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>. Wir setzen keine Analyse- oder Tracking-Tools und keine Cookies ein.</p>
 
-                <p>Ihre Daten werden gespeichert, bis Sie Ihre Einwilligung widerrufen. Sie können die Einwilligung jederzeit widerrufen, etwa über den Abmeldelink in jeder E-Mail oder per E-Mail an <a href="mailto:info@getmyright.de" style="color: var(--justice-blue);">info@getmyright.de</a>. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt unberührt.</p>
+<h2 id="d5">5. Kontaktaufnahme per E-Mail</h2>
+<p>Wenn Sie uns per E-Mail kontaktieren – auch über die vorbereiteten E-Mail-Buttons auf dieser Website –, verarbeiten wir Ihre Angaben zur Bearbeitung Ihres Anliegens (Art. 6 Abs. 1 lit. b DSGVO bzw. lit. f DSGVO). Enthält Ihre Nachricht freiwillige Angaben zu Ihrem Spielverhalten oder einer OASIS-Sperre, verarbeiten wir diese auf Grundlage Ihrer ausdrücklichen Einwilligung (Art. 9 Abs. 2 lit. a DSGVO).</p>
 
-                <p><strong>Wartelisten-Fragebogen und Registrierung für Spieler/innen:</strong> Über die Seiten „Warteliste“ und „Registrierung“ werden ausschließlich Ihr Name (gespeichert im Brevo-Feld „Vorname“), Ihre E-Mail-Adresse und Ihre Einwilligung an Brevo übertragen. Die freiwilligen Zusatzangaben des Fragebogens (z. B. Zeitraum und Höhe von Verlusten, Art des Anbieters, OASIS-Sperre, Bundesland, Notiz) werden weder an Brevo noch an einen anderen Server übertragen. Sie erhalten uns nur, wenn Sie sie nach der Anmeldung aktiv per E-Mail an uns senden; für diese E-Mail gilt Abschnitt 5. Bitte beachten Sie, dass solche Angaben Rückschlüsse auf Ihre Gesundheit (z. B. Glücksspielprobleme) zulassen können; mit dem Absenden willigen Sie ausdrücklich in deren Verarbeitung zur Prüfung Ihres Anliegens ein (Art. 9 Abs. 2 lit. a DSGVO).</p>
+<h2 id="d6">6. Verarbeitungszwecke und Rechtsgrundlagen im Überblick</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Zweck</th><th>Daten</th><th>Rechtsgrundlage</th></tr></thead>
+<tbody>
+<tr><td>1. Lead-Sammlung über Warteliste/Fragebogen</td><td>Name, E-Mail, Einwilligung; freiwillig: Anbieter, Lizenzsitz, Zeitraum, Verlusthöhe, OASIS-Sperre, Wohnregion, Kontaktweg</td><td>Art. 6 Abs. 1 lit. a und b DSGVO; für OASIS-/Spielverhaltensangaben Art. 9 Abs. 2 lit. a DSGVO</td></tr>
+<tr><td>2. Dokumenten-Uploads</td><td>Kontoauszüge, Abrechnungen, Spielerhistorien, Datenauskünfte (per E-Mail oder Upload-Seite)</td><td>Art. 6 Abs. 1 lit. a und b DSGVO; Art. 9 Abs. 2 lit. a DSGVO</td></tr>
+<tr><td>3. Automatische Schwärzung und Kürzung</td><td>Kennungen in Dokumenten (IBAN, Karten-, Buchungs-, Transaktionsnummern, Namen, Adressen)</td><td>Art. 6 Abs. 1 lit. c i. V. m. Art. 5 Abs. 1 lit. c, Art. 25 und Art. 32 DSGVO; Art. 6 Abs. 1 lit. f DSGVO</td></tr>
+<tr><td>4. Optionale Zwei-Faktor-Authentifizierung</td><td>TOTP-Schlüssel bzw. Mobilnummer, Zeitpunkt der Bestätigung</td><td>Art. 6 Abs. 1 lit. a und b DSGVO, Art. 32 DSGVO</td></tr>
+<tr><td>5. Magic-Link-Login</td><td>E-Mail-Adresse, einmaliges zeitlich begrenztes Token, Zeitpunkt</td><td>Art. 6 Abs. 1 lit. b DSGVO</td></tr>
+<tr><td>6. Optionaler Google-Login (OAuth)</td><td>Name, E-Mail, Google-Kennung</td><td>Art. 6 Abs. 1 lit. a DSGVO</td></tr>
+<tr><td>7. Kanzlei-Dashboard mit Claim-System</td><td>Pseudonymisierte Falldaten; nach Claim und gesonderter Einwilligung Kontaktdaten und Unterlagen</td><td>Art. 6 Abs. 1 lit. a und b DSGVO; Art. 9 Abs. 2 lit. a DSGVO</td></tr>
+</tbody></table></div>
 
-                <p>Weitere Informationen zum Datenschutz bei Brevo finden Sie unter:
-                <a href="https://www.brevo.com/de/legal/privacypolicy/" target="_blank" style="color: var(--justice-blue);" rel="noopener noreferrer">https://www.brevo.com/de/legal/privacypolicy/</a>.</p>
-            </section>
-            
-            <section style="margin-bottom: 2rem;">
-                <h2 style="color: var(--neutral-gray); margin-bottom: 1rem;">8a. Kanzlei-Registrierung und Demo-Login</h2>
-                <p><strong>Kanzlei-Registrierung:</strong> Das Registrierungsformular für Kanzleien speichert keine Daten auf unserer Website. Es erstellt lediglich eine vorausgefüllte E-Mail in Ihrem E-Mail-Programm; übermittelt werden die Angaben erst, wenn Sie diese E-Mail an info@getmyright.de absenden. Für die Verarbeitung gilt Abschnitt 5 (Kontaktaufnahme per E-Mail).</p>
-                <p><strong>Spieler- und Kanzlei-Login (Demo):</strong> Die Plattform ist noch nicht gestartet; der Login ist ein Demo-Zugang mit Beispieldaten. Es werden keine Zugangsdaten abgefragt oder übertragen. Beim Öffnen der Demo wird lediglich ein Merker (die gewählte Rolle) im Sitzungsspeicher (sessionStorage) Ihres Browsers abgelegt, der beim Schließen des Tabs gelöscht wird. Es werden keine Cookies gesetzt.</p>
-            </section>
+<h2 id="d7">7. Zweck 1: Lead-Sammlung über Warteliste und Fragebogen (Brevo)</h2>
+<p><strong>Pflichtangaben:</strong> Für die Warteliste übermitteln wir Ihren Namen (Brevo-Feld „Vorname“), Ihre E-Mail-Adresse und Ihre Einwilligung verschlüsselt per HTTPS (TLS) an unseren Auftragsverarbeiter Sendinblue GmbH (Brevo), Köpenicker Straße 126, 10179 Berlin. Mit Brevo besteht ein Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO; die Verarbeitung erfolgt auf Servern in der EU. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) sowie die Durchführung vorvertraglicher Maßnahmen auf Ihre Anfrage (Art. 6 Abs. 1 lit. b DSGVO).</p>
+<p><strong>Double-Opt-in:</strong> Nach dem Absenden erhalten Sie eine E-Mail mit Bestätigungslink. Erst nach Bestätigung sind Sie eingetragen. Zeitpunkt der Anmeldung und Bestätigung sowie die IP-Adresse werden zum Nachweis protokolliert.</p>
+<p><strong>Freiwillige Angaben:</strong> Alle weiteren Fragen (z. B. Anbieter, Lizenzsitz, Spielzeitraum, Verlusthöhe, OASIS-Sperre, Rechtsschutz, Insolvenz, Telefonnummer) sind freiwillig und überspringbar. Angaben zu einer Spielersperre oder zum Spielverhalten können Rückschlüsse auf Ihre Gesundheit zulassen und sind besondere Kategorien personenbezogener Daten; wir verarbeiten sie ausschließlich auf Grundlage Ihrer ausdrücklichen Einwilligung (Art. 9 Abs. 2 lit. a DSGVO). Diese Angaben werden <strong>nicht</strong> an Brevo übertragen.</p>
+<p><strong>Lokale Verschlüsselung:</strong> Auf der derzeit statischen Website werden die freiwilligen Angaben ausschließlich in Ihrem Browser gespeichert und dort mit AES-GCM (256 Bit, Web Crypto API) verschlüsselt. Der Schlüssel wird lokal erzeugt und ist nicht exportierbar (IndexedDB) oder wird auf Wunsch aus Ihrer eigenen Passphrase abgeleitet (PBKDF2). Wir haben auf diese Daten keinen Zugriff; an uns gelangen sie nur, wenn Sie sie aktiv per E-Mail senden. Sie können sie jederzeit über „Lokale Kopie löschen“ entfernen.</p>
+<p><strong>Lead-Einstufung:</strong> Im Browser wird automatisch eine Einstufung gebildet („vollständig“, „kontaktieren“ oder „Daten fehlen“). Sie hat keine rechtliche Wirkung für Sie (keine automatisierte Entscheidung im Sinne von Art. 22 DSGVO). Weitere Informationen: <a href="https://www.brevo.com/de/legal/privacypolicy/" target="_blank" rel="noopener">Datenschutzerklärung von Brevo</a>.</p>
 
-            <section>
-                <h2 style="color: var(--neutral-gray); margin-bottom: 1rem;">9. Widerruf Ihrer Einwilligung zur Datenverarbeitung</h2>
-                <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. 
-                Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. 
-                Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
-                
-                <p>Zum Widerruf Ihrer Einwilligung müssen Sie uns lediglich per E-Mail informieren. 
-                Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
-            </section>
-        </article>
-    </main>
-    
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 GetMyRight. Alle Rechte vorbehalten.</p>
-        </div>
-    </footer>
-    
-    <script src="js/main.js"></script>
+<h2 id="d8">8. Zweck 2: Dokumenten-Uploads</h2>
+<p>Unterlagen wie Kontoauszüge, Kreditkartenabrechnungen, Spielerhistorien oder Datenauskünfte von Anbietern können Sie freiwillig per E-Mail an info@getmyright.de (Kanal 1, für kleinere Dateien) oder über die Upload-Seite (Kanal 2, für große Dateien) einreichen. Wir verarbeiten sie ausschließlich zur Vorbereitung Ihres Anliegens und – nach Ihrer gesonderten Einwilligung – zur Bereitstellung an die von Ihnen akzeptierte Partnerkanzlei. Solange der Upload-Server noch nicht angebunden ist, prüft die Upload-Seite Dateityp und Dateigröße nur lokal und überträgt keine Dateien.</p>
+
+<h2 id="d9">9. Zweck 3: Automatische Schwärzung und Kürzung vor der Speicherung</h2>
+<p>Zur Datenminimierung (Art. 5 Abs. 1 lit. c, Art. 25 DSGVO) werden Dokumente vor ihrer Speicherung automatisch geschwärzt bzw. gekürzt:</p>
+<ul><li>IBAN: nur Ländercode und die letzten 4 Stellen bleiben sichtbar,</li><li>Kartennummern: nur die letzten 4 Ziffern bleiben sichtbar,</li><li>Buchungsnummern und Transaktionskennungen (Kreditkarten-Buchungsnummern, ARN, Auth-/Autorisierungscodes, SEPA-End-to-End- und Referenznummern, Mandatsreferenzen, Transaktions-IDs): nur die letzten 4 Zeichen bleiben sichtbar (z. B. ••••78A2),</li><li>Namen von Konto- und Karteninhabern: auf Initialen gekürzt,</li><li>Postanschriften: entfernt.</li></ul>
+<p>So bleibt jede Buchung für die beauftragte Kanzlei zuordenbar, ist für Dritte aber nicht eindeutig identifizierbar. Vor der Schwärzung wird geprüft, ob die Unterlagen zum einreichenden Konto gehören (Inhaberprüfung anhand von Name und Kontokennung). Die ungeschwärzten Originale werden nach der Verarbeitung nicht gespeichert. Auf der aktuellen statischen Website erfolgt die Maskierung für CSV-, TXT- und JSON-Dateien direkt in Ihrem Browser; PDF-, Tabellen-, Archiv- und Bilddateien werden serverseitig geschwärzt, sobald der Upload-Server in Betrieb ist. Rechtsgrundlage ist Art. 6 Abs. 1 lit. c DSGVO i. V. m. Art. 25 und 32 DSGVO sowie unser berechtigtes Interesse an datensparsamer Verarbeitung (Art. 6 Abs. 1 lit. f DSGVO).</p>
+
+<h2 id="d10">10. Zweck 4: Konten und optionale Zwei-Faktor-Authentifizierung (2FA)</h2>
+<p>In der aktuellen Vorschau werden Spieler-, Kanzlei- und Betreiberkonten nur lokal auf Ihrem Gerät angelegt: Ihr Passwort wird nicht im Klartext gespeichert, sondern als gesalzener PBKDF2-Hash im lokalen Speicher Ihres Browsers. Die Sitzung wird im Sitzungsspeicher (sessionStorage) gehalten und beim Schließen des Tabs gelöscht.</p>
+<p>Die Zwei-Faktor-Authentifizierung ist freiwillig. Bei Nutzung einer Authenticator-App wird ein geheimer Schlüssel (TOTP nach RFC 6238) erzeugt und gespeichert; die App erzeugt daraus Einmalcodes. Bei SMS-Codes verarbeiten wir Ihre Mobilnummer ausschließlich zum Versand der Codes; der tatsächliche SMS-Versand erfolgt erst mit Anbindung eines Servers und eines SMS-Dienstleisters, über den wir vorab in dieser Erklärung informieren. Rechtsgrundlage ist Art. 6 Abs. 1 lit. a und b DSGVO; die Daten dienen allein der Sicherheit Ihres Zugangs (Art. 32 DSGVO).</p>
+
+<h2 id="d11">11. Zweck 5: Magic-Link-Login</h2>
+<p>Als passwortlosen Schnellzugang zum Dashboard können Sie einen Anmeldelink per E-Mail anfordern. Dazu verarbeiten wir Ihre E-Mail-Adresse, ein einmaliges, zufällig erzeugtes Token und den Zeitpunkt der Anforderung. Der Link ist nur kurz gültig (15 Minuten) und nur einmal verwendbar; das Token wird danach gelöscht. Die Funktion ist vorbereitet und wird aktiv, sobald der Server-Endpunkt angebunden ist. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.</p>
+
+<h2 id="d12">12. Zweck 6: Optionaler Google-Login (OAuth)</h2>
+<p>Die Anmeldung mit Google ist optional und erst aktiv, wenn wir eine OAuth-Client-ID und einen Server zur Prüfung des Google-ID-Tokens freigeschaltet haben. Erst wenn Sie auf „Mit Google fortfahren“ klicken, wird der Dienst Google Identity Services (Google Ireland Limited) geladen. Google übermittelt uns dann Ihren Namen, Ihre E-Mail-Adresse und eine eindeutige Kennung; ein Passwort erhalten wir nicht. Rechtsgrundlage ist Ihre Einwilligung durch Auswahl dieser Option (Art. 6 Abs. 1 lit. a DSGVO). Dabei kann eine Übermittlung in die USA stattfinden; Google ist unter dem EU-US Data Privacy Framework zertifiziert.</p>
+
+<h2 id="d13">13. Zweck 7: Kanzlei-Dashboard mit Claim-System</h2>
+<p>Registrierte Partnerkanzleien sehen im Dashboard ausschließlich <strong>pseudonymisierte</strong> Fälle: eine Fallkennung, das betroffene Casino bzw. den Anbieter, die geschätzte Verlusthöhe (als Stufe), die Wohnregion (Bundesland) sowie weitere strukturierte Angaben ohne Namen, Kontaktdaten oder Unterlagen. Reserviert („claimt“) eine Kanzlei einen Fall, werden Kontaktdaten und geschwärzte Unterlagen erst nach Ihrer gesonderten Einwilligung an genau diese Kanzlei übertragen – verschlüsselt und über einen zeitlich begrenzten Zugang. Ab diesem Zeitpunkt verarbeitet die Kanzlei die Daten für die Mandatsprüfung als eigener Verantwortlicher (Art. 4 Nr. 7 DSGVO). Für die Bereitstellung der Software durch GetMyRight steht Kanzleien ein <a href="/kanzlei/avv.html">Auftragsverarbeitungsvertrag (AVV-Entwurf)</a> zur Verfügung. Rechtsgrundlage ist Art. 6 Abs. 1 lit. a und b DSGVO sowie Art. 9 Abs. 2 lit. a DSGVO.</p>
+
+<h2 id="d14">14. Kanzlei-Registrierung</h2>
+<p>Bei der Registrierung als Partnerkanzlei verarbeiten wir Kanzleiname, Ansprechpartner, Kammerzugehörigkeit, E-Mail, optional Telefon und Anmerkungen zur Anbahnung eines Software-Vertrags (Art. 6 Abs. 1 lit. b DSGVO). Die Angaben werden lokal verschlüsselt gespeichert und erst mit Absenden der vorbereiteten E-Mail an uns übermittelt.</p>
+
+<h2 id="d15">15. Datensicherheit und Zugriffsbeschränkung</h2>
+<p>Alle Verbindungen zu dieser Website und zu Brevo sind TLS-verschlüsselt. Die Website setzt eine Content-Security-Policy ein, die nur Skripte von eigenen Servern und – bei aktiviertem Google-Login – von Google zulässt. Für den Plattformstart sind eine serverseitige Speicherung mit Verschlüsselung ruhender Daten, rollenbasierte Zugriffsbeschränkung (Spieler sehen nur eigene Daten, Kanzleien nur pseudonymisierte bzw. freigegebene Fälle), Protokollierung von Zugriffen und verpflichtende Zwei-Faktor-Authentifizierung für Betreiberzugänge vorgesehen.</p>
+
+<h2 id="d16">16. Speicherdauer und Löschfristen</h2>
+<p>Leads und Kontodaten werden <strong>nach 12 Monaten Inaktivität gelöscht</strong>; besteht Kontakt, erinnern wir Sie vorher per E-Mail. Unabhängig davon löschen wir Ihre Daten <strong>unverzüglich nach Abschluss oder Beendigung des Vorgangs oder nach Widerruf Ihrer Einwilligung</strong>, sofern keine gesetzlichen Aufbewahrungsfristen (z. B. steuer- oder handelsrechtlich) entgegenstehen; in diesem Fall wird die Verarbeitung bis zum Ablauf der Frist eingeschränkt. Magic-Link-Tokens werden nach Nutzung bzw. nach 15 Minuten gelöscht. Lokal in Ihrem Browser gespeicherte Daten können Sie jederzeit selbst löschen.</p>
+<p>Den Widerruf einer Einwilligung können Sie jederzeit über den Abmeldelink in jeder E-Mail oder per E-Mail an info@getmyright.de erklären. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt unberührt.</p>
+</div></section></main>
+<footer class="site-footer">
+<div class="wrap">
+<div><div class="fbrand">GetMyRight</div><p class="small" style="color:#AEBBBF;margin:.3em 0 0">Strukturierte Vorbereitung im Glücksspielrecht – in Gründung.<br>&copy; 2026 GetMyRight · Robin Alexander Wolff (in Gründung)</p></div>
+<nav aria-label="Rechtliches"><a href="/spieler/">Für Spieler</a><a href="/kanzlei/">Für Kanzleien</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="/agb.html">AGB &amp; Nutzungsbedingungen</a></nav>
+</div>
+</footer>
+<script src="/js/gmr-config.js"></script>
+<script src="/js/gmr-redactor.js"></script>
+<script src="/js/gmr-app.js"></script>
 </body>
 </html>

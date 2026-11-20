@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 440" role="img" aria-labelledby="t"><title id="t">Illustration: Mandantenbereich mit Fortschrittsschritten</title>
+<rect width="600" height="440" fill="#F3EEE6"/>
+<rect x="60" y="56" width="480" height="320" rx="10" fill="#FAF7F2" stroke="#152A32" stroke-width="2"/>
+<path d="M60 100h480" stroke="#DDD6CA" stroke-width="2"/>
+<circle cx="88" cy="78" r="6" fill="#A9563F"/><circle cx="108" cy="78" r="6" fill="#DDD6CA"/><circle cx="128" cy="78" r="6" fill="#DDD6CA"/>
+<g stroke="#152A32" stroke-width="2" fill="none">
+<path d="M110 170h380" stroke="#DDD6CA"/>
+<circle cx="130" cy="170" r="16" fill="#152A32"/><circle cx="250" cy="170" r="16" fill="#152A32"/><circle cx="370" cy="170" r="16" fill="#FAF7F2" stroke="#A9563F"/><circle cx="470" cy="170" r="16" fill="#FAF7F2"/>
+<path d="M123 170l5 5 9-10M243 170l5 5 9-10" stroke="#FAF7F2" stroke-width="2.5"/>
+<rect x="100" y="230" width="190" height="110" rx="8" fill="#FFFFFF" stroke="#DDD6CA"/>
+<rect x="310" y="230" width="190" height="110" rx="8" fill="#FFFFFF" stroke="#DDD6CA"/>
+<path d="M120 258h120M120 282h150M120 306h90" stroke="#152A32"/>
+<path d="M330 258h100M330 282h140" stroke="#152A32"/><path d="M330 312h70" stroke="#A9563F" stroke-width="6" stroke-linecap="round"/>
+</g>
+</svg>

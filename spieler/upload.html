@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.googleusercontent.com; media-src 'self'; connect-src 'self' https://3304f71f.sibforms.com https://accounts.google.com; frame-src https://accounts.google.com; form-action 'self' https://3304f71f.sibforms.com; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Unterlagen hochladen – Mandantenbereich · GetMyRight</title>
+<meta name="description" content="Upload-Bereich für große Dateien wie Casino-Datenauskünfte und Spielhistorien. Alternativ kleinere Dateien per E-Mail an info@getmyright.de.">
+<link rel="canonical" href="https://getmyright.de/spieler/upload.html">
+<meta property="og:title" content="Unterlagen hochladen – Mandantenbereich · GetMyRight">
+<meta property="og:description" content="Upload-Bereich für große Dateien wie Casino-Datenauskünfte und Spielhistorien. Alternativ kleinere Dateien per E-Mail an info@getmyright.de.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://getmyright.de/spieler/upload.html">
+<meta property="og:image" content="https://getmyright.de/icon-512.png">
+<meta name="theme-color" content="#152A32">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Outfit:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="/css/gmr.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="/spieler/" aria-label="GetMyRight – Mandantenbereich"><img src="/logo-wortmarke.svg" alt="" width="55" height="48"><span class="wordmark">GetMyRight</span><span class="zone">Mandantenbereich</span></a>
+<button class="nav-toggle" type="button" data-gmr-nav-toggle aria-controls="hauptnav" aria-expanded="false">Menü</button>
+<nav class="nav" id="hauptnav" aria-label="Hauptnavigation"><a href="/spieler/">Übersicht</a><a href="/spieler/warteliste.html">Warteliste</a><a href="/spieler/kontoauszuege.html">Kontoauszüge</a><a href="/spieler/upload.html">Unterlagen</a><a href="/spieler/hilfe.html">Hilfeangebote</a><a href="/spieler/login.html">Login</a><a href="/spieler/registrierung.html" class="nav-cta">Registrieren</a></nav>
+</div>
+</header>
+<main id="inhalt">
+<section class="hero" style="padding-bottom:40px">
+<div class="wrap narrow">
+<span class="eyebrow">Kanal 2 · Upload für große Dateien</span>
+<h1>Große Unterlagen sicher hochladen.</h1>
+<p class="lead">Für komplette Datenauskünfte von Casinos, vollständige Spielhistorien oder Spielanalysen. Erlaubt sind ZIP, CSV, PDF, XLSX, XLS, JSON, TXT sowie Fotos (PNG/JPG) bis 250 MB pro Datei.</p>
+<div class="status" data-gmr-upload-mode></div>
+</div>
+</section>
+<section class="section cream">
+<div class="wrap narrow">
+<div class="card">
+<form class="form" data-gmr-upload novalidate>
+<div class="field"><label for="u-email">E-Mail-Adresse Ihrer Wartelisten-Anmeldung <span class="req">*</span></label><input id="u-email" name="email" type="email" autocomplete="email" required></div>
+<div class="field"><label for="u-files">Dateien auswählen <span class="req">*</span></label><input id="u-files" name="files" type="file" multiple accept=".zip,.csv,.pdf,.xlsx,.xls,.json,.txt,.png,.jpg,.jpeg"></div>
+<div data-gmr-file-list></div>
+<div class="field"><label for="u-note">Hinweis zu den Dateien <span class="opt">(optional)</span></label><textarea id="u-note" name="note" maxlength="1000" placeholder="z. B. Datenauskunft von Anbieter X, Zeitraum 2019–2022"></textarea></div>
+<label class="choice"><input type="checkbox" name="consent" required> <span>Ich willige ein, dass GetMyRight die hochgeladenen Unterlagen zur Vorbereitung meines Anliegens verarbeitet. Sie können Angaben zu meinem Spielverhalten enthalten (Art. 9 Abs. 2 lit. a DSGVO). <a href="/datenschutz.html">Datenschutzerklärung</a></span></label>
+<label class="choice"><input type="checkbox" name="redact" checked> <span><strong>Sensible Kennungen vor dem Upload teilmaskieren (empfohlen):</strong> In CSV-, TXT- und JSON-Dateien werden Kartennummern, IBAN sowie alle Transaktions- und Buchungskennungen (Buchungsnummern, ARN, Auth-Codes, SEPA-End-to-End-/Referenznummern, Transaktions-IDs) bis auf die letzten 4 Zeichen maskiert, z. B. <span class="secret">••••78A2</span>; Namen von Konto-/Karteninhabern werden auf Initialen gekürzt und Postanschriften entfernt. So bleibt jede Buchung für die Kanzlei zuordenbar, ist für Dritte aber nicht eindeutig identifizierbar. PDF-, XLSX-, ZIP- und Bilddateien können im Browser nicht automatisch maskiert werden.</span></label>
+<div data-gmr-redact-report></div>
+<progress data-gmr-progress max="100" value="0" hidden style="width:100%"></progress>
+<div><button type="submit" class="btn accent">Dateien prüfen und hochladen</button></div>
+</form>
+<div class="status" data-gmr-status aria-live="polite" style="margin-top:16px"></div>
+</div>
+<h3 style="margin-top:36px">Lieber per E-Mail?</h3>
+<div class="grid-2" aria-label="Zwei Wege, Unterlagen einzureichen">
+<div class="card">
+<span class="eyebrow">Kanal 1 · Per E-Mail</span>
+<h3>Kleinere Dateien</h3>
+<p>Einzelne Kontoauszüge, Kreditkartenabrechnungen oder Belege (PDF, CSV, Fotos) schicken Sie einfach per E-Mail.</p>
+<p><strong>info@getmyright.de</strong></p>
+<div class="btn-row"><a class="btn" href="mailto:info@getmyright.de?subject=Unterlagen%20f%C3%BCr%20GetMyRight&amp;body=Hallo%20GetMyRight-Team%2C%0A%0Aanbei%20meine%20Unterlagen.%0A%0AName%3A%0AE-Mail%20meiner%20Wartelisten-Anmeldung%3A%0A%0AViele%20Gr%C3%BC%C3%9Fe">E-Mail vorbereiten</a><button type="button" class="btn ghost" data-gmr-copy="info@getmyright.de">Adresse kopieren</button></div>
+<p class="small" style="margin-top:12px">Tipp: Viele E-Mail-Anbieter begrenzen Anhänge auf 20–25 MB.</p>
+</div>
+<div class="card">
+<span class="eyebrow">Kanal 2 · Upload-Link</span>
+<h3>Große Dateien</h3>
+<p>Komplette Datenauskünfte von Casinos (DSGVO-Export), vollständige Spielhistorien oder Spielanalysen als ZIP, CSV, XLSX, JSON oder PDF.</p>
+<p><strong>getmyright.de/spieler/upload.html</strong></p>
+<div class="btn-row"><a class="btn" href="/spieler/upload.html">Zum Upload-Bereich</a></div>
+<p class="small" style="margin-top:12px">Diesen Link finden Sie auch in Ihrer Bestätigungs-E-Mail.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<div><div class="fbrand">GetMyRight</div><p class="small" style="color:#AEBBBF;margin:.3em 0 0">Mandantenbereich · kostenlos für Spieler · keine Rechtsberatung.<br>&copy; 2026 GetMyRight · Robin Alexander Wolff (in Gründung)</p></div>
+<nav aria-label="Rechtliches"><a href="/">Startseite</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="/agb.html">AGB</a></nav>
+</div>
+</footer>
+<script src="/js/gmr-config.js"></script>
+<script src="/js/gmr-redactor.js"></script>
+<script src="/js/gmr-app.js"></script>
+</body>
+</html>

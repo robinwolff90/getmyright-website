@@ -2,117 +2,87 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="dark">
-<title>Admin-Bereich – GetMyRight Mockup</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.googleusercontent.com; media-src 'self'; connect-src 'self' https://3304f71f.sibforms.com https://accounts.google.com; frame-src https://accounts.google.com; form-action 'self' https://3304f71f.sibforms.com; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Betreiberzugang · GetMyRight</title>
+<meta name="description" content="Interner Betreiberzugang von GetMyRight.">
+<link rel="canonical" href="https://getmyright.de/admin.html">
+<meta property="og:title" content="Betreiberzugang · GetMyRight">
+<meta property="og:description" content="Interner Betreiberzugang von GetMyRight.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://getmyright.de/admin.html">
+<meta property="og:image" content="https://getmyright.de/icon-512.png">
+<meta name="theme-color" content="#152A32">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Outfit:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="/css/gmr.css">
 </head>
-<body class="bg-slate-950 min-h-screen">
-
-  <nav class="bg-slate-900 border-b border-slate-800">
-    <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-      <a href="index.html" class="text-slate-500 hover:text-slate-300 text-sm">← Mockup-Übersicht</a>
-      <div class="flex gap-2 text-sm">
-        <a href="spieler.html" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800">Spieler-Portal</a>
-        <a href="kanzlei.html" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800">Kanzlei-Dashboard</a>
-        <span class="px-3 py-1.5 rounded-lg bg-sky-950/60 text-sky-300 font-medium">Admin-Bereich</span>
-      </div>
-    </div>
-  </nav>
-
-  <main class="max-w-6xl mx-auto px-6 py-10 space-y-10">
-    <div>
-      <h1 class="text-2xl font-bold text-slate-100 mb-6">Fall-Übersicht</h1>
-      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden">
-        <table class="w-full text-sm">
-          <thead class="bg-slate-900/80 text-slate-500 text-left border-b border-slate-800">
-            <tr>
-              <th class="px-4 py-3 font-medium">UUID</th>
-              <th class="px-4 py-3 font-medium">Status</th>
-              <th class="px-4 py-3 font-medium">Zugeordnete Kanzlei</th>
-              <th class="px-4 py-3 font-medium">Ausschlussliste</th>
-              <th class="px-4 py-3 font-medium">Erfasst am</th>
-              <th class="px-4 py-3 font-medium"></th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-slate-800">
-            <tr>
-              <td class="px-4 py-3 font-mono text-xs text-slate-500">a1b2…e91f</td>
-              <td class="px-4 py-3"><span class="px-2 py-1 rounded-full bg-emerald-950/60 text-emerald-300 text-xs font-medium">offen</span></td>
-              <td class="px-4 py-3 text-slate-600">—</td>
-              <td class="px-4 py-3 text-slate-600">—</td>
-              <td class="px-4 py-3 text-slate-500">06.08.2026</td>
-              <td class="px-4 py-3 text-right text-slate-700">–</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3 font-mono text-xs text-slate-500">c7d4…12aa</td>
-              <td class="px-4 py-3"><span class="px-2 py-1 rounded-full bg-violet-950/60 text-violet-300 text-xs font-medium">geclaimt</span></td>
-              <td class="px-4 py-3 text-slate-200">Partnerkanzlei</td>
-              <td class="px-4 py-3 text-slate-600">—</td>
-              <td class="px-4 py-3 text-slate-500">05.08.2026</td>
-              <td class="px-4 py-3 text-right text-slate-700">–</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3 font-mono text-xs text-slate-500">7e21…c04d</td>
-              <td class="px-4 py-3"><span class="px-2 py-1 rounded-full bg-rose-950/60 text-rose-300 text-xs font-medium">geclaimt, seit 4 Tagen keine Rückmeldung</span></td>
-              <td class="px-4 py-3 text-slate-200">Kanzlei Berger &amp; Kollegen</td>
-              <td class="px-4 py-3 text-slate-600">—</td>
-              <td class="px-4 py-3 text-slate-500">02.08.2026</td>
-              <td class="px-4 py-3 text-right"><button class="px-3 py-1.5 rounded-lg bg-sky-600 text-white text-xs font-medium hover:bg-sky-500">Manuell entsperren</button></td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3 font-mono text-xs text-slate-500">9b31…4f02</td>
-              <td class="px-4 py-3"><span class="px-2 py-1 rounded-full bg-amber-950/60 text-amber-300 text-xs font-medium">offen (zuvor abgelehnt)</span></td>
-              <td class="px-4 py-3 text-slate-600">—</td>
-              <td class="px-4 py-3 text-slate-200">Partnerkanzlei</td>
-              <td class="px-4 py-3 text-slate-500">03.08.2026</td>
-              <td class="px-4 py-3 text-right text-slate-700">–</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div>
-      <h2 class="text-xl font-bold text-slate-100 mb-1">Sichtbare Zusatzfelder</h2>
-      <p class="text-slate-400 text-sm mb-4">Welche Felder Kanzleien vor dem Claim zusätzlich zu Region und Streitwert sehen — admin-konfigurierbar, kein festes Schema.</p>
-      <div class="bg-slate-900 rounded-xl border border-slate-800 p-6 grid grid-cols-2 gap-3 text-sm max-w-xl text-slate-200">
-        <label class="flex items-center gap-2"><input type="checkbox" checked class="rounded accent-violet-500 bg-slate-800 border-slate-700"> Casino / Anbieter</label>
-        <label class="flex items-center gap-2"><input type="checkbox" checked class="rounded accent-violet-500 bg-slate-800 border-slate-700"> Ungefährer Zeitraum</label>
-        <label class="flex items-center gap-2"><input type="checkbox" class="rounded accent-violet-500 bg-slate-800 border-slate-700"> OASIS-Sperre (ja/nein)</label>
-        <label class="flex items-center gap-2"><input type="checkbox" class="rounded accent-violet-500 bg-slate-800 border-slate-700"> Anzahl Beweis-Dokumente</label>
-      </div>
-    </div>
-
-    <div>
-      <h2 class="text-xl font-bold text-slate-100 mb-4">Kanzleien</h2>
-      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden max-w-3xl">
-        <table class="w-full text-sm">
-          <thead class="bg-slate-900/80 text-slate-500 text-left border-b border-slate-800">
-            <tr>
-              <th class="px-4 py-3 font-medium">Kanzlei</th>
-              <th class="px-4 py-3 font-medium">Abo</th>
-              <th class="px-4 py-3 font-medium">Region</th>
-              <th class="px-4 py-3 font-medium">Status</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-slate-800">
-            <tr>
-              <td class="px-4 py-3 text-slate-200">Partnerkanzlei</td>
-              <td class="px-4 py-3"><span class="px-2 py-1 rounded-full bg-violet-950/60 text-violet-300 text-xs font-medium">Premium</span></td>
-              <td class="px-4 py-3 text-slate-500">national</td>
-              <td class="px-4 py-3"><span class="px-2 py-1 rounded-full bg-emerald-950/60 text-emerald-300 text-xs font-medium">aktiv</span></td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3 text-slate-200">Kanzlei Berger &amp; Kollegen</td>
-              <td class="px-4 py-3"><span class="px-2 py-1 rounded-full bg-slate-800 text-slate-400 text-xs font-medium">Standard</span></td>
-              <td class="px-4 py-3 text-slate-500">Hessen</td>
-              <td class="px-4 py-3"><span class="px-2 py-1 rounded-full bg-emerald-950/60 text-emerald-300 text-xs font-medium">aktiv</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </main>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="/" aria-label="GetMyRight"><img src="/logo-wortmarke.svg" alt="" width="55" height="48"><span class="wordmark">GetMyRight</span></a>
+<button class="nav-toggle" type="button" data-gmr-nav-toggle aria-controls="hauptnav" aria-expanded="false">Menü</button>
+<nav class="nav" id="hauptnav" aria-label="Hauptnavigation"><a href="/#ueber-uns">Über uns</a><a href="/#ablauf">Ablauf</a><a href="/#grenzen">Was wir nicht tun</a><a href="/spieler/">Für Spieler</a><a href="/kanzlei/">Für Kanzleien</a></nav>
+</div>
+</header>
+<main id="inhalt">
+<div class="preview-bar">Betreiberzugang · nicht öffentlich · Vorschau</div>
+<section class="section cream" style="border-bottom:none">
+<div class="wrap auth-shell">
+<div class="card">
+<h1 style="font-size:2rem">Betreiber-Login</h1>
+<p class="muted">Interner Zugang für das GetMyRight-Team.</p>
+<form class="form" data-gmr-login="betreiber" novalidate>
+<div class="field"><label for="b-email">E-Mail</label><input id="b-email" name="email" type="email" autocomplete="username" required></div>
+<div class="field"><label for="b-pw">Passwort</label><input id="b-pw" name="password" type="password" autocomplete="current-password" required></div>
+<label class="choice"><input type="checkbox" name="force2fa" checked> <span>Mit Einmalcode bestätigen (Zwei-Faktor)</span></label>
+<div><button type="submit" class="btn">Anmelden</button></div>
+</form>
+<div class="status" data-gmr-status aria-live="polite" style="margin-top:14px"></div>
+<div data-gmr-2fa-step hidden style="margin-top:18px;border-top:1px solid #DDD6CA;padding-top:18px">
+<h3>Zwei-Faktor-Bestätigung</h3><p class="small" data-gmr-2fa-hint></p>
+<div class="field"><label for="b-code">6-stelliger Code</label><input id="b-code" class="code-input" inputmode="numeric" autocomplete="one-time-code" maxlength="6" data-gmr-2fa-input></div>
+<div class="btn-row"><button type="button" class="btn" data-gmr-2fa-verify>Bestätigen</button></div><div class="status" data-gmr-2fa-status></div>
+</div>
+<details style="margin-top:22px"><summary>Vorschau-Konto auf diesem Gerät anlegen</summary>
+<form class="form" data-gmr-register="betreiber" novalidate>
+<div class="field"><label for="br-name">Name</label><input id="br-name" name="name" type="text" required></div>
+<div class="field"><label for="br-email">E-Mail</label><input id="br-email" name="email" type="email" required></div>
+<div class="row-2"><div class="field"><label for="br-pw">Passwort</label><input id="br-pw" name="password" type="password" autocomplete="new-password" required></div><div class="field"><label for="br-pw2">Wiederholen</label><input id="br-pw2" name="password2" type="password" autocomplete="new-password" required></div></div>
+<fieldset><legend>Zwei-Faktor-Authentifizierung <span class="opt">(optional)</span></legend>
+<p class="small">Schützt Ihren Zugang zusätzlich mit einem Einmalcode.</p>
+<div class="choices"><label class="choice"><input type="radio" name="twofa" value="none" checked> Nicht jetzt</label><label class="choice"><input type="radio" name="twofa" value="app"> Authenticator-App</label><label class="choice"><input type="radio" name="twofa" value="sms"> SMS-Code</label></div>
+<div class="field" data-gmr-phone-wrap hidden style="margin-top:12px"><label for="betreiber-r-phone">Mobilnummer für SMS-Codes</label><input id="betreiber-r-phone" name="phone" type="tel" autocomplete="tel" placeholder="+49 …"></div>
+</fieldset>
+<div><button type="submit" class="btn">Konto anlegen</button></div>
+</form>
+<div class="status" data-gmr-status style="margin-top:12px"></div>
+<div data-gmr-2fa-setup id="betreiber-reg-2fa" hidden class="card cream" style="margin-top:18px"><div data-gmr-2fa-box></div></div>
+</details>
+</div>
+<div id="uebersicht"><span class="eyebrow">Betrieb</span><h2>Übersicht</h2>
+<div class="card"><p><span data-gmr-session="betreiber"></span></p>
+<ul class="check"><li>Warteliste: Verwaltung in Brevo (Double-Opt-in)</li><li>Freiwillige Angaben: per E-Mail an info@getmyright.de</li><li>Kanzlei-Vormerkungen: per E-Mail an info@getmyright.de</li><li>Server-Backend mit verschlüsselter Datenbank: in Vorbereitung</li></ul></div>
+<div class="note small"><strong>Vorschau-Zugang:</strong> Die Plattform befindet sich in Gründung. Konten werden derzeit nur auf diesem Gerät angelegt (Passwort als PBKDF2-Hash im Browser), nicht auf einem Server. Google-Login und SMS-Versand werden mit dem Backend freigeschaltet.</div>
+</div>
+</div>
+</section></main>
+<footer class="site-footer">
+<div class="wrap">
+<div><div class="fbrand">GetMyRight</div><p class="small" style="color:#AEBBBF;margin:.3em 0 0">Strukturierte Vorbereitung im Glücksspielrecht – in Gründung.<br>&copy; 2026 GetMyRight · Robin Alexander Wolff (in Gründung)</p></div>
+<nav aria-label="Rechtliches"><a href="/spieler/">Für Spieler</a><a href="/kanzlei/">Für Kanzleien</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="/agb.html">AGB &amp; Nutzungsbedingungen</a></nav>
+</div>
+</footer>
+<script src="/js/gmr-config.js"></script>
+<script src="/js/gmr-redactor.js"></script>
+<script src="/js/gmr-app.js"></script>
 </body>
 </html>

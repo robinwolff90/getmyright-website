@@ -2,103 +2,19 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="dark">
-<meta name="description" content="Wartelisten-Fragebogen für Spieler/innen bei GetMyRight">
-<title>Warteliste – GetMyRight</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="0; url=/spieler/warteliste.html">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://getmyright.de/spieler/warteliste.html">
+<title>Weiterleitung – Warteliste · GetMyRight</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/icon.svg">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/gmr.css">
+<script src="/js/gmr-redirect.js" data-target="/spieler/warteliste.html"></script>
 </head>
-<body class="bg-slate-950 min-h-screen text-slate-200 flex flex-col">
-
-  <nav class="bg-slate-900 border-b border-slate-800">
-    <div class="max-w-5xl mx-auto px-6 py-3 flex flex-wrap items-center justify-between gap-3">
-      <a href="index.html" aria-label="GetMyRight Startseite"><img src="logo-wortmarke.svg" alt="GetMyRight" class="h-10 w-auto brightness-0 invert"></a>
-      <div class="flex flex-wrap gap-2 text-sm">
-        <a href="spieler-info.html" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-200">Für Spieler</a>
-        <a href="kanzlei-info.html" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-200">Für Kanzleien</a>
-        <a href="warteliste.html" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-100 font-medium" aria-current="page">Warteliste</a>
-        <a href="registrierung.html" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-200">Registrieren</a>
-        <a href="spieler-login.html" class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white hover:bg-emerald-500 font-medium">Login</a>
-      </div>
-    </div>
-  </nav>
-
-  <main class="max-w-3xl mx-auto w-full px-6 py-10">
-    <p class="text-sm font-semibold uppercase tracking-wide text-emerald-400">Warteliste für Spieler/innen</p>
-    <h1 class="mt-1 text-3xl font-bold text-slate-100">Als Erste/r vom Start erfahren</h1>
-    <p class="mt-3 text-slate-400">Tragen Sie sich in die Warteliste ein. Wir informieren Sie per E-Mail, sobald GetMyRight startet und Partnerkanzleien Fälle übernehmen. <a href="spieler-info.html" class="underline text-emerald-400 hover:text-emerald-300">Wie funktioniert GetMyRight?</a></p>
-    <section class="mt-8 bg-slate-900 rounded-xl border border-slate-800 p-6 sm:p-8">
-        <form id="warteliste-form" data-gmr-brevo method="POST" action="https://3304f71f.sibforms.com/serve/MUIFAPRrtlgGOSav-TZEYvwxWoDfrRU0h-FW866IBAxNbwrcT9qdorM53pYAVRR_LIN_auUSrK7Gws7Kf3LsH_caNtFOpb_AMmLfja7j26qYVn2-73m07Doifd5UHweqOfrg1WU4Y4pM_v68QCNZHoBI9QQKtDD0khiYLHZQ6ca94bE-aCyjqPcVOKuAQenYv7E7VWM6GkKOXmnl7A==" class="space-y-5" novalidate>
-          <div class="grid gap-5 sm:grid-cols-2">
-            <div>
-              <label for="warteliste-form-name" class="block text-sm font-medium text-slate-300 mb-1.5">Name <span class="text-amber-500">*</span></label>
-              <input id="warteliste-form-name" name="FIRSTNAME" type="text" maxlength="200" autocomplete="given-name" required placeholder="Vorname oder Name" class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500">
-            </div>
-            <div>
-              <label for="warteliste-form-email" class="block text-sm font-medium text-slate-300 mb-1.5">E-Mail <span class="text-amber-500">*</span></label>
-              <input id="warteliste-form-email" name="EMAIL" type="email" autocomplete="email" required placeholder="name@beispiel.de" class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500">
-            </div>
-          </div>
-
-          <fieldset class="rounded-xl border border-slate-800 bg-slate-950/40 p-4 sm:p-5">
-            <legend class="px-2 text-sm font-semibold text-slate-300">Freiwillige Zusatzangaben</legend>
-            <p class="text-xs text-slate-500 mb-4">Diese Angaben werden <strong class="text-slate-400">nicht automatisch gespeichert</strong> und nicht an Brevo übertragen. Nach der Anmeldung können Sie sie uns auf Wunsch per vorausgefüllter E-Mail senden.</p>
-            <div class="grid gap-4 sm:grid-cols-2">
-          <div>
-            <label for="warteliste-form-zeitraum" class="block text-sm font-medium text-slate-300 mb-1.5">Zeitraum der Verluste <span class="text-slate-500 font-normal">(optional)</span></label>
-            <select id="warteliste-form-zeitraum" data-gmr-extra="Zeitraum der Verluste" class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"><option value="">– bitte wählen (optional) –</option><option>vor 2021</option><option>2021 – 2023</option><option>2024 – heute</option><option>über mehrere Zeiträume</option><option>weiß ich nicht genau</option></select>
-          </div>
-          <div>
-            <label for="warteliste-form-anbieter" class="block text-sm font-medium text-slate-300 mb-1.5">Art des Anbieters <span class="text-slate-500 font-normal">(optional)</span></label>
-            <select id="warteliste-form-anbieter" data-gmr-extra="Art des Anbieters" class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"><option value="">– bitte wählen (optional) –</option><option>Online-Casino / Slots</option><option>Online-Poker</option><option>Sportwetten</option><option>Mehrere Anbieter-Arten</option><option>Sonstiges</option></select>
-          </div>
-          <div>
-            <label for="warteliste-form-oasis" class="block text-sm font-medium text-slate-300 mb-1.5">OASIS-Spielersperre aktiv? <span class="text-slate-500 font-normal">(optional)</span></label>
-            <select id="warteliste-form-oasis" data-gmr-extra="OASIS-Sperre" class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"><option value="">– bitte wählen (optional) –</option><option>Ja, während des Spielens</option><option>Ja, aber erst später</option><option>Nein</option><option>Weiß ich nicht</option></select>
-          </div>
-          <div>
-            <label for="warteliste-form-hoehe" class="block text-sm font-medium text-slate-300 mb-1.5">Ungefähre Verlusthöhe <span class="text-slate-500 font-normal">(optional)</span></label>
-            <select id="warteliste-form-hoehe" data-gmr-extra="Ungefähre Verlusthöhe" class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"><option value="">– bitte wählen (optional) –</option><option>unter 1.000 €</option><option>1.000 – 5.000 €</option><option>5.000 – 20.000 €</option><option>20.000 – 50.000 €</option><option>über 50.000 €</option></select>
-          </div>
-          <div>
-            <label for="warteliste-form-land" class="block text-sm font-medium text-slate-300 mb-1.5">Bundesland <span class="text-slate-500 font-normal">(optional)</span></label>
-            <select id="warteliste-form-land" data-gmr-extra="Bundesland" class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"><option value="">– bitte wählen (optional) –</option><option>Baden-Württemberg</option><option>Bayern</option><option>Berlin</option><option>Brandenburg</option><option>Bremen</option><option>Hamburg</option><option>Hessen</option><option>Mecklenburg-Vorpommern</option><option>Niedersachsen</option><option>Nordrhein-Westfalen</option><option>Rheinland-Pfalz</option><option>Saarland</option><option>Sachsen</option><option>Sachsen-Anhalt</option><option>Schleswig-Holstein</option><option>Thüringen</option><option>Österreich / Schweiz / anderes Land</option></select>
-          </div>
-              <div class="sm:col-span-2">
-                <label for="warteliste-form-notiz" class="block text-sm font-medium text-slate-300 mb-1.5">Notiz <span class="text-slate-500 font-normal">(optional)</span></label>
-                <textarea id="warteliste-form-notiz" data-gmr-extra="Notiz" rows="3" maxlength="1500" placeholder="Was sollten wir zu Ihrem Fall wissen?" class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"></textarea>
-              </div>
-            </div>
-          </fieldset>
-
-          <label class="flex items-start gap-3 text-sm text-slate-300">
-            <input type="checkbox" name="OPT_IN" value="1" required class="mt-1 h-4 w-4 shrink-0 accent-emerald-500">
-            <span>Ich willige ein, dass GetMyRight mir Informationen zu meinem Anliegen und zum Start der Plattform per E-Mail sendet (Versand über Brevo, Double-Opt-in). Die Einwilligung kann ich jederzeit widerrufen. Hinweise in der <a href="datenschutz.html" class="underline text-emerald-400 hover:text-emerald-300">Datenschutzerklärung</a>. <span class="text-amber-500">*</span></span>
-          </label>
-
-          <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden">
-          <input type="hidden" name="locale" value="de">
-          <input type="hidden" name="html_type" value="simple">
-
-          <div class="flex flex-wrap items-center gap-4">
-            <button type="submit" class="rounded-lg bg-emerald-600 px-6 py-3 font-semibold text-white hover:bg-emerald-500 disabled:opacity-60">Auf die Warteliste setzen</button>
-            <p class="text-xs text-slate-500">* Pflichtfelder. An Brevo übertragen werden nur Name, E-Mail und Einwilligung.</p>
-          </div>
-          <div data-gmr-status hidden></div>
-        </form>
-    </section>
-    <p class="mt-6 text-sm text-slate-500">Sie sind eine Kanzlei? <a href="registrierung.html#kanzlei" class="underline hover:text-slate-300">Hier als Kanzlei registrieren</a> · <a href="kanzlei-info.html" class="underline hover:text-slate-300">Info für Kanzleien</a></p>
-  </main>
-
-  <footer class="mt-auto border-t border-slate-800 bg-slate-900">
-    <div class="max-w-5xl mx-auto px-6 py-6 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-500">
-      <p>&copy; 2026 GetMyRight</p>
-      <p class="flex flex-wrap gap-4"><a href="spieler-login.html" class="hover:text-slate-300">Spieler-Login</a><a href="kanzlei-login.html" class="hover:text-slate-300">Kanzlei-Login</a><a href="impressum.html" class="hover:text-slate-300">Impressum</a><a href="datenschutz.html" class="hover:text-slate-300">Datenschutz</a></p>
-    </div>
-  </footer>
-  <script src="js/gmr-forms.js"></script>
+<body>
+<main class="wrap narrow" style="padding:80px 22px">
+<h1 style="font-size:2rem">Diese Seite ist umgezogen</h1>
+<p>Sie werden automatisch weitergeleitet. Falls nicht, öffnen Sie bitte: <a href="/spieler/warteliste.html">Warteliste</a>.</p>
+</main>
 </body>
 </html>

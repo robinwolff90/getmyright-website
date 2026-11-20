@@ -2,71 +2,19 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="dark">
-<meta name="description" content="Spieler-Login für GetMyRight (Vorschau mit Demo-Zugang)">
-<title>Spieler-Login – GetMyRight</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="0; url=/spieler/login.html">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://getmyright.de/spieler/login.html">
+<title>Weiterleitung – Login für Spieler · GetMyRight</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/icon.svg">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/gmr.css">
+<script src="/js/gmr-redirect.js" data-target="/spieler/login.html"></script>
 </head>
-<body class="bg-slate-950 min-h-screen text-slate-200 flex flex-col">
-
-  <nav class="bg-slate-900 border-b border-slate-800">
-    <div class="max-w-5xl mx-auto px-6 py-3 flex flex-wrap items-center justify-between gap-3">
-      <a href="index.html" aria-label="GetMyRight Startseite"><img src="logo-wortmarke.svg" alt="GetMyRight" class="h-10 w-auto brightness-0 invert"></a>
-      <div class="flex flex-wrap gap-2 text-sm">
-        <a href="spieler-info.html" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-200">Für Spieler</a>
-        <a href="kanzlei-info.html" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-200">Für Kanzleien</a>
-        <a href="warteliste.html" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-200">Warteliste</a>
-        <a href="registrierung.html" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-200">Registrieren</a>
-        <a href="spieler-login.html" class="px-3 py-1.5 rounded-lg bg-emerald-700 text-white font-medium">Login</a>
-      </div>
-    </div>
-  </nav>
-
-  <main class="max-w-5xl mx-auto w-full px-6 py-10 grid gap-8 lg:grid-cols-5">
-    <section class="lg:col-span-3 bg-slate-900 rounded-xl border border-slate-800 p-6 sm:p-8">
-      <p class="text-sm font-semibold uppercase tracking-wide text-emerald-400">Spieler-Login</p>
-      <h1 class="mt-1 text-2xl font-bold text-slate-100">Willkommen im Spieler-Portal</h1>
-      <p class="mt-2 text-slate-400">Hier sehen Sie Fall-Status, Verlauf und Fall zurückziehen.</p>
-      <div class="mt-6 space-y-6">
-        <div class="rounded-xl border border-amber-700/60 bg-amber-950/40 p-4 text-sm text-amber-100">
-          <p class="font-semibold">Vorschau-Plattform: Demo-Zugang</p>
-          <p class="mt-1 text-amber-100/80">GetMyRight ist noch nicht gestartet und hat noch kein Login-Backend. Es gibt daher noch keine echten Konten und keine Passwörter. Der Button unten öffnet eine <strong>Demo-Ansicht mit Beispieldaten</strong>; es werden keine Daten übertragen oder gespeichert.</p>
-        </div>
-        <div class="rounded-xl border border-slate-800 bg-slate-950/50 p-4">
-          <label for="login-email" class="block text-sm font-medium text-slate-500 mb-1.5">E-Mail-Login (ab Plattformstart)</label>
-          <div class="flex flex-col gap-3 sm:flex-row">
-            <input id="login-email" type="email" disabled placeholder="Noch nicht verfügbar" class="w-full cursor-not-allowed rounded-lg border border-slate-800 bg-slate-900 px-3 py-2.5 text-slate-500">
-            <button type="button" disabled class="cursor-not-allowed rounded-lg bg-slate-800 px-4 py-2.5 text-sm font-medium text-slate-500">Anmelden</button>
-          </div>
-          <p class="mt-2 text-xs text-slate-500">Später melden Sie sich per Magic-Link an – ganz ohne Passwort.</p>
-        </div>
-        <button type="button" data-gmr-demo-login="spieler" class="w-full rounded-lg bg-emerald-600 px-6 py-3 font-semibold text-white hover:bg-emerald-500">Demo-Vorschau öffnen</button>
-        <p class="text-center text-sm"><a href="kanzlei-login.html" class="text-slate-400 underline hover:text-slate-200">Sie sind eine Kanzlei? Zum Kanzlei-Login</a></p>
-      </div>
-    </section>
-    <aside class="lg:col-span-2 space-y-4">
-      <a href="spieler-info.html" class="block rounded-xl border border-emerald-900 bg-emerald-950/40 p-5 hover:bg-emerald-950/70">
-        <p class="text-sm font-semibold uppercase tracking-wide text-emerald-400">Info &amp; Erklärvideo</p>
-        <p class="mt-1 text-slate-300">So funktioniert GetMyRight für Spieler →</p>
-      </a>
-      <a href="registrierung.html#spieler" class="block rounded-xl border border-slate-800 bg-slate-900 p-5 hover:bg-slate-800">
-        <p class="text-sm font-semibold uppercase tracking-wide text-slate-400">Noch kein Zugang?</p>
-        <p class="mt-1 text-slate-300">Jetzt als Spieler/in registrieren →</p>
-      </a>
-      <a href="warteliste.html" class="block rounded-xl border border-slate-800 bg-slate-900 p-5 hover:bg-slate-800"><p class="text-sm font-semibold uppercase tracking-wide text-slate-400">Warteliste</p><p class="mt-1 text-slate-300">Fragebogen ausfüllen und beim Start informiert werden →</p></a>
-    </aside>
-  </main>
-
-  <footer class="mt-auto border-t border-slate-800 bg-slate-900">
-    <div class="max-w-5xl mx-auto px-6 py-6 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-500">
-      <p>&copy; 2026 GetMyRight</p>
-      <p class="flex flex-wrap gap-4"><a href="spieler-login.html" class="hover:text-slate-300">Spieler-Login</a><a href="kanzlei-login.html" class="hover:text-slate-300">Kanzlei-Login</a><a href="impressum.html" class="hover:text-slate-300">Impressum</a><a href="datenschutz.html" class="hover:text-slate-300">Datenschutz</a></p>
-    </div>
-  </footer>
-  <script src="js/gmr-forms.js"></script>
+<body>
+<main class="wrap narrow" style="padding:80px 22px">
+<h1 style="font-size:2rem">Diese Seite ist umgezogen</h1>
+<p>Sie werden automatisch weitergeleitet. Falls nicht, öffnen Sie bitte: <a href="/spieler/login.html">Login für Spieler</a>.</p>
+</main>
 </body>
 </html>
