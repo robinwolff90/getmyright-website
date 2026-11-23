@@ -8,6 +8,11 @@
  *   in allen HTML-Seiten). Wird eine Client-ID eingetragen, diese Ursprünge
  *   wieder in script-src, style-src, img-src, connect-src und frame-src aufnehmen und den
  *   Zwei-Klick-Hinweis am Google-Button beibehalten (Google wird erst nach Klick geladen).
+ *   GA4/Consent-Mode (noch nicht live): Beim Freischalten von googletagmanager.com zusätzlich
+ *   in script-src https://www.googletagmanager.com, in img-src https://*.google-analytics.com
+ *   und https://*.googletagmanager.com sowie in connect-src https://*.google-analytics.com,
+ *   https://*.analytics.google.com und https://*.googletagmanager.com aufnehmen. Der bestehende
+ *   Analytics-Patch muss danach auf die aktuelle CSP-Zeile neu aufgesetzt werden.
  * authEndpoint: HTTPS-Endpunkt eines Backends, das das Google-ID-Token serverseitig prüft
  *   (z. B. POST { credential, role }). Ohne Backend bleibt der Google-Login eine Vorschau.
  * uploadEndpoint: HTTPS-Endpunkt für große Dateien (z. B. vorsignierte S3-/R2-URL-Ausgabe oder Backend).
