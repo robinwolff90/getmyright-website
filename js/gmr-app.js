@@ -289,10 +289,10 @@
                 '<label class="choice" style="margin-top:10px"><input type="checkbox" data-gmr-mail-ack> <span>' + esc(MAIL_ACK_TEXT) + '</span></label><div class="btn-row"><a class="btn accent" data-gmr-mailto hidden>Vormerkung per E-Mail senden</a></div>';
             }
             if (role === 'spieler' && el.brevo && el.brevo.checked) {
-              brevoSend({ EMAIL: email, FIRSTNAME: acc.name, OPT_IN: '1' }).then(function () {
+              brevoSend({ EMAIL: email, FIRSTNAME: acc.name, OPT_IN: '1' }, form).then(function () {
                 status($('[data-gmr-brevo-status]', form.parentNode), 'ok', 'Zusätzlich für Start-Informationen eingetragen – bitte bestätigen Sie die E-Mail von Brevo (Double-Opt-in).');
-              }).catch(function () {
-                status($('[data-gmr-brevo-status]', form.parentNode), 'warn', 'Die Eintragung für Start-Informationen ist gerade nicht erreichbar. Sie können sich jederzeit über die Warteliste eintragen.');
+              }).catch(function (er) {
+                status($('[data-gmr-brevo-status]', form.parentNode), 'warn', er && er.brevo ? sendErrText(er) + ' Sie können sich jederzeit über die Warteliste eintragen.' : 'Die Eintragung für Start-Informationen ist gerade nicht erreichbar. Sie können sich jederzeit über die Warteliste eintragen.');
               });
             }
             status(st, 'ok', html);
@@ -322,9 +322,9 @@
         var b1 = invalid(email, !EMAIL_RE.test(email.value.trim())), b2 = invalid(pw, !pw.value);
         if (b1 || b2) { status(st, 'err', 'Bitte geben Sie eine gültige E-Mail-Adresse und Ihr Passwort ein.'); return; }
         loadAcc(role, email.value.trim()).then(function (acc) {
-          if (!acc) { status(st, 'warn', 'Für diese E-Mail-Adresse gibt es auf diesem Gerät noch kein Vorschau-Konto. ' + (role === 'betreiber' ? 'Legen Sie unten ein Vorschau-Konto an.' : '<a href="registrierung.html">Jetzt registrieren</a>')); return; }
+          if (!acc) { invalid(pw, true); status(st, 'err', 'E-Mail oder Passwort falsch.'); return; }
           return hashPw(pw.value, acc.salt).then(function (h) {
-            if (h.hash !== acc.hash) { invalid(pw, true); status(st, 'err', 'E-Mail-Adresse oder Passwort ist nicht korrekt.'); return; }
+            if (h.hash !== acc.hash) { invalid(pw, true); status(st, 'err', 'E-Mail oder Passwort falsch.'); return; }
             var method = acc.twofa && acc.twofa.method !== 'none' ? acc.twofa.method : (form.elements.force2fa && form.elements.force2fa.checked ? 'sms' : 'none');
             function done() {
               sess({ role: role, email: acc.email, name: acc.name, via: 'passwort', twofa: method, at: Date.now() });
@@ -389,14 +389,58 @@
     });
   }
 
-  /* ---------- Brevo ---------- */
-  function brevoSend(fields) {
+  /* ---------- Warteliste-Versand (über eigenen Worker → Brevo) ---------- */
+  var PAGE_T0 = Date.now(), MIN_FILL = CFG.minFillMs || 3000, lastSend = 0, inFlight = false, tsLoad = null;
+  function loadTurnstile() {
+    if (!CFG.turnstileSiteKey) return Promise.resolve(null);
+    if (tsLoad) return tsLoad;
+    tsLoad = new Promise(function (res, rej) {
+      if (window.turnstile) return res(window.turnstile);
+      var sc = document.createElement('script');
+      sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      sc.async = true; sc.onload = function () { res(window.turnstile); }; sc.onerror = function () { tsLoad = null; rej(new Error('turnstile')); };
+      document.head.appendChild(sc);
+    });
+    return tsLoad;
+  }
+  function initTurnstile(form) {
+    var box = $('[data-gmr-turnstile]', form);
+    if (!box || !CFG.turnstileSiteKey) return;
+    loadTurnstile().then(function (ts) { if (ts && !box.getAttribute('data-ts-id')) box.setAttribute('data-ts-id', ts.render(box, { sitekey: CFG.turnstileSiteKey, theme: 'light', language: 'de', appearance: 'interaction-only' })); })
+      .catch(function () { box.textContent = 'Der Spam-Schutz konnte nicht geladen werden. Bitte laden Sie die Seite neu.'; });
+  }
+  function turnstileToken(form) {
+    var box = form && $('[data-gmr-turnstile]', form);
+    if (!CFG.turnstileSiteKey || !box || !window.turnstile) return '';
+    return window.turnstile.getResponse(box.getAttribute('data-ts-id')) || '';
+  }
+  function turnstileReset(form) { var box = form && $('[data-gmr-turnstile]', form); if (box && window.turnstile && box.getAttribute('data-ts-id')) try { window.turnstile.reset(box.getAttribute('data-ts-id')); } catch (e) { /* ignorieren */ } }
+  /* Zeitfalle: Formulare, die schneller als MIN_FILL nach dem Laden abgeschickt werden, gelten als Bot */
+  function tooFast() { return Date.now() - PAGE_T0 < MIN_FILL; }
+  function honeypotHit(form) { return !!$$('input.hp', form).filter(function (f) { return f.value; }).length; }
+  function brevoSend(fields, form) {
+    var err;
+    if (!CFG.waitlistEndpoint) { err = new Error('config'); err.brevo = { error: 'not_configured' }; return Promise.reject(err); }
+    if (inFlight || Date.now() - lastSend < 30000) { err = new Error('throttle'); err.throttle = true; return Promise.reject(err); }
     var params = new URLSearchParams();
     Object.keys(fields).forEach(function (k) { params.append(k, fields[k]); });
-    params.append('email_address_check', ''); params.append('locale', 'de'); params.append('html_type', 'simple');
-    return fetch(CFG.brevoAction, { method: 'POST', body: params, headers: { 'Accept': 'application/json' } })
-      .then(function (r) { return r.json().catch(function () { return { success: r.ok }; }); })
-      .then(function (d) { if (!d || d.success !== true) { var er = new Error('brevo'); er.brevo = d; throw er; } return d; });
+    params.append('hp', form && honeypotHit(form) ? 'x' : '');
+    params.append('t', String(Date.now() - PAGE_T0));
+    var tok = turnstileToken(form); if (tok) params.append('cf-turnstile-response', tok);
+    if (CFG.turnstileSiteKey && !tok) { err = new Error('captcha'); err.brevo = { error: 'captcha' }; return Promise.reject(err); }
+    inFlight = true;
+    return fetch(CFG.waitlistEndpoint, { method: 'POST', body: params, headers: { 'Accept': 'application/json' }, credentials: 'omit', mode: 'cors' })
+      .then(function (r) { return r.json().catch(function () { return { success: false, error: 'http_' + r.status }; }); })
+      .then(function (d) { inFlight = false; turnstileReset(form); if (!d || d.success !== true) { var er = new Error('brevo'); er.brevo = d || {}; throw er; } lastSend = Date.now(); return d; },
+        function (e) { inFlight = false; turnstileReset(form); throw e; });
+  }
+  function sendErrText(er) {
+    var c = er && er.brevo && er.brevo.error;
+    if (er && er.throttle) return 'Ihre Anmeldung wird bereits verarbeitet bzw. wurde gerade gesendet. Bitte warten Sie einen Moment, bevor Sie es erneut versuchen.';
+    if (c === 'too_fast') return 'Das ging etwas zu schnell. Bitte prüfen Sie Ihre Angaben und senden Sie das Formular in ein paar Sekunden erneut.';
+    if (c === 'rate_limited') return 'Gerade gehen sehr viele Anmeldungen ein. Bitte versuchen Sie es in einer Minute erneut.';
+    if (c === 'captcha') return 'Bitte bestätigen Sie kurz den Spam-Schutz und senden Sie das Formular erneut.';
+    return 'Die Anmeldung konnte nicht verarbeitet werden. Bitte prüfen Sie Ihre E-Mail-Adresse oder schreiben Sie uns an ' + esc(CONTACT) + '.';
   }
 
   /* ---------- Warteliste (Lead-First, getrennte Einwilligungen) ---------- */
@@ -472,7 +516,9 @@
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var el = form.elements;
-        if (el.email_address_check && el.email_address_check.value) return; // Honeypot
+        if (honeypotHit(form)) { status(st, 'ok', 'Danke! Bitte bestätigen Sie den Link in der E-Mail.'); return; } // Honeypot: Bot still abweisen
+        if (tooFast()) { status(st, 'err', 'Das ging etwas zu schnell. Bitte prüfen Sie Ihre Angaben und senden Sie das Formular in ein paar Sekunden erneut.'); return; }
+        if (inFlight) return; // Doppel-Absenden verhindern
         var b = [invalid(el.FIRSTNAME, !el.FIRSTNAME.value.trim()), invalid(el.EMAIL, !EMAIL_RE.test(el.EMAIL.value.trim())), invalid(el.OPT_IN, !el.OPT_IN.checked)];
         if (b.indexOf(true) >= 0) { status(st, 'err', 'Bitte geben Sie Ihren Namen und eine gültige E-Mail-Adresse an und setzen Sie den Haken für die Warteliste. Alle weiteren Angaben und Einwilligungen sind freiwillig.'); el[b[0] ? 'FIRSTNAME' : b[1] ? 'EMAIL' : 'OPT_IN'].focus(); return; }
         var now = new Date().toISOString();
@@ -483,13 +529,14 @@
           consentVersion: CONSENT_VERSION, consentWaitlistAt: now, consentUpdates: updOn, consentUpdatesAt: updOn ? now : null, consentArt9: art9On, consentArt9At: art9On ? now : null };
         var btn = $('button[type=submit]', form); btn.disabled = true; btn.textContent = 'Wird sicher übermittelt …';
         var pass = el.passphrase ? el.passphrase.value : '';
-        var brevoP = brevoSend({ EMAIL: rec.email, FIRSTNAME: rec.name, OPT_IN: '1' }).then(function () { return 'ok'; }).catch(function (er) { return er && er.brevo ? 'rejected' : 'network'; });
+        var sendErr = null;
+        var brevoP = brevoSend({ EMAIL: rec.email, FIRSTNAME: rec.name, OPT_IN: '1' }, form).then(function () { return 'ok'; }).catch(function (er) { sendErr = er; return er && (er.brevo || er.throttle) ? 'rejected' : 'network'; });
         var saveP = hasCrypto() ? encryptJSON(rec, pass).then(function (c) { var list = store('gmr_waitlist_records') || []; list.push(c); store('gmr_waitlist_records', list); return c; }).catch(function () { return null; }) : Promise.resolve(null);
         Promise.all([brevoP, saveP]).then(function (r) {
           var brevo = r[0], saved = r[1];
           if (brevo === 'rejected') {
             btn.disabled = false; btn.textContent = 'Kostenlos auf die Warteliste';
-            status(st, 'err', 'Brevo hat die Anmeldung abgelehnt (z. B. ungültige oder bereits eingetragene E-Mail-Adresse). Bitte prüfen Sie Ihre Eingabe oder schreiben Sie uns an ' + esc(CONTACT) + '.');
+            status(st, 'err', sendErrText(sendErr));
             return;
           }
           var badge = !rec.consentArt9 ? '<span class="badge ok">Warteliste (Basis)</span>' : rec.leadQuality === 'stark' ? '<span class="badge ok">Angaben vollständig</span>' : rec.statusFlag === 'Daten fehlen' ? '<span class="badge warn">Daten fehlen – gerne ergänzen</span>' : '<span class="badge warn">Wir melden uns per E-Mail</span>';
@@ -726,6 +773,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    initJsOnly(); initNav(); initGoogle(); initMagic(); initRegister(); initLogin(); initSession(); initWaitlist(); initCopy(); initUpload(); initDashboard(); initRedactTool(); initWipe();
+    initJsOnly(); $$('form').forEach(initTurnstile); initNav(); initGoogle(); initMagic(); initRegister(); initLogin(); initSession(); initWaitlist(); initCopy(); initUpload(); initDashboard(); initRedactTool(); initWipe();
   });
 })();

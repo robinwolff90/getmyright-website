@@ -30,5 +30,12 @@ window.GMR_CONFIG = {
   uploadEndpoint: "",
   maxUploadMb: 250,
   contactEmail: "info@getmyright.de",
-  brevoAction: "https://3304f71f.sibforms.com/serve/MUIFAPRrtlgGOSav-TZEYvwxWoDfrRU0h-FW866IBAxNbwrcT9qdorM53pYAVRR_LIN_auUSrK7Gws7Kf3LsH_caNtFOpb_AMmLfja7j26qYVn2-73m07Doifd5UHweqOfrg1WU4Y4pM_v68QCNZHoBI9QQKtDD0khiYLHZQ6ca94bE-aCyjqPcVOKuAQenYv7E7VWM6GkKOXmnl7A=="
+  /* Warteliste: Anmeldungen gehen an den eigenen Cloudflare-Worker (Missbrauchsschutz: Rate-Limit, Honeypot,
+   * Zeitfalle, optional Turnstile), der nur EMAIL, FIRSTNAME, OPT_IN an Brevo (Double-Opt-in) weiterreicht.
+   * Die Brevo-Formular-URL liegt ausschließlich als Worker-Secret vor. Code: /workers/waitlist/ */
+  waitlistEndpoint: "https://gmr-waitlist.getmyright.workers.dev/waitlist",
+  /* Cloudflare-Turnstile-Sitekey (öffentlich). Leer = kein Captcha-Widget; Worker prüft dann nur Rate-Limit/Honeypot/Zeitfalle.
+   * Wird ein Sitekey eingetragen, muss im Worker das Secret TURNSTILE_SECRET gesetzt sein. */
+  turnstileSiteKey: "",
+  minFillMs: 3000
 };

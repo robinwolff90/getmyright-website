@@ -1,0 +1,19 @@
+name = "gmr-waitlist"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+workers_dev = true
+
+[[ratelimits]]
+name = "RL_IP"
+namespace_id = "1101"
+  [ratelimits.simple]
+  limit = 3
+  period = 60
+
+[[ratelimits]]
+name = "RL_GLOBAL"
+namespace_id = "1102"
+  [ratelimits.simple]
+  limit = 60
+  period = 60
+# Secrets: wrangler secret put BREVO_FORM_URL ; wrangler secret put TURNSTILE_SECRET

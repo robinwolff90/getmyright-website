@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://3304f71f.sibforms.com; frame-src 'none'; worker-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://gmr-waitlist.getmyright.workers.dev; frame-src https://challenges.cloudflare.com; worker-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<script src="/js/gmr-frame.js"></script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Warteliste & Fragebogen – Mandantenbereich · GetMyRight</title>
 <meta name="description" content="Kostenlos auf die Warteliste von GetMyRight: nur Name, E-Mail und Einwilligung sind Pflicht, alle weiteren Fragen sind freiwillig.">
@@ -141,7 +142,8 @@
 </fieldset>
 
 
-<p class="note small">Beim Absenden sendet Ihr Browser nur Name, E-Mail und die Warteliste-Einwilligung per HTTPS direkt an Brevo (3304f71f.sibforms.com; dabei werden technisch auch IP-Adresse und Browserkennung übertragen). Optionale Angaben bleiben AES-GCM-verschlüsselt in diesem Browser und werden nicht automatisch übertragen – auch nicht per E-Mail.</p>
+<p class="note small">Beim Absenden sendet Ihr Browser nur Name, E-Mail und die Warteliste-Einwilligung per HTTPS an unseren Missbrauchsschutz-Dienst bei Cloudflare (gmr-waitlist.getmyright.workers.dev), der sie ohne Speicherung an Brevo weiterleitet (dabei werden technisch auch IP-Adresse und Browserkennung übertragen). Optionale Angaben bleiben AES-GCM-verschlüsselt in diesem Browser und werden nicht automatisch übertragen – auch nicht per E-Mail.</p>
+<div data-gmr-turnstile></div>
 <div><button type="submit" class="btn accent">Kostenlos auf die Warteliste</button></div>
 </fieldset>
 </form>

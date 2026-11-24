@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin.html
+Disallow: /getmyright-admin.html
 Disallow: /spieler/portal.html
 Disallow: /kanzlei/dashboard.html
 

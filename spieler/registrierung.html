@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://3304f71f.sibforms.com; frame-src 'none'; worker-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://gmr-waitlist.getmyright.workers.dev; frame-src https://challenges.cloudflare.com; worker-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<script src="/js/gmr-frame.js"></script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Registrieren – Mandantenbereich · GetMyRight</title>
 <meta name="description" content="Kostenlos im Mandantenbereich von GetMyRight registrieren – optional mit Google-Login und Zwei-Faktor-Authentifizierung.">
@@ -33,6 +34,7 @@
 </div>
 </header>
 <main id="inhalt">
+<div class="preview-bar"><strong>Vorschau – keine echten Daten.</strong> Das Konto wird nur lokal in diesem Browser angelegt, es gibt noch keinen Server-Login.</div>
 <section class="section cream" style="border-bottom:none">
 <div class="wrap auth-shell">
 <div class="card">
@@ -57,6 +59,8 @@
 <label class="choice"><input type="checkbox" name="agb" required> <span>Ich akzeptiere die <a href="/agb.html">AGB &amp; Nutzungsbedingungen</a>. <span class="req">*</span></span></label>
 <p class="small gate-note">Datenschutzhinweis: Ihre Angaben verarbeiten wir zur Einrichtung und Nutzung Ihres Kontos (Art. 6 Abs. 1 lit. b DSGVO). In der Vorschau wird das Konto nur AES-GCM-verschlüsselt auf diesem Gerät gespeichert. Einzelheiten in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
 <label class="choice"><input type="checkbox" name="brevo" value="1"> <span>Zusätzlich über den Start informieren (Brevo, Double-Opt-in, Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO, jederzeit abbestellbar). <span class="opt">optional</span></span></label>
+<input class="hp" type="text" name="hp" value="" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div data-gmr-turnstile></div>
 <div><button type="submit" class="btn accent">Konto anlegen</button></div>
 </fieldset>
 </form>
