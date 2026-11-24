@@ -36,6 +36,6 @@ window.GMR_CONFIG = {
   waitlistEndpoint: "https://gmr-waitlist.getmyright.workers.dev/waitlist",
   /* Cloudflare-Turnstile-Sitekey (öffentlich). Leer = kein Captcha-Widget; Worker prüft dann nur Rate-Limit/Honeypot/Zeitfalle.
    * Wird ein Sitekey eingetragen, muss im Worker das Secret TURNSTILE_SECRET gesetzt sein. */
-  turnstileSiteKey: "",
+  turnstileSiteKey: "0x4AAAAAAGPye6TxIoHDjaBM",
   minFillMs: 3000
 };
