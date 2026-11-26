@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 700" width="1140" height="700" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" preserveAspectRatio="xMaxYMid slice">
+<g id="kessel" stroke="#1F3A8A" stroke-width="2.6" opacity=".08">
+<circle cx="930" cy="340" r="372"/>
+<circle cx="930" cy="340" r="352"/>
+<circle cx="930" cy="340" r="300"/>
+<circle cx="930" cy="340" r="228"/>
+<circle cx="930" cy="340" r="206"/>
+<circle cx="930" cy="340" r="128"/>
+<circle cx="930" cy="340" r="76"/>
+<path d="M1158.0 340.0L1230.0 340.0"/>
+<path d="M1154.7 378.5L1225.7 390.7"/>
+<path d="M1145.0 416.0L1212.9 439.9"/>
+<path d="M1129.0 451.2L1191.9 486.3"/>
+<path d="M1107.4 483.2L1163.4 528.5"/>
+<path d="M1080.6 511.2L1128.2 565.2"/>
+<path d="M1049.5 534.1L1087.3 595.5"/>
+<path d="M1015.0 551.6L1041.9 618.4"/>
+<path d="M978.0 562.9L993.2 633.3"/>
+<path d="M939.7 567.8L942.7 639.7"/>
+<path d="M901.0 566.2L891.9 637.6"/>
+<path d="M863.2 558.0L842.2 626.9"/>
+<path d="M827.4 543.6L794.9 607.9"/>
+<path d="M794.4 523.3L751.6 581.2"/>
+<path d="M765.4 497.8L713.4 547.6"/>
+<path d="M741.1 467.7L681.4 508.0"/>
+<path d="M722.2 433.9L656.6 463.6"/>
+<path d="M709.4 397.5L639.7 415.6"/>
+<path d="M702.8 359.3L631.1 365.4"/>
+<path d="M702.8 320.7L631.1 314.6"/>
+<path d="M709.4 282.5L639.7 264.4"/>
+<path d="M722.2 246.1L656.6 216.4"/>
+<path d="M741.1 212.3L681.4 172.0"/>
+<path d="M765.4 182.2L713.4 132.4"/>
+<path d="M794.4 156.7L751.6 98.8"/>
+<path d="M827.4 136.4L794.9 72.1"/>
+<path d="M863.2 122.0L842.2 53.1"/>
+<path d="M901.0 113.8L891.9 42.4"/>
+<path d="M939.7 112.2L942.7 40.3"/>
+<path d="M978.0 117.1L993.2 46.7"/>
+<path d="M1015.0 128.4L1041.9 61.6"/>
+<path d="M1049.5 145.9L1087.3 84.5"/>
+<path d="M1080.6 168.8L1128.2 114.8"/>
+<path d="M1107.4 196.8L1163.4 151.5"/>
+<path d="M1129.0 228.8L1191.9 193.7"/>
+<path d="M1145.0 264.0L1212.9 240.1"/>
+<path d="M1154.7 301.5L1225.7 289.3"/>
+<g transform="translate(930 340) rotate(22.5) translate(167 0)"><path d="M-20 0L0 -13L20 0L0 13Z"/></g>
+<g transform="translate(930 340) rotate(67.5) translate(167 0)"><path d="M-20 0L0 -13L20 0L0 13Z"/></g>
+<g transform="translate(930 340) rotate(112.5) translate(167 0)"><path d="M-20 0L0 -13L20 0L0 13Z"/></g>
+<g transform="translate(930 340) rotate(157.5) translate(167 0)"><path d="M-20 0L0 -13L20 0L0 13Z"/></g>
+<g transform="translate(930 340) rotate(202.5) translate(167 0)"><path d="M-20 0L0 -13L20 0L0 13Z"/></g>
+<g transform="translate(930 340) rotate(247.5) translate(167 0)"><path d="M-20 0L0 -13L20 0L0 13Z"/></g>
+<g transform="translate(930 340) rotate(292.5) translate(167 0)"><path d="M-20 0L0 -13L20 0L0 13Z"/></g>
+<g transform="translate(930 340) rotate(337.5) translate(167 0)"><path d="M-20 0L0 -13L20 0L0 13Z"/></g>
+<g transform="translate(930 340) rotate(0)"><path d="M20 0H118"/><circle cx="126" cy="0" r="0"/><circle cx="40" cy="0" r="0"/></g>
+<g transform="translate(930 340) rotate(90)"><path d="M20 0H118"/><circle cx="126" cy="0" r="0"/><circle cx="40" cy="0" r="0"/></g>
+<g transform="translate(930 340) rotate(180)"><path d="M20 0H118"/><circle cx="126" cy="0" r="0"/><circle cx="40" cy="0" r="0"/></g>
+<g transform="translate(930 340) rotate(270)"><path d="M20 0H118"/><circle cx="126" cy="0" r="0"/><circle cx="40" cy="0" r="0"/></g>
+<circle cx="930" cy="340" r="20"/><circle cx="930" cy="340" r="9"/>
+</g>
+
+</svg>

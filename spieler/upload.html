@@ -3,96 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://gmr-waitlist.getmyright.workers.dev; frame-src 'none'; worker-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; frame-src 'none'; worker-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <script src="/js/gmr-frame.js"></script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Unterlagen hochladen – Mandantenbereich · GetMyRight</title>
-<meta name="description" content="Upload-Bereich für große Dateien wie Casino-Datenauskünfte und Spielhistorien. Alternativ kleinere Dateien per E-Mail an info@getmyright.de.">
 <link rel="canonical" href="https://getmyright.de/spieler/upload.html">
-<meta property="og:title" content="Unterlagen hochladen – Mandantenbereich · GetMyRight">
-<meta property="og:description" content="Upload-Bereich für große Dateien wie Casino-Datenauskünfte und Spielhistorien. Alternativ kleinere Dateien per E-Mail an info@getmyright.de.">
+<title>Unterlagen hochladen · GetMyRight</title>
+<meta name="description" content="Große Unterlagen vorbereiten: Datenauskünfte, Spielhistorien und Kontoauszüge. Vorschau ohne Datenübertragung.">
+<meta property="og:title" content="Unterlagen hochladen · GetMyRight">
+<meta property="og:description" content="Große Unterlagen vorbereiten: Datenauskünfte, Spielhistorien und Kontoauszüge. Vorschau ohne Datenübertragung.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://getmyright.de/spieler/upload.html">
-<meta property="og:image" content="https://getmyright.de/icon-512.png">
-<meta name="theme-color" content="#152A32">
-
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/icon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/css/gmr.css">
+<meta name="theme-color" content="#1F3A8A">
+<link rel="icon" href="../assets/brand/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
 </head>
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>
-<header class="site-header">
-<div class="wrap">
-<a class="brand" href="/spieler/" aria-label="GetMyRight – Mandantenbereich"><img src="/logo-wortmarke.svg" alt="" width="55" height="48"><span class="wordmark">GetMyRight</span><span class="zone">Mandantenbereich</span></a>
-<button class="nav-toggle" type="button" data-gmr-nav-toggle aria-controls="hauptnav" aria-expanded="false">Menü</button>
-<nav class="nav" id="hauptnav" aria-label="Hauptnavigation"><a href="/spieler/">Übersicht</a><a href="/spieler/warteliste.html">Warteliste</a><a href="/spieler/kontoauszuege.html">Kontoauszüge</a><a href="/spieler/upload.html">Unterlagen</a><a href="/spieler/hilfe.html">Hilfeangebote</a><a href="/spieler/login.html">Login</a><a href="/spieler/registrierung.html" class="nav-cta">Registrieren</a></nav>
-</div>
-</header>
+<div class="hilfeleiste" role="region" aria-label="Hilfe bei Spielproblemen"><div class="wrap"><span>Kostenfreie, anonyme Suchthilfe: <a href="tel:+498001372700">0800 137 27 00</a></span><a href="../spieler/hilfe.html">Alle Hilfsangebote</a></div></div>
+<header class="kopf"><div class="wrap"><a class="marke" href="../spieler/index.html" aria-label="GetMyRight, zur Startseite"><img src="../assets/brand/logo.svg" alt="GetMyRight" width="218" height="36"></a><button class="menue" type="button" data-menue aria-controls="hauptnav" aria-expanded="false">Menü</button><nav class="nav" id="hauptnav" aria-label="Hauptnavigation"><a href="../spieler/index.html">Start</a><a href="../spieler/unterlagen.html" aria-current="page">Unterlagen</a><a href="../spieler/hilfe.html">Hilfsangebote</a><a href="../spieler/index.html#eintragen" class="nav-cta">Zur Warteliste</a><a href="../kanzlei/index.html" class="nav-kanzlei">Für Kanzleien</a></nav></div></header>
 <main id="inhalt">
-<section class="hero" style="padding-bottom:40px">
-<div class="wrap narrow">
-<span class="eyebrow">Kanal 2 · Upload für große Dateien</span>
-<h1>Große Unterlagen sicher hochladen.</h1>
-<p class="lead">Für komplette Datenauskünfte von Casinos, vollständige Spielhistorien, Spielanalysen oder Kontoauszüge. Erlaubt sind ZIP, CSV, PDF, XLSX, XLS, JSON, TXT sowie Fotos (PNG/JPG) bis 250 MB pro Datei.</p>
-<div class="status" data-gmr-upload-mode></div>
-</div>
-</section>
-<section class="section cream">
-<div class="wrap narrow">
-<div class="card">
-<form class="form" method="post" data-gmr-upload novalidate>
-<fieldset class="js-only" data-gmr-js-only disabled>
-<div class="field"><label for="u-email">E-Mail-Adresse Ihrer Wartelisten-Anmeldung <span class="req">*</span></label><input id="u-email" name="email" type="email" autocomplete="email" required></div>
-<div class="field"><label for="u-files">Dateien auswählen <span class="req">*</span></label><input id="u-files" name="files" type="file" multiple accept=".zip,.csv,.pdf,.xlsx,.xls,.json,.txt,.png,.jpg,.jpeg"><span class="small">Beim Auswählen prüft die Seite nur Name, Größe und Typ. Der Dateiinhalt wird erst nach Ihrer Einwilligung und nur für die optionale Selbstschwärzung im Browser gelesen.</span></div>
-<div data-gmr-file-list></div>
-<div class="field"><label for="u-note">Hinweis zu den Dateien <span class="opt">(optional)</span></label><textarea id="u-note" name="note" maxlength="1000" placeholder="z. B. Datenauskunft von Anbieter X, Zeitraum 2019–2022"></textarea></div>
-<div class="note warn small" data-gmr-plaintext-rule><strong>Keine automatische Schwärzung – Casino-Buchungen bleiben im Klartext:</strong> GetMyRight schwärzt Ihre Unterlagen nicht automatisch. Private Buchungen ohne Glücksspielbezug (z. B. Alltagseinkäufe, Bestellungen) dürfen Sie vorher freiwillig selbst schwärzen. <strong>Alle casino-relevanten Buchungen</strong> – Ein- und Auszahlungen zum bzw. vom Casino oder Sportwettenanbieter mit <strong>Datum, Betrag und Zahlungsdienstleister/Empfänger</strong> – müssen ungeschwärzt lesbar bleiben, damit eine Partnerkanzlei sie prüfen kann.</div>
-<label class="choice"><input type="checkbox" name="consent" required> <span>Ich willige ausdrücklich ein, dass GetMyRight die Unterlagen zur Vorbereitung meines Anliegens verarbeitet. Sie können Angaben zu meinem Spielverhalten enthalten (Art. 9 Abs. 2 lit. a DSGVO). Widerruf jederzeit möglich. <a href="/datenschutz.html#d8">Datenschutzerklärung</a> <span class="req">*</span></span></label>
-<label class="choice"><input type="checkbox" name="plaintext_ack" required> <span>Ich bestätige, dass alle casino-relevanten Buchungen (Ein- und Auszahlungen, Datum, Betrag, Zahlungsdienstleister/Empfänger) in meinen Unterlagen <strong>ungeschwärzt lesbar</strong> sind. <span class="req">*</span></span></label>
-<label class="choice"><input type="checkbox" name="selfredact"> <span><strong>Optionale Selbstschwärzung vor dem Hochladen:</strong> Ich möchte in einer Kopie meiner CSV-/TXT-Dateien selbst einzelne private Buchungszeilen ohne Glücksspielbezug schwärzen. Die Originaldatei bleibt unverändert; Zeilen mit erkennbarem Glücksspielbezug sind gesperrt. PDF-, Bild-, XLSX- und ZIP-Dateien schwärzen Sie bei Bedarf vorher selbst in Ihrem eigenen Programm. <span class="opt">optional</span></span></label>
-<div data-gmr-redact-report></div>
-<progress data-gmr-progress max="100" value="0" hidden style="width:100%"></progress>
-<div><button type="submit" class="btn accent">Dateien prüfen und vorbereiten</button></div>
-</fieldset>
-</form>
-<noscript><p class="note err">Für dieses Formular und die lokale Verschlüsselung muss JavaScript aktiviert sein.</p></noscript>
-<div class="status" data-gmr-status aria-live="polite" style="margin-top:16px"></div>
-</div>
-<h3 style="margin-top:36px">Lieber per E-Mail?</h3>
-<div class="grid-2" aria-label="Zwei Wege, Unterlagen einzureichen">
-<div class="card">
-<span class="eyebrow">Kanal 1 · Per E-Mail – nach Vorbereitung</span>
+<section class="bahn bahn--hell lesekopf lesekopf--z kopf-band" aria-labelledby="h-seite"><div class="wrap"><div class="bogen brief"><p class="absender-zeile"><img src="../assets/brand/logo-mark.svg" alt="" width="22" height="22">GetMyRight</p><h1 id="h-seite">Große Unterlagen sicher hochladen.</h1><p class="lead">Für komplette Datenauskünfte von Casinos, vollständige Spielhistorien, Spielanalysen oder Kontoauszüge. Erlaubt sind ZIP, CSV, PDF, XLSX, XLS, JSON, TXT sowie Fotos (PNG/JPG) bis 250 MB pro Datei.</p></div></div></section><section class="bahn bahn--dicht" aria-label="Upload-Formular"><div class="wrap"><div class="bogen bogen--form"><p class="vorschau-hinweis"><b>Vorschau</b><span>Vorschau: In dieser Vorschau werden keine Daten übertragen.</span></p><form class="formular" method="post" action="#" data-vorschau data-ok-titel="Eingaben geprüft." novalidate><p class="sr" role="alert" data-fehlersumme></p><div class="feld"><label for="u-email">E-Mail-Adresse Ihrer Wartelisten-Anmeldung <span class="pflicht" aria-hidden="true">*</span></label><input id="u-email" name="email" type="email" autocomplete="email" required data-msg="Bitte geben Sie die E-Mail-Adresse Ihrer Anmeldung ein."></div><div class="feld"><label for="u-files">Dateien auswählen <span class="pflicht" aria-hidden="true">*</span></label><input id="u-files" name="files" type="file" multiple required data-upload data-msg="Bitte wählen Sie mindestens eine Datei aus." accept=".zip,.csv,.pdf,.xlsx,.xls,.json,.txt,.png,.jpg,.jpeg" aria-describedby="u-files-hilfe"><span class="small" id="u-files-hilfe">Beim Auswählen prüft die Seite nur Name, Größe und Typ. Der Dateiinhalt wird erst nach Ihrer Einwilligung und nur für die optionale Selbstschwärzung im Browser gelesen.</span><ul class="dateiliste" data-dateiliste aria-live="polite"></ul></div><div class="feld"><label for="u-note">Hinweis zu den Dateien <span class="opt">(optional)</span></label><textarea id="u-note" name="note" maxlength="1000" placeholder="z. B. Datenauskunft von Anbieter X, Zeitraum 2019–2022"></textarea></div><div class="hinweis warn small"><strong>Keine automatische Schwärzung – Casino-Buchungen bleiben im Klartext:</strong> GetMyRight schwärzt Ihre Unterlagen nicht automatisch. Private Buchungen ohne Glücksspielbezug (z. B. Alltagseinkäufe, Bestellungen) dürfen Sie vorher freiwillig selbst schwärzen. <strong>Alle casino-relevanten Buchungen</strong> – Ein- und Auszahlungen zum bzw. vom Casino oder Sportwettenanbieter mit <strong>Datum, Betrag und Zahlungsdienstleister/Empfänger</strong> – müssen ungeschwärzt lesbar bleiben, damit eine Partnerkanzlei sie prüfen kann.</div><div class="einwilligung"><label class="wahl"><input type="checkbox" name="consent" required data-msg="Bitte erteilen Sie die Einwilligung, um fortzufahren."> <span>Ich willige ausdrücklich ein, dass GetMyRight die Unterlagen zur Vorbereitung meines Anliegens verarbeitet. Sie können Angaben zu meinem Spielverhalten enthalten (Art. 9 Abs. 2 lit. a DSGVO). Widerruf jederzeit möglich. <a href="../datenschutz.html#d8">Datenschutzerklärung</a> <span class="pflicht" aria-hidden="true">*</span></span></label></div><div class="einwilligung"><label class="wahl"><input type="checkbox" name="plaintext_ack" required data-msg="Bitte bestätigen Sie, dass casino-relevante Buchungen lesbar sind."> <span>Ich bestätige, dass alle casino-relevanten Buchungen (Ein- und Auszahlungen, Datum, Betrag, Zahlungsdienstleister/Empfänger) in meinen Unterlagen <strong>ungeschwärzt lesbar</strong> sind. <span class="pflicht" aria-hidden="true">*</span></span></label></div><label class="wahl"><input type="checkbox" name="selfredact"> <span><strong>Optionale Selbstschwärzung vor dem Hochladen:</strong> Ich möchte in einer Kopie meiner CSV-/TXT-Dateien selbst einzelne private Buchungszeilen ohne Glücksspielbezug schwärzen. Die Originaldatei bleibt unverändert; Zeilen mit erkennbarem Glücksspielbezug sind gesperrt. PDF-, Bild-, XLSX- und ZIP-Dateien schwärzen Sie bei Bedarf vorher selbst in Ihrem eigenen Programm. <span class="opt">optional</span></span></label><div class="knoepfe"><button type="submit" class="btn">Dateien prüfen und vorbereiten</button></div><div class="bestaetigung" data-bestaetigung role="status" hidden></div></form></div></div></section><section class="abschnitt abschnitt--eng"><div class="wrap"><h2>Lieber per <span class="nb">E-Mail</span>?</h2><div class="wege">
+<div class="karte weg">
 <h3>Kleinere Dateien</h3>
+<p class="weg-kanal">Kanal 1 · Per E-Mail – nach Vorbereitung</p>
 <p>Einzelne Kontoauszüge, Kreditkartenabrechnungen oder Belege können Sie per E-Mail an <strong>info@getmyright.de</strong> senden. Bitte bereiten Sie sie vorher im Upload-Bereich vor und bestätigen Sie dort die Hinweise zum unverschlüsselten E-Mail-Versand. Es gibt keine automatische Schwärzung.</p>
 <p class="small">Wichtig: E-Mails laufen unverschlüsselt über Ihren E-Mail-Anbieter und unser Postfach bei Spacemail (Spaceship Inc., USA). Private Buchungen ohne Glücksspielbezug dürfen Sie vorher selbst schwärzen; Ein- und Auszahlungen zum bzw. vom Casino oder Wettanbieter müssen lesbar bleiben.</p>
-<div class="btn-row"><a class="btn" href="/spieler/upload.html">Unterlagen vorbereiten</a></div>
-<p class="small" style="margin-top:12px">Tipp: Viele E-Mail-Anbieter begrenzen Anhänge auf 20–25 MB.</p>
+<div class="knoepfe"><a class="btn" href="upload.html">Unterlagen vorbereiten</a></div>
+<p class="small">Tipp: Viele E-Mail-Anbieter begrenzen Anhänge auf 20–25 MB.</p>
 </div>
-<div class="card">
-<span class="eyebrow">Kanal 2 · Upload-Link</span>
+<div class="karte weg">
 <h3>Große Dateien</h3>
+<p class="weg-kanal">Kanal 2 · Upload-Link</p>
 <p>Komplette Datenauskünfte von Casinos (DSGVO-Export), vollständige Spielhistorien oder Spielanalysen als ZIP, CSV, XLSX, JSON oder PDF.</p>
 <p><strong>getmyright.de/spieler/upload.html</strong></p>
-<div class="btn-row"><a class="btn" href="/spieler/upload.html">Zum Upload-Bereich</a></div>
-<p class="small" style="margin-top:12px">Diesen Link finden Sie auch in Ihrer Bestätigungs-E-Mail.</p>
+<div class="knoepfe"><a class="btn" href="upload.html">Zum Upload-Bereich</a></div>
+<p class="small">Diesen Link finden Sie auch in Ihrer Bestätigungs-E-Mail.</p>
 </div>
-</div>
-</div>
-</section>
+</div></div></section><section class="schutzband" aria-labelledby="h-schutz"><div class="wrap"><div class="bogen"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#1F3A8A"/><circle cx="32" cy="32" r="25" fill="none" stroke="#F4F2EC" stroke-width="1.5" stroke-dasharray="2 3"/><path d="M32 45.5S17 37 17 27.2c0-5 3.8-8.7 8.3-8.7 3 0 5.6 1.6 6.7 4 1.1-2.4 3.7-4 6.7-4 4.5 0 8.3 3.7 8.3 8.7C47 37 32 45.5 32 45.5z" fill="#E2B93B" stroke="#1A1D24" stroke-width="2" stroke-linejoin="round"/></svg><div><h2 id="h-schutz">Ihr Schutz geht vor</h2><p>Wenn Sie gerade mit dem Spielen kämpfen, steht Ihr Schutz an erster Stelle. Kostenfreie, anonyme Beratung erhalten Sie zum Beispiel bei <a href="https://www.check-dein-spiel.de/" rel="noopener noreferrer" target="_blank">Check dein Spiel</a> oder telefonisch unter 0800 137 27 00.</p></div></div></div></section>
 </main>
-<footer class="site-footer">
+<footer class="fuss">
+<div class="rand" aria-hidden="true"></div>
 <div class="wrap">
-<div><div class="fbrand">GetMyRight</div><p class="small" style="color:#AEBBBF;margin:.3em 0 0">Mandantenbereich · kostenlos für Spieler · keine Rechtsberatung.<br>&copy; 2026 GetMyRight · Robin Alexander Wolff (in Gründung)</p></div>
-<nav aria-label="Rechtliches"><a href="/">Startseite</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="/agb.html">AGB</a></nav>
+<div><a class="fuss-marke" href="../index.html" aria-label="GetMyRight, zur Startseite"><img src="../assets/brand/logo-negativ.svg" alt="GetMyRight" width="218" height="36"></a>
+<p>Strukturierte Vorbereitung im Glücksspielrecht.<br>&copy; 2026 GetMyRight · Robin Alexander Wolff</p></div>
+<nav aria-label="Rechtliches und Bereiche"><ul>
+<li><a href="index.html">Startseite</a></li><li><a href="../kanzlei/index.html">Für Kanzleien</a></li><li><a href="login.html">Login für Spieler</a></li>
+<li><a href="../impressum.html">Impressum</a></li><li><a href="../datenschutz.html">Datenschutz</a></li><li><a href="../agb.html">AGB &amp; Nutzungsbedingungen</a></li></ul></nav>
+<div class="fuss-hilfe"><p><strong>Hilfe zuerst:</strong> Kostenfreie, anonyme Suchthilfe unter <a href="tel:+498001372700">0800 137 27 00</a> · <a href="hilfe.html">Alle Hilfsangebote</a></p></div>
 </div>
 </footer>
-<script src="/js/gmr-config.js"></script>
-<script src="/js/gmr-redactor.js"></script>
-<script src="/js/gmr-app.js"></script>
+<script src="../js/site.js"></script>
 </body>
 </html>

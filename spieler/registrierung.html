@@ -3,86 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://gmr-waitlist.getmyright.workers.dev; frame-src https://challenges.cloudflare.com; worker-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; frame-src 'none'; worker-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <script src="/js/gmr-frame.js"></script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Registrieren – Mandantenbereich · GetMyRight</title>
-<meta name="description" content="Kostenlos im Mandantenbereich von GetMyRight registrieren – optional mit Google-Login und Zwei-Faktor-Authentifizierung.">
 <link rel="canonical" href="https://getmyright.de/spieler/registrierung.html">
+<title>Registrieren – Mandantenbereich · GetMyRight</title>
+<meta name="description" content="Kostenloses Konto im Mandantenbereich anlegen. Vorschau ohne Datenübertragung.">
 <meta property="og:title" content="Registrieren – Mandantenbereich · GetMyRight">
-<meta property="og:description" content="Kostenlos im Mandantenbereich von GetMyRight registrieren – optional mit Google-Login und Zwei-Faktor-Authentifizierung.">
+<meta property="og:description" content="Kostenloses Konto im Mandantenbereich anlegen. Vorschau ohne Datenübertragung.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://getmyright.de/spieler/registrierung.html">
-<meta property="og:image" content="https://getmyright.de/icon-512.png">
-<meta name="theme-color" content="#152A32">
-
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/icon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/css/gmr.css">
+<meta name="theme-color" content="#1F3A8A">
+<link rel="icon" href="../assets/brand/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
 </head>
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>
-<header class="site-header">
-<div class="wrap">
-<a class="brand" href="/spieler/" aria-label="GetMyRight – Mandantenbereich"><img src="/logo-wortmarke.svg" alt="" width="55" height="48"><span class="wordmark">GetMyRight</span><span class="zone">Mandantenbereich</span></a>
-<button class="nav-toggle" type="button" data-gmr-nav-toggle aria-controls="hauptnav" aria-expanded="false">Menü</button>
-<nav class="nav" id="hauptnav" aria-label="Hauptnavigation"><a href="/spieler/">Übersicht</a><a href="/spieler/warteliste.html">Warteliste</a><a href="/spieler/kontoauszuege.html">Kontoauszüge</a><a href="/spieler/upload.html">Unterlagen</a><a href="/spieler/hilfe.html">Hilfeangebote</a><a href="/spieler/login.html">Login</a><a href="/spieler/registrierung.html" class="nav-cta">Registrieren</a></nav>
-</div>
-</header>
+<div class="hilfeleiste" role="region" aria-label="Hilfe bei Spielproblemen"><div class="wrap"><span>Kostenfreie, anonyme Suchthilfe: <a href="tel:+498001372700">0800 137 27 00</a></span><a href="../spieler/hilfe.html">Alle Hilfsangebote</a></div></div>
+<header class="kopf"><div class="wrap"><a class="marke" href="../spieler/index.html" aria-label="GetMyRight, zur Startseite"><img src="../assets/brand/logo.svg" alt="GetMyRight" width="218" height="36"></a><button class="menue" type="button" data-menue aria-controls="hauptnav" aria-expanded="false">Menü</button><nav class="nav" id="hauptnav" aria-label="Hauptnavigation"><a href="../spieler/index.html">Start</a><a href="../spieler/unterlagen.html">Unterlagen</a><a href="../spieler/hilfe.html">Hilfsangebote</a><a href="../spieler/index.html#eintragen" class="nav-cta">Zur Warteliste</a><a href="../kanzlei/index.html" class="nav-kanzlei">Für Kanzleien</a></nav></div></header>
 <main id="inhalt">
-<div class="preview-bar"><strong>Vorschau – keine echten Daten.</strong> Das Konto wird nur lokal in diesem Browser angelegt, es gibt noch keinen Server-Login.</div>
-<section class="section cream" style="border-bottom:none">
-<div class="wrap auth-shell">
-<div class="card">
-<h1 style="font-size:2rem">Registrieren</h1>
-<p class="muted">Kostenlos und unverbindlich. Für die Warteliste genügt auch die <a href="/spieler/warteliste.html">Kurzanmeldung</a>.</p>
-<button type="button" class="btn google" data-gmr-google="spieler" aria-describedby="spieler-reg-gstatus"><svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.7 13.3l7.9 6.1C12.5 13.6 17.8 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.8c4.3-4 6.9-9.9 6.9-17.2z"/><path fill="#FBBC05" d="M10.6 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.7 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.8c-2.1 1.4-4.8 2.3-8.5 2.3-6.2 0-11.5-4.1-13.4-9.9l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg>Mit Google fortfahren <span class="opt">(optional)</span></button>
-<div class="status" id="spieler-reg-gstatus" data-gmr-google-status aria-live="polite"></div>
-<div class="divider" style="margin:18px 0">oder mit E-Mail</div>
-<form class="form" method="post" data-gmr-register="spieler" novalidate>
-<fieldset class="js-only" data-gmr-js-only disabled>
-<div class="field"><label for="sr-name">Name <span class="req">*</span></label><input id="sr-name" name="name" type="text" autocomplete="name" maxlength="200" required></div>
-<div class="field"><label for="sr-email">E-Mail <span class="req">*</span></label><input id="sr-email" name="email" type="email" autocomplete="email" required></div>
-<div class="row-2">
-<div class="field"><label for="sr-pw">Passwort <span class="req">*</span></label><input id="sr-pw" name="password" type="password" autocomplete="new-password" minlength="10" required><span class="small">mind. 10 Zeichen</span></div>
-<div class="field"><label for="sr-pw2">Passwort wiederholen <span class="req">*</span></label><input id="sr-pw2" name="password2" type="password" autocomplete="new-password" required></div>
-</div>
-<fieldset><legend>Zwei-Faktor-Authentifizierung <span class="opt">(optional)</span></legend>
-<p class="small">Schützt Ihren Zugang zusätzlich mit einem Einmalcode.</p>
-<div class="choices"><label class="choice"><input type="radio" name="twofa" value="none" checked> Nicht jetzt</label><label class="choice"><input type="radio" name="twofa" value="app"> Authenticator-App</label><label class="choice"><input type="radio" name="twofa" value="sms"> SMS-Code</label></div>
-<div class="field" data-gmr-phone-wrap hidden style="margin-top:12px"><label for="spieler-r-phone">Mobilnummer für SMS-Codes</label><input id="spieler-r-phone" name="phone" type="tel" autocomplete="tel" placeholder="+49 …"></div>
-</fieldset>
-<label class="choice"><input type="checkbox" name="agb" required> <span>Ich akzeptiere die <a href="/agb.html">AGB &amp; Nutzungsbedingungen</a>. <span class="req">*</span></span></label>
-<p class="small gate-note">Datenschutzhinweis: Ihre Angaben verarbeiten wir zur Einrichtung und Nutzung Ihres Kontos (Art. 6 Abs. 1 lit. b DSGVO). In der Vorschau wird das Konto nur AES-GCM-verschlüsselt auf diesem Gerät gespeichert. Einzelheiten in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
-<label class="choice"><input type="checkbox" name="brevo" value="1"> <span>Zusätzlich über den Start informieren (Brevo, Double-Opt-in, Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO, jederzeit abbestellbar). <span class="opt">optional</span></span></label>
-<input class="hp" type="text" name="hp" value="" tabindex="-1" autocomplete="off" aria-hidden="true">
-<div data-gmr-turnstile></div>
-<div><button type="submit" class="btn accent">Konto anlegen</button></div>
-</fieldset>
-</form>
-<noscript><p class="note err">Für dieses Formular und die lokale Verschlüsselung muss JavaScript aktiviert sein.</p></noscript>
-<div class="status" data-gmr-status aria-live="polite" style="margin-top:14px"></div>
-<div class="status" data-gmr-brevo-status style="margin-top:10px"></div>
-<div data-gmr-2fa-setup id="spieler-reg-2fa" hidden class="card cream" style="margin-top:18px"><div data-gmr-2fa-box></div></div>
-<p class="small" style="margin-top:14px">Schon registriert? <a href="login.html">Anmelden</a></p>
-</div>
-<div><span class="eyebrow">Gut zu wissen</span><h2>Kostenlos. Freiwillig. Ihre Entscheidung.</h2>
-<ul class="check"><li>GetMyRight ist für Spieler kostenlos.</li><li>Wir geben keine Rechtsberatung – die Prüfung übernimmt eine Partnerkanzlei.</li><li>Unterlagen können Sie jederzeit später nachreichen, siehe <a href="/spieler/kontoauszuege.html">Anleitung</a>.</li></ul>
-<div class="note small"><strong>Vorschau-Zugang:</strong> Die Plattform befindet sich in Gründung. Konten werden derzeit nur auf diesem Gerät angelegt (Passwort als PBKDF2-Hash im Browser), nicht auf einem Server. Google-Login und SMS-Versand werden mit dem Backend freigeschaltet.</div></div>
-</div>
-</section></main>
-<footer class="site-footer">
+<section class="bahn bahn--dicht" aria-labelledby="h-seite"><div class="wrap"><p class="vorschau-hinweis"><b>Vorschau</b><span>Vorschau: In dieser Vorschau werden keine Daten übertragen.</span></p><div class="auth"><div class="bogen"><h1 id="h-seite">Registrieren</h1><p class="leise">Kostenlos und unverbindlich. Für die Warteliste genügt auch die <a href="warteliste.html">Kurzanmeldung</a>.</p><button type="button" class="btn btn--google" disabled aria-describedby="sr-g"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.7 13.3l7.9 6.1C12.5 13.6 17.8 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.8c4.3-4 6.9-9.9 6.9-17.2z"/><path fill="#FBBC05" d="M10.6 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.7 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.8c-2.1 1.4-4.8 2.3-8.5 2.3-6.2 0-11.5-4.1-13.4-9.9l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg>Mit Google fortfahren <span class="opt">(optional)</span></button><p class="small" id="sr-g" style="margin:.4rem 0 0">Google-Login wird mit dem Backend freigeschaltet.</p><div class="trenner">oder mit E-Mail</div><form class="formular" method="post" action="#" data-vorschau data-ok-titel="Registrierung geprüft." novalidate><p class="sr" role="alert" data-fehlersumme></p><div class="feld"><label for="sr-name">Name <span class="pflicht" aria-hidden="true">*</span></label><input id="sr-name" name="name" type="text" autocomplete="name" maxlength="200" required data-msg="Bitte geben Sie Ihren Namen ein."></div><div class="feld"><label for="sr-email">E-Mail <span class="pflicht" aria-hidden="true">*</span></label><input id="sr-email" name="email" type="email" autocomplete="email" required data-msg="Bitte geben Sie Ihre E-Mail-Adresse ein."></div><div class="zeile2"><div class="feld"><label for="sr-pw">Passwort <span class="pflicht" aria-hidden="true">*</span></label><input id="sr-pw" name="password" type="password" autocomplete="new-password" minlength="10" required><span class="small">mind. 10 Zeichen</span></div><div class="feld"><label for="sr-pw2">Passwort wiederholen <span class="pflicht" aria-hidden="true">*</span></label><input id="sr-pw2" name="password2" type="password" autocomplete="new-password" required data-gleich="password"></div></div><fieldset><legend>Zwei-Faktor-Authentifizierung <span class="opt">(optional)</span></legend><p class="small">Schützt Ihren Zugang zusätzlich mit einem Einmalcode.</p><div class="wahlen"><label class="wahl"><input type="radio" name="twofa" value="none" checked> Nicht jetzt</label><label class="wahl"><input type="radio" name="twofa" value="app"> Authenticator-App</label><label class="wahl"><input type="radio" name="twofa" value="sms"> SMS-Code</label></div><div class="feld" data-telefon-wrap hidden><label for="sr-phone">Mobilnummer für SMS-Codes</label><input id="sr-phone" name="phone" type="tel" autocomplete="tel" placeholder="+49 …"></div></fieldset><div class="einwilligung"><label class="wahl"><input type="checkbox" name="agb" required data-msg="Bitte akzeptieren Sie die AGB, um ein Konto anzulegen."> <span>Ich akzeptiere die <a href="../agb.html">AGB &amp; Nutzungsbedingungen</a>. <span class="pflicht" aria-hidden="true">*</span></span></label></div><p class="small gate-note" style="margin:0">Datenschutzhinweis: Ihre Angaben verarbeiten wir zur Einrichtung und Nutzung Ihres Kontos (Art. 6 Abs. 1 lit. b DSGVO). In der Vorschau wird das Konto nur AES-GCM-verschlüsselt auf diesem Gerät gespeichert. Einzelheiten in der <a href="../datenschutz.html">Datenschutzerklärung</a>.</p><label class="wahl"><input type="checkbox" name="brevo" value="1"> <span>Zusätzlich über den Start informieren (Brevo, Double-Opt-in, Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO, jederzeit abbestellbar). <span class="opt">optional</span></span></label><div class="knoepfe"><button type="submit" class="btn">Konto anlegen</button></div><div class="bestaetigung" data-bestaetigung role="status" hidden></div></form><p class="small" style="margin-top:1rem">Schon registriert? <a href="login.html">Anmelden</a></p></div><div><h2>Kostenlos. Freiwillig. Ihre Entscheidung.</h2><ul class="liste"><li>GetMyRight ist für Spieler kostenlos.</li><li>Wir geben keine Rechtsberatung – die Prüfung übernimmt eine Partnerkanzlei.</li><li>Unterlagen können Sie jederzeit später nachreichen, siehe <a href="unterlagen.html">Anleitung</a>.</li></ul><div class="hinweis"><strong>Vorschau-Zugang:</strong> Konten werden derzeit nur auf diesem Gerät angelegt (Passwort als PBKDF2-Hash im Browser), nicht auf einem Server. Google-Login und SMS-Versand werden mit dem Backend freigeschaltet.</div></div></div></div></section>
+</main>
+<footer class="fuss">
+<div class="rand" aria-hidden="true"></div>
 <div class="wrap">
-<div><div class="fbrand">GetMyRight</div><p class="small" style="color:#AEBBBF;margin:.3em 0 0">Mandantenbereich · kostenlos für Spieler · keine Rechtsberatung.<br>&copy; 2026 GetMyRight · Robin Alexander Wolff (in Gründung)</p></div>
-<nav aria-label="Rechtliches"><a href="/">Startseite</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="/agb.html">AGB</a></nav>
+<div><a class="fuss-marke" href="../index.html" aria-label="GetMyRight, zur Startseite"><img src="../assets/brand/logo-negativ.svg" alt="GetMyRight" width="218" height="36"></a>
+<p>Strukturierte Vorbereitung im Glücksspielrecht.<br>&copy; 2026 GetMyRight · Robin Alexander Wolff</p></div>
+<nav aria-label="Rechtliches und Bereiche"><ul>
+<li><a href="index.html">Startseite</a></li><li><a href="../kanzlei/index.html">Für Kanzleien</a></li><li><a href="login.html">Login für Spieler</a></li>
+<li><a href="../impressum.html">Impressum</a></li><li><a href="../datenschutz.html">Datenschutz</a></li><li><a href="../agb.html">AGB &amp; Nutzungsbedingungen</a></li></ul></nav>
+<div class="fuss-hilfe"><p><strong>Hilfe zuerst:</strong> Kostenfreie, anonyme Suchthilfe unter <a href="tel:+498001372700">0800 137 27 00</a> · <a href="hilfe.html">Alle Hilfsangebote</a></p></div>
 </div>
 </footer>
-<script src="/js/gmr-config.js"></script>
-<script src="/js/gmr-redactor.js"></script>
-<script src="/js/gmr-app.js"></script>
+<script src="../js/site.js"></script>
 </body>
 </html>

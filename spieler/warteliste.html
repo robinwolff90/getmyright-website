@@ -6,197 +6,158 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://gmr-waitlist.getmyright.workers.dev; frame-src https://challenges.cloudflare.com; worker-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <script src="/js/gmr-frame.js"></script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Warteliste & Fragebogen – Mandantenbereich · GetMyRight</title>
-<meta name="description" content="Kostenlos auf die Warteliste von GetMyRight: nur Name, E-Mail und Einwilligung sind Pflicht, alle weiteren Fragen sind freiwillig.">
 <link rel="canonical" href="https://getmyright.de/spieler/warteliste.html">
-<meta property="og:title" content="Warteliste & Fragebogen – Mandantenbereich · GetMyRight">
-<meta property="og:description" content="Kostenlos auf die Warteliste von GetMyRight: nur Name, E-Mail und Einwilligung sind Pflicht, alle weiteren Fragen sind freiwillig.">
+<title>Warteliste – kostenlos und unverbindlich · GetMyRight</title>
+<meta name="description" content="Kostenlos auf die Warteliste: Pflicht sind nur Name, E-Mail und Einwilligung. Alle weiteren Angaben sind freiwillig. Vorschau ohne Datenübertragung.">
+<meta property="og:title" content="Warteliste – kostenlos und unverbindlich · GetMyRight">
+<meta property="og:description" content="Kostenlos auf die Warteliste: Pflicht sind nur Name, E-Mail und Einwilligung. Alle weiteren Angaben sind freiwillig. Vorschau ohne Datenübertragung.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://getmyright.de/spieler/warteliste.html">
-<meta property="og:image" content="https://getmyright.de/icon-512.png">
-<meta name="theme-color" content="#152A32">
-
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/icon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/css/gmr.css">
+<meta name="theme-color" content="#1F3A8A">
+<link rel="icon" href="../assets/brand/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
 </head>
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>
-<header class="site-header">
-<div class="wrap">
-<a class="brand" href="/spieler/" aria-label="GetMyRight – Mandantenbereich"><img src="/logo-wortmarke.svg" alt="" width="55" height="48"><span class="wordmark">GetMyRight</span><span class="zone">Mandantenbereich</span></a>
-<button class="nav-toggle" type="button" data-gmr-nav-toggle aria-controls="hauptnav" aria-expanded="false">Menü</button>
-<nav class="nav" id="hauptnav" aria-label="Hauptnavigation"><a href="/spieler/">Übersicht</a><a href="/spieler/warteliste.html">Warteliste</a><a href="/spieler/kontoauszuege.html">Kontoauszüge</a><a href="/spieler/upload.html">Unterlagen</a><a href="/spieler/hilfe.html">Hilfeangebote</a><a href="/spieler/login.html">Login</a><a href="/spieler/registrierung.html" class="nav-cta">Registrieren</a></nav>
-</div>
-</header>
+<div class="hilfeleiste" role="region" aria-label="Hilfe bei Spielproblemen"><div class="wrap"><span>Kostenfreie, anonyme Suchthilfe: <a href="tel:+498001372700">0800 137 27 00</a></span><a href="../spieler/hilfe.html">Alle Hilfsangebote</a></div></div>
+<header class="kopf"><div class="wrap"><a class="marke" href="../spieler/index.html" aria-label="GetMyRight, zur Startseite"><img src="../assets/brand/logo.svg" alt="GetMyRight" width="218" height="36"></a><button class="menue" type="button" data-menue aria-controls="hauptnav" aria-expanded="false">Menü</button><nav class="nav" id="hauptnav" aria-label="Hauptnavigation"><a href="../spieler/index.html">Start</a><a href="../spieler/unterlagen.html">Unterlagen</a><a href="../spieler/hilfe.html">Hilfsangebote</a><a href="../spieler/index.html#eintragen" class="nav-cta" aria-current="page">Zur Warteliste</a><a href="../kanzlei/index.html" class="nav-kanzlei">Für Kanzleien</a></nav></div></header>
 <main id="inhalt">
-<section class="hero" style="padding-bottom:40px">
-<div class="wrap narrow">
-<span class="eyebrow">Warteliste · kostenlos &amp; unverbindlich</span>
-<h1>Auf die Warteliste – in einer Minute.</h1>
-<p class="lead">Pflicht sind nur Ihr Name, Ihre E-Mail-Adresse und Ihre Einwilligung. Alle weiteren Fragen helfen bei der Vorbereitung, sind aber freiwillig und jederzeit überspringbar.</p>
-</div>
-</section>
-<section class="section cream">
-<div class="wrap narrow">
-<form class="form" method="post" data-gmr-waitlist novalidate>
-<fieldset class="js-only" data-gmr-js-only disabled>
+<section class="bahn bahn--hell lesekopf lesekopf--z kopf-band" aria-labelledby="h-seite"><div class="wrap"><div class="bogen brief"><p class="absender-zeile"><img src="../assets/brand/logo-mark.svg" alt="" width="22" height="22">GetMyRight</p><h1 id="h-seite">Auf die Warteliste – in einer Minute.</h1><p class="lead">Pflicht sind nur Ihr Name, Ihre E-Mail-Adresse und Ihre Einwilligung. Alle weiteren Fragen helfen bei der Vorbereitung, sind aber freiwillig und jederzeit überspringbar.</p></div></div></section><section class="bahn bahn--dicht" aria-label="Warteliste-Formular"><div class="wrap"><div class="bogen bogen--form"><form class="formular" method="post" action="#" data-warteliste data-gmr-spieler-warteliste data-ok-titel="Eintragung geprüft." novalidate><p class="sr" role="alert" data-fehlersumme></p>
+
 <fieldset>
-<legend>1 · Ihre Kontaktdaten <span class="req">(Pflicht)</span></legend>
-<div class="row-2">
-<div class="field"><label for="w-name">Name <span class="req">*</span></label><input id="w-name" name="FIRSTNAME" type="text" maxlength="200" autocomplete="name" required placeholder="Vor- und Nachname"></div>
-<div class="field"><label for="w-email">E-Mail <span class="req">*</span></label><input id="w-email" name="EMAIL" type="email" maxlength="254" autocomplete="email" required placeholder="name@beispiel.de"></div>
+<legend>1 · Ihre Kontaktdaten <span class="pflicht">(Pflicht)</span></legend>
+<div class="zeile2">
+<div class="feld"><label for="w-name">Name <span class="pflicht">*</span></label><input id="w-name" name="FIRSTNAME" type="text" maxlength="200" autocomplete="name" required placeholder="Vor- und Nachname"></div>
+<div class="feld"><label for="w-email">E-Mail <span class="pflicht">*</span></label><input id="w-email" name="EMAIL" type="email" maxlength="254" autocomplete="email" required placeholder="name@beispiel.de"></div>
 </div>
 <input class="hp" type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true">
 </fieldset>
 
-<fieldset class="consent-box">
+<fieldset class="einwilligung">
 <legend>2 · Einwilligungen <span class="opt">(nur die erste ist Pflicht)</span></legend>
-<div style="display:grid;gap:12px">
-<label class="choice"><input type="checkbox" name="OPT_IN" value="1" required> <span><strong>Warteliste (Pflicht):</strong> Ich möchte auf die Warteliste. GetMyRight darf dafür meinen Namen und meine E-Mail-Adresse verarbeiten und über Brevo eine Double-Opt-in-Bestätigungsmail senden (Art. 6 Abs. 1 lit. b und a DSGVO). <span class="req">*</span></span></label>
-<label class="choice"><input type="checkbox" name="optin_updates" value="1"> <span><strong>Updates (freiwillig):</strong> Ich möchte zusätzlich Start- und Produkt-Updates per E-Mail erhalten (Art. 6 Abs. 1 lit. a DSGVO, jederzeit abbestellbar). <span class="opt">optional</span></span></label>
-<label class="choice"><input type="checkbox" name="optin_art9" value="1" data-gmr-art9-toggle> <span><strong>Sensible Angaben (freiwillig):</strong> Ich willige ausdrücklich nach Art. 9 Abs. 2 lit. a DSGVO ein, dass meine freiwilligen Angaben zu einer OASIS-Sperre, zu meinem Spielverhalten, zur Verlusthöhe und zu einer Insolvenz in diesem Browser verschlüsselt gespeichert und für eine Vorab-Einstufung meines Anliegens genutzt werden. Eine Weitergabe an Partnerkanzleien erfolgt erst nach einer gesonderten, späteren Einwilligung. <span class="opt">optional</span></span></label>
+<div>
+<label class="wahl"><input type="checkbox" name="OPT_IN" value="1" required> <span><strong>Warteliste (Pflicht):</strong> Ich möchte auf die Warteliste. GetMyRight darf dafür meinen Namen und meine E-Mail-Adresse verarbeiten und über Brevo eine Double-Opt-in-Bestätigungsmail senden (Art. 6 Abs. 1 lit. b und a DSGVO). <span class="pflicht">*</span></span></label>
+<label class="wahl"><input type="checkbox" name="optin_updates" value="1"> <span><strong>Updates (freiwillig):</strong> Ich möchte zusätzlich Start- und Produkt-Updates per E-Mail erhalten (Art. 6 Abs. 1 lit. a DSGVO, jederzeit abbestellbar). <span class="opt">optional</span></span></label>
+<label class="wahl"><input type="checkbox" name="optin_art9" value="1" data-art9-toggle> <span><strong>Sensible Angaben (freiwillig):</strong> Ich willige ausdrücklich nach Art. 9 Abs. 2 lit. a DSGVO ein, dass meine freiwilligen Angaben zu einer OASIS-Sperre, zu meinem Spielverhalten, zur Verlusthöhe und zu einer Insolvenz in diesem Browser verschlüsselt gespeichert und für eine Vorab-Einstufung meines Anliegens genutzt werden. Eine Weitergabe an Partnerkanzleien erfolgt erst nach einer gesonderten, späteren Einwilligung. <span class="opt">optional</span></span></label>
 </div>
-<p class="small" style="margin:10px 0 0">Jede Einwilligung ist einzeln widerrufbar, formlos per E-Mail an info@getmyright.de oder über den Abmeldelink. Details: <a href="/datenschutz.html">Datenschutzerklärung</a>, <a href="/agb.html">AGB</a>.</p>
+<p class="small">Jede Einwilligung ist einzeln widerrufbar, formlos per E-Mail an info@getmyright.de oder über den Abmeldelink. Details: <a href="../datenschutz.html">Datenschutzerklärung</a>, <a href="../agb.html">AGB</a>.</p>
 </fieldset>
 
-<div class="note warn small" data-gmr-art9-notice role="status"><strong>Sensible Fragen gesperrt:</strong> Die Fragen zu OASIS-Sperre, Verlusten, Insolvenz und Belegen (Abschnitte 3, 7, 8 und 9) werden erst freigeschaltet, wenn Sie oben die freiwillige Einwilligung für sensible Angaben (Art. 9 DSGVO) erteilen. Für die Warteliste ist das nicht nötig.</div>
+<div class="hinweis warn small" data-art9-hinweis role="status"><strong>Sensible Fragen gesperrt:</strong> Die Fragen zu OASIS-Sperre, Verlusten, Insolvenz und Belegen (Abschnitte 3, 7, 8 und 9) werden erst freigeschaltet, wenn Sie oben die freiwillige Einwilligung für sensible Angaben (Art. 9 DSGVO) erteilen. Für die Warteliste ist das nicht nötig.</div>
 
-<fieldset data-gmr-art9 disabled>
+<fieldset data-art9 disabled>
 <legend>3 · OASIS-Spielersperre <span class="opt">(optional · nur mit Art.-9-Einwilligung)</span></legend>
-<p class="small">Hatten Sie während Ihres Spielzeitraums eine Sperre im bundesweiten Sperrsystem OASIS? Unsicher? <a href="/spieler/hilfe.html#oasis-auskunft">So erhalten Sie Ihre offizielle OASIS-Selbstauskunft</a>.</p>
-<div class="choices"><label class="choice"><input type="radio" name="oasis" value="Ja" data-gmr-q="oasis_sperre"> Ja</label><label class="choice"><input type="radio" name="oasis" value="Nein" data-gmr-q="oasis_sperre"> Nein</label><label class="choice"><input type="radio" name="oasis" value="Weiß nicht" data-gmr-q="oasis_sperre"> Weiß nicht</label></div>
-<div data-gmr-oasis-follow hidden style="margin-top:14px">
-<p class="legend" style="margin:0 0 6px">Haben Sie während einer aktiven Sperre weitergespielt?</p>
-<div class="choices"><label class="choice"><input type="radio" name="trotz" value="Ja" data-gmr-q="gespielt_trotz_sperre"> Ja</label><label class="choice"><input type="radio" name="trotz" value="Nein" data-gmr-q="gespielt_trotz_sperre"> Nein</label><label class="choice"><input type="radio" name="trotz" value="Weiß nicht" data-gmr-q="gespielt_trotz_sperre"> Weiß nicht</label></div>
-<div class="field" style="margin-top:12px"><label for="w-oasis-notiz">Notiz zur Sperre <span class="opt">(optional)</span></label><textarea id="w-oasis-notiz" maxlength="1000" data-gmr-q="oasis_notiz" placeholder="z. B. ungefährer Beginn der Sperre, Anbieter, bei denen Sie trotzdem spielen konnten"></textarea></div>
+<p class="small">Hatten Sie während Ihres Spielzeitraums eine Sperre im bundesweiten Sperrsystem OASIS? Unsicher? <a href="unterlagen.html#oasis-auskunft">So erhalten Sie Ihre offizielle OASIS-Selbstauskunft</a>.</p>
+<div class="wahlen"><label class="wahl"><input type="radio" name="oasis" value="Ja"> Ja</label><label class="wahl"><input type="radio" name="oasis" value="Nein"> Nein</label><label class="wahl"><input type="radio" name="oasis" value="Weiß nicht"> Weiß nicht</label></div>
+<div data-oasis-folge hidden>
+<p class="frage">Haben Sie während einer aktiven Sperre weitergespielt?</p>
+<div class="wahlen"><label class="wahl"><input type="radio" name="trotz" value="Ja"> Ja</label><label class="wahl"><input type="radio" name="trotz" value="Nein"> Nein</label><label class="wahl"><input type="radio" name="trotz" value="Weiß nicht"> Weiß nicht</label></div>
+<div class="feld"><label for="w-oasis-notiz">Notiz zur Sperre <span class="opt">(optional)</span></label><textarea id="w-oasis-notiz" maxlength="1000" placeholder="z. B. ungefährer Beginn der Sperre, Anbieter, bei denen Sie trotzdem spielen konnten" name="oasis_notiz"></textarea></div>
 </div>
-<button type="button" class="btn ghost" style="padding:6px 12px;font-size:.85rem;margin-top:12px" data-gmr-skip>Frage überspringen</button>
+<button type="button" class="btn btn--sek btn--klein" data-ueberspringen>Frage überspringen</button>
 </fieldset>
 
 <fieldset>
 <legend>4 · Kontaktweg <span class="opt">(optional · überspringbar)</span></legend>
-<div class="row-2">
-<div class="field"><label for="w-tel">Telefon <span class="opt">(optional)</span></label><input id="w-tel" type="tel" maxlength="40" autocomplete="tel" data-gmr-q="telefon" placeholder="+49 …"></div>
-<div class="field"><label for="w-weg">Bevorzugter Kontaktweg</label><select id="w-weg" data-gmr-q="kontaktweg"><option value="">Bitte wählen</option><option>E-Mail</option><option>Telefon</option><option>Egal</option></select></div>
+<div class="zeile2">
+<div class="feld"><label for="w-tel">Telefon <span class="opt">(optional)</span></label><input id="w-tel" type="tel" maxlength="40" autocomplete="tel" placeholder="+49 …" name="telefon"></div>
+<div class="feld"><label for="w-weg">Bevorzugter Kontaktweg</label><select id="w-weg" name="kontaktweg"><option value="">Bitte wählen</option><option>E-Mail</option><option>Telefon</option><option>Egal</option></select></div>
 </div>
-<button type="button" class="btn ghost" style="padding:6px 12px;font-size:.85rem;margin-top:12px" data-gmr-skip>Frage überspringen</button>
+<button type="button" class="btn btn--sek btn--klein" data-ueberspringen>Frage überspringen</button>
 </fieldset>
 
 <fieldset>
 <legend>5 · Wohnsitz &amp; Spielart <span class="opt">(optional · überspringbar)</span></legend>
-<p class="legend" style="margin:0 0 6px">Hatten Sie während des Spielzeitraums Ihren Wohnsitz in Deutschland?</p>
-<div class="choices"><label class="choice"><input type="radio" name="wohnsitz" value="Ja" data-gmr-q="wohnsitz_de"> Ja</label><label class="choice"><input type="radio" name="wohnsitz" value="Nein" data-gmr-q="wohnsitz_de"> Nein</label><label class="choice"><input type="radio" name="wohnsitz" value="Weiß nicht" data-gmr-q="wohnsitz_de"> Weiß nicht</label></div>
-<div class="field" style="margin-top:12px"><label for="w-land">Bundesland</label><select id="w-land" data-gmr-q="bundesland"><option value="">Bitte wählen</option><option>Baden-Württemberg</option><option>Bayern</option><option>Berlin</option><option>Brandenburg</option><option>Bremen</option><option>Hamburg</option><option>Hessen</option><option>Mecklenburg-Vorpommern</option><option>Niedersachsen</option><option>Nordrhein-Westfalen</option><option>Rheinland-Pfalz</option><option>Saarland</option><option>Sachsen</option><option>Sachsen-Anhalt</option><option>Schleswig-Holstein</option><option>Thüringen</option></select></div>
+<p class="frage">Hatten Sie während des Spielzeitraums Ihren Wohnsitz in Deutschland?</p>
+<div class="wahlen"><label class="wahl"><input type="radio" name="wohnsitz" value="Ja"> Ja</label><label class="wahl"><input type="radio" name="wohnsitz" value="Nein"> Nein</label><label class="wahl"><input type="radio" name="wohnsitz" value="Weiß nicht"> Weiß nicht</label></div>
+<div class="feld"><label for="w-land">Bundesland</label><select id="w-land" name="bundesland"><option value="">Bitte wählen</option><option>Baden-Württemberg</option><option>Bayern</option><option>Berlin</option><option>Brandenburg</option><option>Bremen</option><option>Hamburg</option><option>Hessen</option><option>Mecklenburg-Vorpommern</option><option>Niedersachsen</option><option>Nordrhein-Westfalen</option><option>Rheinland-Pfalz</option><option>Saarland</option><option>Sachsen</option><option>Sachsen-Anhalt</option><option>Schleswig-Holstein</option><option>Thüringen</option></select></div>
 <p class="small">Hinweis: Für Schleswig-Holstein galten bis 2021 teilweise eigene Lizenzregeln. Die Kanzlei berücksichtigt das bei der Prüfung.</p>
-<p class="legend" style="margin:8px 0 6px">Welche Art von Glücksspiel? <span class="opt">(Mehrfachauswahl)</span></p>
-<div class="choices"><label class="choice"><input type="checkbox" value="Online-Casino" data-gmr-q="spielart"> Online-Casino</label><label class="choice"><input type="checkbox" value="Slots / Automatenspiele" data-gmr-q="spielart"> Slots / Automatenspiele</label><label class="choice"><input type="checkbox" value="Sportwetten" data-gmr-q="spielart"> Sportwetten</label><label class="choice"><input type="checkbox" value="Poker" data-gmr-q="spielart"> Poker</label></div>
-<button type="button" class="btn ghost" style="padding:6px 12px;font-size:.85rem;margin-top:12px" data-gmr-skip>Frage überspringen</button>
+<p class="frage">Welche Art von Glücksspiel? <span class="opt">(Mehrfachauswahl)</span></p>
+<div class="wahlen"><label class="wahl"><input type="checkbox" value="Online-Casino" name="spielart"> Online-Casino</label><label class="wahl"><input type="checkbox" value="Slots / Automatenspiele" name="spielart"> Slots / Automatenspiele</label><label class="wahl"><input type="checkbox" value="Sportwetten" name="spielart"> Sportwetten</label><label class="wahl"><input type="checkbox" value="Poker" name="spielart"> Poker</label></div>
+<button type="button" class="btn btn--sek btn--klein" data-ueberspringen>Frage überspringen</button>
 </fieldset>
 
 <fieldset>
 <legend>6 · Anbieter &amp; Zeitraum <span class="opt">(optional · überspringbar)</span></legend>
-<div class="field"><label for="w-anbieter">Anbieter-Name(n)</label><input id="w-anbieter" type="text" list="casino-liste" maxlength="300" data-gmr-q="anbieter" placeholder="Tippen zum Suchen, z. B. Casino-Name – mehrere mit Komma trennen" autocomplete="off">
+<div class="feld"><label for="w-anbieter">Anbieter-Name(n)</label><input id="w-anbieter" type="text" list="casino-liste" maxlength="300" placeholder="Tippen zum Suchen, z. B. Casino-Name – mehrere mit Komma trennen" autocomplete="off" name="anbieter">
 <datalist id="casino-liste"><option value="22Bet"><option value="888casino"><option value="bet-at-home"><option value="bet365"><option value="Betano"><option value="Bethard"><option value="Betsson"><option value="Betway"><option value="BitStarz"><option value="bwin"><option value="Bwin Casino"><option value="CasinoClub"><option value="Casumo"><option value="ComeOn"><option value="DrückGlück"><option value="Dunder"><option value="Energy Casino"><option value="GGPoker"><option value="Hyperino"><option value="Interwetten"><option value="Jackpot City"><option value="Karamba"><option value="Lapalingo"><option value="LeoVegas"><option value="Lottoland"><option value="Mr Bet"><option value="Mr Green"><option value="Mr Play"><option value="neo.bet"><option value="NetBet"><option value="partypoker"><option value="Platincasino"><option value="PlayAmo"><option value="PokerStars"><option value="Rizk"><option value="Royal Panda"><option value="Spin Casino"><option value="Sportingbet"><option value="Stake"><option value="Sunmaker"><option value="Tipico"><option value="Tipwin"><option value="Unibet"><option value="Vavada"><option value="Vera&amp;John"><option value="Videoslots"><option value="Vulkan Vegas"><option value="Wazamba"><option value="Wheelz"><option value="Wildz"><option value="William Hill"><option value="Wunderino"><option value="Anderer Anbieter"></datalist>
 <p class="small">Suchliste mit 52 häufig genannten Anbietern als Eingabehilfe. Sie enthält keine Aussage über Lizenzstatus oder Rechtmäßigkeit eines Anbieters; fehlende Namen tragen Sie einfach selbst ein.</p></div>
-<div class="field"><label for="w-lizenz">Lizenzsitz des Anbieters <span class="opt">(falls bekannt)</span></label><select id="w-lizenz" data-gmr-q="lizenzsitz"><option value="">Weiß nicht / keine Angabe</option><option>Malta (MGA)</option><option>Curaçao</option><option>Gibraltar</option><option>Isle of Man</option><option>Schleswig-Holstein (Landeslizenz bis 2021)</option><option>Deutschland (GGL-Erlaubnis / Whitelist)</option><option>Anderer Sitz</option></select>
+<div class="feld"><label for="w-lizenz">Lizenzsitz des Anbieters <span class="opt">(falls bekannt)</span></label><select id="w-lizenz" name="lizenzsitz"><option value="">Weiß nicht / keine Angabe</option><option>Malta (MGA)</option><option>Curaçao</option><option>Gibraltar</option><option>Isle of Man</option><option>Schleswig-Holstein (Landeslizenz bis 2021)</option><option>Deutschland (GGL-Erlaubnis / Whitelist)</option><option>Anderer Sitz</option></select>
 <p class="small">Den Lizenzhinweis finden Sie meist ganz unten auf der Website des Anbieters. Erlaubte Anbieter listet die <a href="https://www.gluecksspiel-behoerde.de/de/fuer-spielende/uebersicht-erlaubter-anbieter-whitelist" target="_blank" rel="noopener noreferrer">amtliche Whitelist der GGL</a>.</p></div>
-<div class="row-2">
-<div class="field"><label for="w-von">Spielzeitraum von</label><input id="w-von" type="month" data-gmr-q="zeitraum_von"></div>
-<div class="field"><label for="w-bis">bis</label><input id="w-bis" type="month" data-gmr-q="zeitraum_bis"></div>
+<div class="zeile2">
+<div class="feld"><label for="w-von">Spielzeitraum von</label><input id="w-von" type="month" name="zeitraum_von"></div>
+<div class="feld"><label for="w-bis">bis</label><input id="w-bis" type="month" name="zeitraum_bis"></div>
 </div>
-<button type="button" class="btn ghost" style="padding:6px 12px;font-size:.85rem;margin-top:12px" data-gmr-skip>Frage überspringen</button>
+<button type="button" class="btn btn--sek btn--klein" data-ueberspringen>Frage überspringen</button>
 </fieldset>
 
-<fieldset data-gmr-art9 disabled>
+<fieldset data-art9 disabled>
 <legend>7 · Verluste &amp; Einzahlungen <span class="opt">(optional · nur mit Art.-9-Einwilligung)</span></legend>
-<div class="field"><label for="w-verlust">Geschätzter Netto-Verlust (Einzahlungen minus Auszahlungen)</label><select id="w-verlust" data-gmr-q="verlust"><option value="">Bitte wählen</option><option>unter 1.000 €</option><option>1.000 – 5.000 €</option><option>5.000 – 10.000 €</option><option>10.000 – 25.000 €</option><option>25.000 – 50.000 €</option><option>50.000 – 100.000 €</option><option>über 100.000 €</option><option>Weiß ich nicht</option></select></div>
-<p class="legend" style="margin:6px 0 6px">Haben Sie bei einem Anbieter mehr als 1.000 € im Monat eingezahlt?</p>
-<div class="choices"><label class="choice"><input type="radio" name="einz" value="Ja" data-gmr-q="einzahlung_1000"> Ja</label><label class="choice"><input type="radio" name="einz" value="Nein" data-gmr-q="einzahlung_1000"> Nein</label><label class="choice"><input type="radio" name="einz" value="Weiß nicht" data-gmr-q="einzahlung_1000"> Weiß nicht</label></div>
-<button type="button" class="btn ghost" style="padding:6px 12px;font-size:.85rem;margin-top:12px" data-gmr-skip>Frage überspringen</button>
+<div class="feld"><label for="w-verlust">Geschätzter Netto-Verlust (Einzahlungen minus Auszahlungen)</label><select id="w-verlust" name="verlust"><option value="">Bitte wählen</option><option>unter 1.000 €</option><option>1.000 – 5.000 €</option><option>5.000 – 10.000 €</option><option>10.000 – 25.000 €</option><option>25.000 – 50.000 €</option><option>50.000 – 100.000 €</option><option>über 100.000 €</option><option>Weiß ich nicht</option></select></div>
+<p class="frage">Haben Sie bei einem Anbieter mehr als 1.000 € im Monat eingezahlt?</p>
+<div class="wahlen"><label class="wahl"><input type="radio" name="einz" value="Ja"> Ja</label><label class="wahl"><input type="radio" name="einz" value="Nein"> Nein</label><label class="wahl"><input type="radio" name="einz" value="Weiß nicht"> Weiß nicht</label></div>
+<button type="button" class="btn btn--sek btn--klein" data-ueberspringen>Frage überspringen</button>
 </fieldset>
 
-<fieldset data-gmr-art9 disabled>
+<fieldset data-art9 disabled>
 <legend>8 · Weitere Umstände <span class="opt">(optional · nur mit Art.-9-Einwilligung)</span></legend>
-<p class="legend" style="margin:0 0 6px">Rechtsschutzversicherung vorhanden?</p><div class="choices"><label class="choice"><input type="radio" name="rs" value="Ja" data-gmr-q="rechtsschutz"> Ja</label><label class="choice"><input type="radio" name="rs" value="Nein" data-gmr-q="rechtsschutz"> Nein</label><label class="choice"><input type="radio" name="rs" value="Weiß nicht" data-gmr-q="rechtsschutz"> Weiß nicht</label></div>
-<p class="legend" style="margin:12px 0 6px">Läuft oder lief ein Insolvenzverfahren?</p><div class="choices"><label class="choice"><input type="radio" name="ins" value="Ja" data-gmr-q="insolvenz"> Ja</label><label class="choice"><input type="radio" name="ins" value="Nein" data-gmr-q="insolvenz"> Nein</label><label class="choice"><input type="radio" name="ins" value="Weiß nicht" data-gmr-q="insolvenz"> Weiß nicht</label></div>
-<p class="legend" style="margin:12px 0 6px">Haben Sie bereits einen Anwalt oder Prozessfinanzierer beauftragt?</p><div class="choices"><label class="choice"><input type="radio" name="anw" value="Ja" data-gmr-q="anwalt"> Ja</label><label class="choice"><input type="radio" name="anw" value="Nein" data-gmr-q="anwalt"> Nein</label><label class="choice"><input type="radio" name="anw" value="Weiß nicht" data-gmr-q="anwalt"> Weiß nicht</label></div>
-<button type="button" class="btn ghost" style="padding:6px 12px;font-size:.85rem;margin-top:12px" data-gmr-skip>Frage überspringen</button>
+<p class="frage">Rechtsschutzversicherung vorhanden?</p><div class="wahlen"><label class="wahl"><input type="radio" name="rs" value="Ja"> Ja</label><label class="wahl"><input type="radio" name="rs" value="Nein"> Nein</label><label class="wahl"><input type="radio" name="rs" value="Weiß nicht"> Weiß nicht</label></div>
+<p class="frage">Läuft oder lief ein Insolvenzverfahren?</p><div class="wahlen"><label class="wahl"><input type="radio" name="ins" value="Ja"> Ja</label><label class="wahl"><input type="radio" name="ins" value="Nein"> Nein</label><label class="wahl"><input type="radio" name="ins" value="Weiß nicht"> Weiß nicht</label></div>
+<p class="frage">Haben Sie bereits einen Anwalt oder Prozessfinanzierer beauftragt?</p><div class="wahlen"><label class="wahl"><input type="radio" name="anw" value="Ja"> Ja</label><label class="wahl"><input type="radio" name="anw" value="Nein"> Nein</label><label class="wahl"><input type="radio" name="anw" value="Weiß nicht"> Weiß nicht</label></div>
+<button type="button" class="btn btn--sek btn--klein" data-ueberspringen>Frage überspringen</button>
 </fieldset>
 
-<fieldset data-gmr-art9 disabled>
+<fieldset data-art9 disabled>
 <legend>9 · Belege &amp; Hinweise <span class="opt">(optional · nur mit Art.-9-Einwilligung)</span></legend>
-<p class="small">Belege brauchen Sie jetzt nicht. Sie können sie jederzeit später nachreichen. Wie Sie Kontoauszüge und Abrechnungen bekommen, erklärt unsere <a href="/spieler/kontoauszuege.html">Anleitung für Kontoauszüge</a>.</p>
-<div class="choices"><label class="choice"><input type="radio" name="belege" value="Habe ich bereits" data-gmr-q="belege"> Habe ich bereits</label><label class="choice"><input type="radio" name="belege" value="Besorge ich später" data-gmr-q="belege"> Besorge ich später</label><label class="choice"><input type="radio" name="belege" value="Weiß nicht" data-gmr-q="belege"> Weiß nicht</label></div>
-<div class="field" style="margin-top:12px"><label for="w-notiz">Weitere Hinweise <span class="opt">(optional)</span></label><textarea id="w-notiz" maxlength="2000" data-gmr-q="notiz"></textarea></div>
-<button type="button" class="btn ghost" style="padding:6px 12px;font-size:.85rem;margin-top:12px" data-gmr-skip>Frage überspringen</button>
-</fieldset>
-
-<fieldset>
-<legend>10 · Lokale Verschlüsselung <span class="opt">(optional)</span></legend>
-<div class="field"><label for="w-pass">Eigene Passphrase für die lokale Verschlüsselung <span class="opt">(optional)</span></label><input id="w-pass" name="passphrase" type="password" autocomplete="new-password" maxlength="200" placeholder="Leer lassen = gerätegebundener Schlüssel"><p class="small">Ihre freiwilligen Angaben werden in diesem Browser mit AES-GCM (256 Bit) verschlüsselt zwischengespeichert und nicht automatisch übertragen.</p></div>
+<p class="small">Belege brauchen Sie jetzt nicht. Sie können sie jederzeit später nachreichen. Wie Sie Kontoauszüge und Abrechnungen bekommen, erklärt unsere <a href="unterlagen.html">Anleitung für Kontoauszüge</a>.</p>
+<div class="wahlen"><label class="wahl"><input type="radio" name="belege" value="Habe ich bereits"> Habe ich bereits</label><label class="wahl"><input type="radio" name="belege" value="Besorge ich später"> Besorge ich später</label><label class="wahl"><input type="radio" name="belege" value="Weiß nicht"> Weiß nicht</label></div>
+<div class="feld"><label for="w-notiz">Weitere Hinweise <span class="opt">(optional)</span></label><textarea id="w-notiz" maxlength="2000" name="notiz"></textarea></div>
+<button type="button" class="btn btn--sek btn--klein" data-ueberspringen>Frage überspringen</button>
 </fieldset>
 
 
-<p class="note small">Beim Absenden sendet Ihr Browser nur Name, E-Mail und die Warteliste-Einwilligung per HTTPS an unseren Missbrauchsschutz-Dienst bei Cloudflare (gmr-waitlist.getmyright.workers.dev), der sie ohne Speicherung an Brevo weiterleitet (dabei werden technisch auch IP-Adresse und Browserkennung übertragen). Optionale Angaben bleiben AES-GCM-verschlüsselt in diesem Browser und werden nicht automatisch übertragen – auch nicht per E-Mail.</p>
+
+
+<p class="hinweis small">Beim Absenden sendet Ihr Browser nur Name, E-Mail und die Warteliste-Einwilligung per HTTPS direkt an Brevo (3304f71f.sibforms.com; dabei werden technisch auch IP-Adresse und Browserkennung übertragen). Optionale Angaben bleiben AES-GCM-verschlüsselt in diesem Browser und werden nicht automatisch übertragen – auch nicht per E-Mail.</p>
 <div data-gmr-turnstile></div>
-<div><button type="submit" class="btn accent">Kostenlos auf die Warteliste</button></div>
-</fieldset>
-</form>
-<noscript><p class="note err">Für dieses Formular und die lokale Verschlüsselung muss JavaScript aktiviert sein.</p></noscript>
-<div class="status" data-gmr-status aria-live="polite" style="margin-top:18px"></div>
+<div><button type="submit" class="btn btn--voll">Kostenlos auf die Warteliste</button></div>
 
-<div data-gmr-result hidden style="margin-top:24px">
-<div class="card">
-<h3>Ihre Zusammenfassung <span data-gmr-result-badge></span></h3>
-<div class="table-wrap"><table><tbody data-gmr-result-table></tbody></table></div>
-<p class="small" data-gmr-result-saved style="margin-top:10px"></p>
-<div class="card cream" style="margin-top:14px">
-<h4>Optional: Kurzmitteilung per E-Mail</h4>
-<p class="small">Die E-Mail enthält nur Ihre Referenz-ID und Ihren Vornamen – keine sensiblen Angaben. Ihre Detailangaben bleiben verschlüsselt in diesem Browser, bis ein EU-Backend bzw. ein sicherer Upload verfügbar ist.</p>
-<label class="choice"><input type="checkbox" data-gmr-mail-ack> <span>Mir ist bekannt, dass E-Mails unverschlüsselt über meinen E-Mail-Anbieter an info@getmyright.de übertragen und dort im Postfach von Spacemail (Spaceship Inc., USA) gespeichert werden.</span></label>
-<div class="btn-row"><a class="btn accent" data-gmr-result-mailto hidden>Kurzmitteilung per E-Mail vorbereiten</a></div>
-</div>
-<div data-gmr-local style="margin-top:18px">
-<div class="btn-row" style="margin-top:0"><button type="button" class="btn ghost" data-gmr-local-show>Lokale Kopie anzeigen</button><button type="button" class="btn ghost" data-gmr-local-export>Verschlüsselt exportieren</button><button type="button" class="btn ghost" data-gmr-local-delete>Lokale Kopie löschen</button></div>
-<div class="status" data-gmr-local-out style="margin-top:12px"></div>
-</div>
-</div>
-<h3 style="margin-top:32px">Unterlagen später nachreichen</h3>
-<div class="grid-2" aria-label="Zwei Wege, Unterlagen einzureichen">
-<div class="card">
-<span class="eyebrow">Kanal 1 · Per E-Mail – nach Vorbereitung</span>
+<div class="bestaetigung" data-bestaetigung role="status" hidden></div></form></div></div></section><section class="abschnitt abschnitt--eng"><div class="wrap"><h2>Unterlagen später nachreichen</h2><div class="wege">
+<div class="karte weg">
 <h3>Kleinere Dateien</h3>
+<p class="weg-kanal">Kanal 1 · Per E-Mail – nach Vorbereitung</p>
 <p>Einzelne Kontoauszüge, Kreditkartenabrechnungen oder Belege können Sie per E-Mail an <strong>info@getmyright.de</strong> senden. Bitte bereiten Sie sie vorher im Upload-Bereich vor und bestätigen Sie dort die Hinweise zum unverschlüsselten E-Mail-Versand. Es gibt keine automatische Schwärzung.</p>
 <p class="small">Wichtig: E-Mails laufen unverschlüsselt über Ihren E-Mail-Anbieter und unser Postfach bei Spacemail (Spaceship Inc., USA). Private Buchungen ohne Glücksspielbezug dürfen Sie vorher selbst schwärzen; Ein- und Auszahlungen zum bzw. vom Casino oder Wettanbieter müssen lesbar bleiben.</p>
-<div class="btn-row"><a class="btn" href="/spieler/upload.html">Unterlagen vorbereiten</a></div>
-<p class="small" style="margin-top:12px">Tipp: Viele E-Mail-Anbieter begrenzen Anhänge auf 20–25 MB.</p>
+<div class="knoepfe"><a class="btn" href="upload.html">Unterlagen vorbereiten</a></div>
+<p class="small">Tipp: Viele E-Mail-Anbieter begrenzen Anhänge auf 20–25 MB.</p>
 </div>
-<div class="card">
-<span class="eyebrow">Kanal 2 · Upload-Link</span>
+<div class="karte weg">
 <h3>Große Dateien</h3>
+<p class="weg-kanal">Kanal 2 · Upload-Link</p>
 <p>Komplette Datenauskünfte von Casinos (DSGVO-Export), vollständige Spielhistorien oder Spielanalysen als ZIP, CSV, XLSX, JSON oder PDF.</p>
 <p><strong>getmyright.de/spieler/upload.html</strong></p>
-<div class="btn-row"><a class="btn" href="/spieler/upload.html">Zum Upload-Bereich</a></div>
-<p class="small" style="margin-top:12px">Diesen Link finden Sie auch in Ihrer Bestätigungs-E-Mail.</p>
+<div class="knoepfe"><a class="btn" href="upload.html">Zum Upload-Bereich</a></div>
+<p class="small">Diesen Link finden Sie auch in Ihrer Bestätigungs-E-Mail.</p>
 </div>
-</div>
-</div>
-</div>
-</section>
+</div></div></section><section class="schutzband" aria-labelledby="h-schutz"><div class="wrap"><div class="bogen"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#1F3A8A"/><circle cx="32" cy="32" r="25" fill="none" stroke="#F4F2EC" stroke-width="1.5" stroke-dasharray="2 3"/><path d="M32 45.5S17 37 17 27.2c0-5 3.8-8.7 8.3-8.7 3 0 5.6 1.6 6.7 4 1.1-2.4 3.7-4 6.7-4 4.5 0 8.3 3.7 8.3 8.7C47 37 32 45.5 32 45.5z" fill="#E2B93B" stroke="#1A1D24" stroke-width="2" stroke-linejoin="round"/></svg><div><h2 id="h-schutz">Ihr Schutz geht vor</h2><p>Wenn Sie gerade mit dem Spielen kämpfen, steht Ihr Schutz an erster Stelle. Kostenfreie, anonyme Beratung erhalten Sie zum Beispiel bei <a href="https://www.check-dein-spiel.de/" rel="noopener noreferrer" target="_blank">Check dein Spiel</a> oder telefonisch unter 0800 137 27 00.</p></div></div></div></section>
 </main>
-<footer class="site-footer">
+<footer class="fuss">
+<div class="rand" aria-hidden="true"></div>
 <div class="wrap">
-<div><div class="fbrand">GetMyRight</div><p class="small" style="color:#AEBBBF;margin:.3em 0 0">Mandantenbereich · kostenlos für Spieler · keine Rechtsberatung.<br>&copy; 2026 GetMyRight · Robin Alexander Wolff (in Gründung)</p></div>
-<nav aria-label="Rechtliches"><a href="/">Startseite</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="/agb.html">AGB</a></nav>
+<div><a class="fuss-marke" href="../index.html" aria-label="GetMyRight, zur Startseite"><img src="../assets/brand/logo-negativ.svg" alt="GetMyRight" width="218" height="36"></a>
+<p>Strukturierte Vorbereitung im Glücksspielrecht.<br>&copy; 2026 GetMyRight · Robin Alexander Wolff</p></div>
+<nav aria-label="Rechtliches und Bereiche"><ul>
+<li><a href="index.html">Startseite</a></li><li><a href="../kanzlei/index.html">Für Kanzleien</a></li><li><a href="login.html">Login für Spieler</a></li>
+<li><a href="../impressum.html">Impressum</a></li><li><a href="../datenschutz.html">Datenschutz</a></li><li><a href="../agb.html">AGB &amp; Nutzungsbedingungen</a></li></ul></nav>
+<div class="fuss-hilfe"><p><strong>Hilfe zuerst:</strong> Kostenfreie, anonyme Suchthilfe unter <a href="tel:+498001372700">0800 137 27 00</a> · <a href="hilfe.html">Alle Hilfsangebote</a></p></div>
 </div>
 </footer>
+<script src="../js/site.js"></script>
 <script src="/js/gmr-config.js"></script>
-<script src="/js/gmr-redactor.js"></script>
-<script src="/js/gmr-app.js"></script>
+<script src="/js/gmr-spieler-warteliste.js"></script>
 </body>
 </html>
