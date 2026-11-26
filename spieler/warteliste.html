@@ -42,7 +42,7 @@
 <div>
 <label class="wahl"><input type="checkbox" name="OPT_IN" value="1" required> <span><strong>Warteliste (Pflicht):</strong> Ich möchte auf die Warteliste. GetMyRight darf dafür meinen Namen und meine E-Mail-Adresse verarbeiten und über Brevo eine Double-Opt-in-Bestätigungsmail senden (Art. 6 Abs. 1 lit. b und a DSGVO). <span class="pflicht">*</span></span></label>
 <label class="wahl"><input type="checkbox" name="optin_updates" value="1"> <span><strong>Updates (freiwillig):</strong> Ich möchte zusätzlich Start- und Produkt-Updates per E-Mail erhalten (Art. 6 Abs. 1 lit. a DSGVO, jederzeit abbestellbar). <span class="opt">optional</span></span></label>
-<label class="wahl"><input type="checkbox" name="optin_art9" value="1" data-art9-toggle> <span><strong>Sensible Angaben (freiwillig):</strong> Ich willige ausdrücklich nach Art. 9 Abs. 2 lit. a DSGVO ein, dass meine freiwilligen Angaben zu einer OASIS-Sperre, zu meinem Spielverhalten, zur Verlusthöhe und zu einer Insolvenz in diesem Browser verschlüsselt gespeichert und für eine Vorab-Einstufung meines Anliegens genutzt werden. Eine Weitergabe an Partnerkanzleien erfolgt erst nach einer gesonderten, späteren Einwilligung. <span class="opt">optional</span></span></label>
+<label class="wahl"><input type="checkbox" name="optin_art9" value="1" data-art9-toggle> <span><strong>Sensible Angaben (freiwillig):</strong> Ich möchte die freiwilligen Fragen zu OASIS-Sperre, Spielverhalten, Verlusthöhe und Insolvenz (besondere Kategorien nach Art. 9 DSGVO) beantworten. Diese Antworten werden derzeit weder gespeichert noch übertragen; sie dienen nur Ihrer eigenen Vorbereitung und gehen beim Verlassen der Seite verloren. Eine Weitergabe an Partnerkanzleien erfolgt nur nach einer gesonderten, späteren Einwilligung. <span class="opt">optional</span></span></label>
 </div>
 <p class="small">Jede Einwilligung ist einzeln widerrufbar, formlos per E-Mail an info@getmyright.de oder über den Abmeldelink. Details: <a href="../datenschutz.html">Datenschutzerklärung</a>, <a href="../agb.html">AGB</a>.</p>
 </fieldset>
@@ -122,7 +122,7 @@
 
 
 
-<p class="hinweis small">Beim Absenden sendet Ihr Browser nur Name, E-Mail und die Warteliste-Einwilligung per HTTPS direkt an Brevo (3304f71f.sibforms.com; dabei werden technisch auch IP-Adresse und Browserkennung übertragen). Optionale Angaben bleiben AES-GCM-verschlüsselt in diesem Browser und werden nicht automatisch übertragen – auch nicht per E-Mail.</p>
+<p class="hinweis small">Beim Absenden sendet Ihr Browser nur Name, E-Mail und die Warteliste-Einwilligung per HTTPS an unseren Missbrauchsschutz-Dienst bei Cloudflare (gmr-waitlist.getmyright.workers.dev), der sie ohne Speicherung an Brevo weiterleitet (dabei werden technisch auch IP-Adresse und Browserkennung übertragen). Optionale Angaben werden weder gespeichert noch übertragen – auch nicht per E-Mail.</p>
 <div data-gmr-turnstile></div>
 <div><button type="submit" class="btn btn--voll">Kostenlos auf die Warteliste</button></div>
 

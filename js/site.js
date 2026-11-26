@@ -122,7 +122,19 @@
   var hero = d.querySelector('form[data-hero]');
   if (hero) {
     live(hero);
-    hero.addEventListener('submit', function (e) { if (!pruefeForm(hero)) e.preventDefault(); });
+    hero.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!pruefeForm(hero)) return;
+      /* Vorbelegung über sessionStorage statt URL-Parameter: nichts landet in Adresszeile, Verlauf oder Server-Logs */
+      try {
+        sessionStorage.setItem('gmr_wl_prefill', JSON.stringify({
+          FIRSTNAME: (d.getElementById('h-name').value || '').trim().slice(0, 200),
+          EMAIL: (d.getElementById('h-email').value || '').trim().slice(0, 254),
+          OPT_IN: d.getElementById('h-optin').checked ? '1' : ''
+        }));
+      } catch (err) { /* ohne sessionStorage: Formular auf der Folgeseite einfach leer */ }
+      window.location.href = hero.getAttribute('action') || 'warteliste.html';
+    });
   }
   /* Echte Warteliste (getmyright.de): Validierung hier, Versand in /js/gmr-spieler-warteliste.js */
   var echt = d.querySelector('form[data-gmr-spieler-warteliste]');
@@ -165,14 +177,17 @@
     });
   });
 
-  /* Warteliste: Vorbelegung aus GET */
+  /* Warteliste: Vorbelegung aus sessionStorage (einmalig, wird sofort gelöscht) */
   var wl = d.querySelector('form[data-warteliste]');
-  if (wl && window.URLSearchParams) {
-    var p = new URLSearchParams(window.location.search);
-    var set = function (n, v) { var el = wl.querySelector('[name="' + n + '"]'); if (el && v) el.value = v; };
-    set('FIRSTNAME', (p.get('FIRSTNAME') || '').slice(0, 200));
-    set('EMAIL', (p.get('EMAIL') || '').slice(0, 254));
-    if (p.get('OPT_IN') === '1') { var c = wl.querySelector('[name="OPT_IN"]'); if (c) c.checked = true; }
+  if (wl) {
+    var p = null;
+    try { p = JSON.parse(sessionStorage.getItem('gmr_wl_prefill') || 'null'); sessionStorage.removeItem('gmr_wl_prefill'); } catch (err) { p = null; }
+    if (p && typeof p === 'object') {
+      var set = function (n, v) { var el = wl.querySelector('[name="' + n + '"]'); if (el && typeof v === 'string' && v) el.value = v; };
+      set('FIRSTNAME', (p.FIRSTNAME || '').slice(0, 200));
+      set('EMAIL', (p.EMAIL || '').slice(0, 254));
+      if (p.OPT_IN === '1') { var c = wl.querySelector('[name="OPT_IN"]'); if (c) c.checked = true; }
+    }
   }
 
   /* Art.-9-Schranke */
