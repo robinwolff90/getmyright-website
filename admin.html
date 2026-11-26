@@ -14,81 +14,81 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://getmyright.de/admin.html">
 <meta property="og:image" content="https://getmyright.de/icon-512.png">
-<meta name="theme-color" content="#152A32">
+<meta name="theme-color" content="#1F3A8A">
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/icon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/css/gmr.css">
+<link rel="icon" href="/assets/brand/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/site-seiten.css">
 </head>
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>
-<header class="site-header">
-<div class="wrap">
-<a class="brand" href="/" aria-label="GetMyRight"><img src="/logo-wortmarke.svg" alt="" width="55" height="48"><span class="wordmark">GetMyRight</span></a>
-<button class="nav-toggle" type="button" data-gmr-nav-toggle aria-controls="hauptnav" aria-expanded="false">Menü</button>
-<nav class="nav" id="hauptnav" aria-label="Hauptnavigation"><a href="/#ueber-uns">Über uns</a><a href="/#ablauf">Ablauf</a><a href="/#grenzen">Was wir nicht tun</a><a href="/spieler/">Für Spieler</a><a href="/kanzlei/">Für Kanzleien</a></nav>
-</div>
-</header>
+<div class="hilfeleiste" role="region" aria-label="Hilfe bei Spielproblemen"><div class="wrap"><span>Kostenfreie, anonyme Suchthilfe: <a href="tel:+498001372700">0800 137 27 00</a></span><a href="/spieler/hilfe.html">Alle Hilfsangebote</a></div></div>
+<header class="kopf"><div class="wrap"><a class="marke" href="/" aria-label="GetMyRight, zur Startseite"><img src="/assets/brand/logo.svg" alt="GetMyRight" width="218" height="36"></a><button class="menue" type="button" data-menue aria-controls="hauptnav" aria-expanded="false">Menü</button><nav class="nav" id="hauptnav" aria-label="Hauptnavigation"><a href="/#ueber-uns">Über uns</a><a href="/#ablauf">Ablauf</a><a href="/#grenzen">Was wir nicht tun</a><a href="/spieler/" class="nav-cta">Für Spieler</a><a href="/kanzlei/" class="nav-kanzlei">Für Kanzleien</a></nav></div></header>
 <main id="inhalt">
-<div class="preview-bar"><strong>Vorschau – keine echten Daten.</strong> Betreiberzugang · nicht öffentlich</div>
-<section class="section cream" style="border-bottom:none">
-<div class="wrap auth-shell">
-<div class="card">
-<h1 style="font-size:2rem">Betreiber-Login</h1>
-<p class="muted">Interner Zugang für das GetMyRight-Team.</p>
-<form class="form" method="post" data-gmr-login="betreiber" novalidate>
-<fieldset class="js-only" data-gmr-js-only disabled>
-<div class="field"><label for="b-email">E-Mail</label><input id="b-email" name="email" type="email" autocomplete="username" required></div>
-<div class="field"><label for="b-pw">Passwort</label><input id="b-pw" name="password" type="password" autocomplete="current-password" required></div>
-<label class="choice"><input type="checkbox" name="force2fa" checked> <span>Mit Einmalcode bestätigen (Zwei-Faktor)</span></label>
+<section class="bahn bahn--dicht" aria-labelledby="h-seite">
+<div class="wrap"><p class="vorschau-hinweis"><b>Vorschau – keine echten Daten.</b><span>Betreiberzugang · nicht öffentlich</span></p><div class="auth">
+<div class="bogen card">
+<h1 id="h-seite">Betreiber-Login</h1>
+<p class="leise">Interner Zugang für das GetMyRight-Team.</p>
+<form class="formular" method="post" data-gmr-login="betreiber" novalidate>
+<fieldset class="ohne formular js-only" data-gmr-js-only disabled>
+<div class="feld"><label for="b-email">E-Mail</label><input id="b-email" name="email" type="email" autocomplete="username" required></div>
+<div class="feld"><label for="b-pw">Passwort</label><input id="b-pw" name="password" type="password" autocomplete="current-password" required></div>
+<label class="wahl"><input type="checkbox" name="force2fa" checked> <span>Mit Einmalcode bestätigen (Zwei-Faktor)</span></label>
 <div><button type="submit" class="btn">Anmelden</button></div>
 </fieldset>
 </form>
 <noscript><p class="note err">Für dieses Formular und die lokale Verschlüsselung muss JavaScript aktiviert sein.</p></noscript>
 <div class="status" data-gmr-status aria-live="polite" style="margin-top:14px"></div>
-<div data-gmr-2fa-step hidden style="margin-top:18px;border-top:1px solid #DDD6CA;padding-top:18px">
+<div data-gmr-2fa-step hidden style="margin-top:18px;border-top:1px solid var(--linie);padding-top:18px">
 <h3>Zwei-Faktor-Bestätigung</h3><p class="small" data-gmr-2fa-hint></p>
-<div class="field"><label for="b-code">6-stelliger Code</label><input id="b-code" class="code-input" inputmode="numeric" autocomplete="one-time-code" maxlength="6" data-gmr-2fa-input></div>
-<div class="btn-row"><button type="button" class="btn" data-gmr-2fa-verify>Bestätigen</button></div><div class="status" data-gmr-2fa-status></div>
+<div class="feld"><label for="b-code">6-stelliger Code</label><input id="b-code" class="code-feld" inputmode="numeric" autocomplete="one-time-code" maxlength="6" data-gmr-2fa-input></div>
+<div class="knoepfe"><button type="button" class="btn" data-gmr-2fa-verify>Bestätigen</button></div><div class="status" data-gmr-2fa-status></div>
 </div>
 <details style="margin-top:22px"><summary>Vorschau-Konto auf diesem Gerät anlegen</summary>
-<form class="form" method="post" data-gmr-register="betreiber" novalidate>
-<fieldset class="js-only" data-gmr-js-only disabled>
-<div class="field"><label for="br-name">Name</label><input id="br-name" name="name" type="text" required></div>
-<div class="field"><label for="br-email">E-Mail</label><input id="br-email" name="email" type="email" required></div>
-<div class="row-2"><div class="field"><label for="br-pw">Passwort</label><input id="br-pw" name="password" type="password" autocomplete="new-password" required></div><div class="field"><label for="br-pw2">Wiederholen</label><input id="br-pw2" name="password2" type="password" autocomplete="new-password" required></div></div>
+<form class="formular" method="post" data-gmr-register="betreiber" novalidate>
+<fieldset class="ohne formular js-only" data-gmr-js-only disabled>
+<div class="feld"><label for="br-name">Name</label><input id="br-name" name="name" type="text" required></div>
+<div class="feld"><label for="br-email">E-Mail</label><input id="br-email" name="email" type="email" required></div>
+<div class="zeile2"><div class="feld"><label for="br-pw">Passwort</label><input id="br-pw" name="password" type="password" autocomplete="new-password" required></div><div class="feld"><label for="br-pw2">Wiederholen</label><input id="br-pw2" name="password2" type="password" autocomplete="new-password" required></div></div>
 <fieldset><legend>Zwei-Faktor-Authentifizierung <span class="opt">(optional)</span></legend>
 <p class="small">Schützt Ihren Zugang zusätzlich mit einem Einmalcode.</p>
-<div class="choices"><label class="choice"><input type="radio" name="twofa" value="none" checked> Nicht jetzt</label><label class="choice"><input type="radio" name="twofa" value="app"> Authenticator-App</label><label class="choice"><input type="radio" name="twofa" value="sms"> SMS-Code</label></div>
-<div class="field" data-gmr-phone-wrap hidden style="margin-top:12px"><label for="betreiber-r-phone">Mobilnummer für SMS-Codes</label><input id="betreiber-r-phone" name="phone" type="tel" autocomplete="tel" placeholder="+49 …"></div>
+<div class="wahlen"><label class="wahl"><input type="radio" name="twofa" value="none" checked> Nicht jetzt</label><label class="wahl"><input type="radio" name="twofa" value="app"> Authenticator-App</label><label class="wahl"><input type="radio" name="twofa" value="sms"> SMS-Code</label></div>
+<div class="feld" data-gmr-phone-wrap hidden style="margin-top:12px"><label for="betreiber-r-phone">Mobilnummer für SMS-Codes</label><input id="betreiber-r-phone" name="phone" type="tel" autocomplete="tel" placeholder="+49 …"></div>
 </fieldset>
 <div><button type="submit" class="btn">Konto anlegen</button></div>
 </fieldset>
 </form>
 <noscript><p class="note err">Für dieses Formular und die lokale Verschlüsselung muss JavaScript aktiviert sein.</p></noscript>
 <div class="status" data-gmr-status style="margin-top:12px"></div>
-<div data-gmr-2fa-setup id="betreiber-reg-2fa" hidden class="card cream" style="margin-top:18px"><div data-gmr-2fa-box></div></div>
+<div data-gmr-2fa-setup id="betreiber-reg-2fa" hidden class="karte card cream" style="margin-top:18px"><div data-gmr-2fa-box></div></div>
 </details>
 </div>
-<div id="uebersicht"><span class="eyebrow">Betrieb</span><h2>Übersicht</h2>
-<div class="card"><p><span data-gmr-session="betreiber"></span></p>
+<div id="uebersicht"><p class="klein" style="margin:0 0 .35rem">Betrieb</p><h2>Übersicht</h2>
+<div class="karte card"><p><span data-gmr-session="betreiber"></span></p>
 <ul class="check"><li>Warteliste: Verwaltung in Brevo (Double-Opt-in)</li><li>Freiwillige Angaben: verschlüsselt im Browser der Spieler (E-Mail nur mit Referenz-ID)</li><li>Kanzlei-Vormerkungen: per E-Mail an info@getmyright.de</li><li>Server-Backend mit verschlüsselter Datenbank: in Vorbereitung</li></ul></div>
 <div class="note small"><strong>Vorschau-Zugang:</strong> Die Plattform befindet sich in Gründung. Konten werden derzeit nur auf diesem Gerät angelegt (Passwort als PBKDF2-Hash im Browser), nicht auf einem Server. Google-Login und SMS-Versand werden mit dem Backend freigeschaltet.</div>
 </div>
-</div>
-</section></main>
-<footer class="site-footer">
+</div></div>
+</section>
+</main>
+<footer class="fuss">
+<div class="rand" aria-hidden="true"></div>
 <div class="wrap">
-<div><div class="fbrand">GetMyRight</div><p class="small" style="color:#AEBBBF;margin:.3em 0 0">Strukturierte Vorbereitung im Glücksspielrecht – in Gründung.<br>&copy; 2026 GetMyRight · Robin Alexander Wolff (in Gründung)</p></div>
-<nav aria-label="Rechtliches"><a href="/spieler/">Für Spieler</a><a href="/kanzlei/">Für Kanzleien</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="/agb.html">AGB &amp; Nutzungsbedingungen</a></nav>
+<div><a class="fuss-marke" href="/" aria-label="GetMyRight, zur Startseite"><img src="/assets/brand/logo-negativ.svg" alt="GetMyRight" width="218" height="36"></a>
+<p>Strukturierte Vorbereitung im Glücksspielrecht – in Gründung.<br>&copy; 2026 GetMyRight · Robin Alexander Wolff (in Gründung)</p></div>
+<nav aria-label="Rechtliches"><ul><li><a href="/spieler/">Für Spieler</a></li><li><a href="/kanzlei/">Für Kanzleien</a></li><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB &amp; Nutzungsbedingungen</a></li></ul></nav>
+<div class="fuss-hilfe"><p><strong>Hilfe zuerst:</strong> Kostenfreie, anonyme Suchthilfe unter <a href="tel:+498001372700">0800 137 27 00</a> · <a href="/spieler/hilfe.html">Alle Hilfsangebote</a></p></div>
 </div>
 </footer>
 <script src="/js/gmr-config.js"></script>
 <script src="/js/gmr-redactor.js"></script>
 <script src="/js/gmr-app.js"></script>
+<script src="/js/site.js"></script>
 </body>
 </html>

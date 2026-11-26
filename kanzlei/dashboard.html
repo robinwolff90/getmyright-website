@@ -14,44 +14,39 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://getmyright.de/kanzlei/dashboard.html">
 <meta property="og:image" content="https://getmyright.de/icon-512.png">
-<meta name="theme-color" content="#152A32">
+<meta name="theme-color" content="#1F3A8A">
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/icon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/css/gmr.css">
+<link rel="icon" href="/assets/brand/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/site-seiten.css">
 </head>
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>
-<header class="site-header">
-<div class="wrap">
-<a class="brand" href="/kanzlei/" aria-label="GetMyRight – Anwaltsbereich"><img src="/logo-wortmarke.svg" alt="" width="55" height="48"><span class="wordmark">GetMyRight</span><span class="zone">Anwaltsbereich</span></a>
-<button class="nav-toggle" type="button" data-gmr-nav-toggle aria-controls="hauptnav" aria-expanded="false">Menü</button>
-<nav class="nav" id="hauptnav" aria-label="Hauptnavigation"><a href="/kanzlei/">Übersicht</a><a href="/kanzlei/registrierung.html" class="nav-cta">Registrieren</a><a href="/kanzlei/login.html">Login</a><a href="/kanzlei/dashboard.html">Dashboard</a></nav>
-</div>
-</header>
+<div class="hilfeleiste" role="region" aria-label="Hilfe bei Spielproblemen"><div class="wrap"><span>Kostenfreie, anonyme Suchthilfe: <a href="tel:+498001372700">0800 137 27 00</a></span><a href="/spieler/hilfe.html">Alle Hilfsangebote</a></div></div>
+<header class="kopf"><div class="wrap"><a class="marke" href="/kanzlei/" aria-label="GetMyRight – Anwaltsbereich"><img src="/assets/brand/logo.svg" alt="GetMyRight" width="218" height="36"></a><button class="menue" type="button" data-menue aria-controls="hauptnav" aria-expanded="false">Menü</button><nav class="nav" id="hauptnav" aria-label="Hauptnavigation"><a href="/kanzlei/">Übersicht</a><a href="/kanzlei/registrierung.html" class="nav-cta">Registrieren</a><a href="/kanzlei/login.html">Login</a><a href="/kanzlei/dashboard.html">Dashboard</a></nav></div></header>
 <main id="inhalt">
-<div class="preview-bar"><strong>Vorschau – keine echten Daten.</strong> Software-Vorschau · alle Datensätze sind Beispieldaten · <span data-gmr-session="kanzlei"></span></div>
-<section class="section">
-<div class="wrap">
-<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:end">
-<div><span class="eyebrow">Kanzlei-Dashboard</span><h1 style="font-size:2.2rem;margin:0">Pseudonymisierte Fälle</h1></div>
-<a class="btn ghost" href="/kanzlei/login.html" data-gmr-logout>Abmelden</a>
+<section class="bahn bahn--dicht" aria-labelledby="h-seite">
+<div class="wrap"><p class="vorschau-hinweis"><b>Vorschau – keine echten Daten.</b><span>Software-Vorschau · alle Datensätze sind Beispieldaten · <span data-gmr-session="kanzlei"></span></span></p><div class="bogen">
+<div class="app-kopf">
+<div><p class="klein" style="margin:0 0 .35rem">Kanzlei-Dashboard</p><h1 id="h-seite">Pseudonymisierte Fälle</h1></div>
+<a class="btn btn--sek" href="/kanzlei/login.html" data-gmr-logout>Abmelden</a>
 </div>
 <p class="lead" style="margin-top:14px">GetMyRight bündelt Anfragen von Spielerinnen und Spielern und stellt sie Partnerkanzleien vorab pseudonymisiert bereit (ohne Namen, Kontaktdaten oder Unterlagen). Bereits vor einer Fallübernahme sehen Sie das betroffene Casino beziehungsweise den Anbieter, die geschätzte Verlusthöhe sowie die Wohnregion des Spielers und entscheiden selbst, welche Fälle Sie übernehmen. Konditionen für Partnerkanzleien besprechen wir persönlich nach der Registrierung.</p>
-<div class="kpis" style="margin-top:24px">
-<div class="kpi"><span class="small">Beispieldatensätze</span><b>8</b></div>
-<div class="kpi"><span class="small">vollständig</span><b>5</b></div>
-<div class="kpi"><span class="small">kontaktieren</span><b>1</b></div>
-<div class="kpi"><span class="small">Daten fehlen</span><b>2</b></div>
-</div>
-<div class="toolbar">
-<div class="field"><label for="f-q">Suche</label><input id="f-q" type="text" data-gmr-filter-q placeholder="ID, Anbieter, Region, Spielart …"></div>
-<div class="field"><label for="f-s">Status</label><select id="f-s" data-gmr-filter-status><option value="">Alle</option><option>vollständig</option><option>kontaktieren</option><option>Daten fehlen</option></select></div>
-<div class="field"><label for="f-l">Lizenzsitz</label><select id="f-l" data-gmr-filter-lic><option value="">Alle</option><option>Malta (MGA)</option><option>Curaçao</option><option>Gibraltar</option><option>Isle of Man</option><option>unbekannt</option></select></div>
+<ul class="kpis">
+<li><span class="small">Beispieldatensätze</span><b>8</b></li>
+<li><span class="small">vollständig</span><b>5</b></li>
+<li><span class="small">kontaktieren</span><b>1</b></li>
+<li><span class="small">Daten fehlen</span><b>2</b></li>
+</ul>
+<div class="werkzeug">
+<div class="feld"><label for="f-q">Suche</label><input id="f-q" type="text" data-gmr-filter-q placeholder="ID, Anbieter, Region, Spielart …"></div>
+<div class="feld"><label for="f-s">Status</label><select id="f-s" data-gmr-filter-status><option value="">Alle</option><option>vollständig</option><option>kontaktieren</option><option>Daten fehlen</option></select></div>
+<div class="feld"><label for="f-l">Lizenzsitz</label><select id="f-l" data-gmr-filter-lic><option value="">Alle</option><option>Malta (MGA)</option><option>Curaçao</option><option>Gibraltar</option><option>Isle of Man</option><option>unbekannt</option></select></div>
 </div>
 <p class="small" data-gmr-oasis-note>Pseudonymisierte Datensätze: keine Namen, Kontaktdaten oder Unterlagen. Die Spalte „OASIS-Sperre“ wird nur befüllt, wenn der Spieler ausdrücklich nach Art. 9 Abs. 2 lit. a DSGVO in die Verarbeitung und in die Weitergabe an Partnerkanzleien eingewilligt hat; sonst steht dort „—“.</p>
 <p class="small"><span data-gmr-count>8</span> Datensätze angezeigt · Beispieldaten</p>
@@ -59,32 +54,36 @@
 <thead><tr><th>ID</th><th>Casino / Anbieter</th><th>Wohnregion</th><th>Spielart</th><th>Lizenzsitz</th><th>Zeitraum</th><th>Geschätzte Verlusthöhe (Spieler)</th><th>OASIS-Sperre</th><th>Rechtsschutz</th><th>Status</th><th>Reservierung</th></tr></thead>
 <tbody><tr data-id="GMR-1042" data-status="vollständig" data-lic="Malta (MGA)"><td><strong>GMR-1042</strong></td><td>Beispiel-Casino A</td><td>Nordrhein-Westfalen</td><td>Online-Casino</td><td>Malta (MGA)</td><td>2019–2022</td><td>25.000 – 50.000 €</td><td>Ja</td><td>Ja</td><td><span class="badge ok">vollständig</span></td><td data-claim-cell></td></tr><tr data-id="GMR-1043" data-status="vollständig" data-lic="Curaçao"><td><strong>GMR-1043</strong></td><td>Beispiel-Sportwetten B</td><td>Bayern</td><td>Sportwetten</td><td>Curaçao</td><td>2020–2023</td><td>10.000 – 25.000 €</td><td>Nein</td><td>Nein</td><td><span class="badge ok">vollständig</span></td><td data-claim-cell></td></tr><tr data-id="GMR-1047" data-status="vollständig" data-lic="Malta (MGA)"><td><strong>GMR-1047</strong></td><td>Beispiel-Slots C</td><td>Hessen</td><td>Slots</td><td>Malta (MGA)</td><td>2018–2021</td><td>50.000 – 100.000 €</td><td>Ja</td><td>Ja</td><td><span class="badge ok">vollständig</span></td><td data-claim-cell></td></tr><tr data-id="GMR-1051" data-status="kontaktieren" data-lic="unbekannt"><td><strong>GMR-1051</strong></td><td>Anbieter unbekannt</td><td>Niedersachsen</td><td>Online-Casino</td><td>unbekannt</td><td>—</td><td>—</td><td>—</td><td>—</td><td><span class="badge warn">kontaktieren</span></td><td data-claim-cell></td></tr><tr data-id="GMR-1055" data-status="Daten fehlen" data-lic="Gibraltar"><td><strong>GMR-1055</strong></td><td>Beispiel-Poker D</td><td>Baden-Württemberg</td><td>Poker</td><td>Gibraltar</td><td>2017–2020</td><td>5.000 – 10.000 €</td><td>Weiß nicht</td><td>Nein</td><td><span class="badge err">Daten fehlen</span></td><td data-claim-cell></td></tr><tr data-id="GMR-1058" data-status="vollständig" data-lic="Curaçao"><td><strong>GMR-1058</strong></td><td>Beispiel-Casino E</td><td>Berlin</td><td>Online-Casino</td><td>Curaçao</td><td>2021–2023</td><td>über 100.000 €</td><td>Ja</td><td>Ja</td><td><span class="badge ok">vollständig</span></td><td data-claim-cell></td></tr><tr data-id="GMR-1060" data-status="Daten fehlen" data-lic="Malta (MGA)"><td><strong>GMR-1060</strong></td><td>Beispiel-Slots F</td><td>Sachsen</td><td>Slots</td><td>Malta (MGA)</td><td>2019–2020</td><td>1.000 – 5.000 €</td><td>—</td><td>—</td><td><span class="badge err">Daten fehlen</span></td><td data-claim-cell></td></tr><tr data-id="GMR-1063" data-status="vollständig" data-lic="Isle of Man"><td><strong>GMR-1063</strong></td><td>Beispiel-Sportwetten G</td><td>Hamburg</td><td>Sportwetten</td><td>Isle of Man</td><td>2016–2019</td><td>10.000 – 25.000 €</td><td>Nein</td><td>Ja</td><td><span class="badge ok">vollständig</span></td><td data-claim-cell></td></tr></tbody></table></div>
 <p class="small" style="margin-top:12px">Die Reservierung ist eine Software-Funktion zur exklusiven Bearbeitungsübersicht. Sie löst keine Vergütung pro Datensatz oder Mandat aus. Die rechtliche Prüfung und Kontaktaufnahme erfolgen ausschließlich durch Ihre Kanzlei.</p>
-</div>
+</div></div>
 </section>
-<section class="section cream">
+<section class="abschnitt abschnitt--eng">
 <div class="wrap grid-2">
-<div class="card"><h3>Ihre Reservierungen</h3><div data-gmr-claims></div></div>
-<div class="card" data-gmr-2fa-settings="kanzlei">
+<div class="karte card"><h3>Ihre Reservierungen</h3><div data-gmr-claims></div></div>
+<div class="karte card" data-gmr-2fa-settings="kanzlei">
 <h3>Sicherheit · Zwei-Faktor-Authentifizierung</h3>
 <p class="small">Status: <span data-gmr-2fa-state><span class="badge warn">Anmeldung erforderlich</span></span></p>
 <p class="small" data-gmr-2fa-login-hint>Die Zwei-Faktor-Einstellungen sind nur nach Anmeldung mit Ihrem eigenen Konto änderbar. In der Demo-Ansicht ohne Anmeldung wird nichts gespeichert.</p>
-<div class="row-2" style="align-items:end">
-<div class="field"><label for="kanzlei-s-method">Verfahren</label><select id="kanzlei-s-method" data-gmr-2fa-method disabled><option value="app">Authenticator-App (empfohlen)</option><option value="sms">SMS-Code</option></select></div>
-<label class="choice" style="margin-bottom:12px"><input type="checkbox" data-gmr-2fa-toggle disabled> <span>2FA aktivieren</span></label>
+<div class="zeile2" style="align-items:end">
+<div class="feld"><label for="kanzlei-s-method">Verfahren</label><select id="kanzlei-s-method" data-gmr-2fa-method disabled><option value="app">Authenticator-App (empfohlen)</option><option value="sms">SMS-Code</option></select></div>
+<label class="wahl" style="margin-bottom:12px"><input type="checkbox" data-gmr-2fa-toggle disabled> <span>2FA aktivieren</span></label>
 </div>
-<div data-gmr-2fa-setup id="kanzlei-settings-2fa" hidden class="card cream" style="margin-top:18px"><div data-gmr-2fa-box></div></div>
+<div data-gmr-2fa-setup id="kanzlei-settings-2fa" hidden class="karte card cream" style="margin-top:18px"><div data-gmr-2fa-box></div></div>
 <p class="small" style="margin-top:12px">Vorschau: Authenticator-Codes werden im Browser nach RFC 6238 geprüft; ein echter SMS-Versand und die serverseitige Speicherung folgen mit dem Backend.</p>
 </div>
 </div>
 </section></main>
-<footer class="site-footer">
+<footer class="fuss">
+<div class="rand" aria-hidden="true"></div>
 <div class="wrap">
-<div><div class="fbrand">GetMyRight</div><p class="small" style="color:#AEBBBF;margin:.3em 0 0">Anwaltsbereich · Software- und Datenbanklizenz für Kanzleien.<br>&copy; 2026 GetMyRight · Robin Alexander Wolff (in Gründung)</p></div>
-<nav aria-label="Rechtliches"><a href="/">Startseite</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="/agb.html">AGB</a></nav>
+<div><a class="fuss-marke" href="/" aria-label="GetMyRight, zur Startseite"><img src="/assets/brand/logo-negativ.svg" alt="GetMyRight" width="218" height="36"></a>
+<p>Anwaltsbereich · Software- und Datenbanklizenz für Kanzleien.<br>&copy; 2026 GetMyRight · Robin Alexander Wolff (in Gründung)</p></div>
+<nav aria-label="Rechtliches"><ul><li><a href="/">Startseite</a></li><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li></ul></nav>
+<div class="fuss-hilfe"><p><strong>Hilfe zuerst:</strong> Kostenfreie, anonyme Suchthilfe unter <a href="tel:+498001372700">0800 137 27 00</a> · <a href="/spieler/hilfe.html">Alle Hilfsangebote</a></p></div>
 </div>
 </footer>
 <script src="/js/gmr-config.js"></script>
 <script src="/js/gmr-redactor.js"></script>
 <script src="/js/gmr-app.js"></script>
+<script src="/js/site.js"></script>
 </body>
 </html>
