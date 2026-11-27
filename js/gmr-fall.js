@@ -47,6 +47,18 @@
     for (var y = jahr; y >= 2000; y--) sel.insertAdjacentHTML('beforeend', '<option value="' + y + '">' + y + '</option>');
   });
 
+  /* Vorbelegung aus dem Selbstcheck (/spieler/selbstcheck.html), einmalig */
+  try {
+    var vb = JSON.parse(sessionStorage.getItem('gmr_fall_prefill') || 'null');
+    sessionStorage.removeItem('gmr_fall_prefill');
+    if (vb) {
+      if (vb.anbieter) $('#f-anbieter').value = String(vb.anbieter).slice(0, 80);
+      if (vb.von) $('#f-von').value = String(vb.von);
+      if (vb.bis) $('#f-bis').value = String(vb.bis);
+      if (vb.verlust) $('#f-verlust').value = String(vb.verlust);
+    }
+  } catch (e) { /* ohne Vorbelegung weiter */ }
+
   if (!A.aktiv) { $('[data-fall-inaktiv]').hidden = false; $$('button', $('.bogen--form')).forEach(function (b) { b.disabled = true; }); return; }
 
   function antworten() {

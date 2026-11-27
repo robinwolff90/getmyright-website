@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-src 'none'; worker-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<script src="/js/gmr-frame.js"></script>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://getmyright.de/spieler/selbstcheck.html">
+<title>Selbstcheck: Kann ich mein Geld zurückholen? · GetMyRight</title>
+<meta name="description" content="Vier kurze Fragen: Lohnt sich eine Prüfung Ihrer Casino-Verluste? Ohne Anmeldung, Antworten bleiben auf Ihrem Gerät.">
+<meta property="og:title" content="Selbstcheck · GetMyRight">
+<meta property="og:description" content="Vier kurze Fragen: Lohnt sich eine Prüfung Ihrer Casino-Verluste? Ohne Anmeldung, Antworten bleiben auf Ihrem Gerät.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1F3A8A">
+<link rel="icon" href="../assets/brand/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+<link rel="stylesheet" href="../css/site-belege.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+<div class="hilfeleiste" role="region" aria-label="Hilfe bei Spielproblemen"><div class="wrap"><span>Kostenfreie, anonyme Suchthilfe: <a href="tel:+498001372700">0800 137 27 00</a></span><a href="../spieler/hilfe.html">Alle Hilfsangebote</a></div></div>
+<header class="kopf"><div class="wrap"><a class="marke" href="../spieler/index.html" aria-label="GetMyRight, zur Startseite"><img src="../assets/brand/logo.svg" alt="GetMyRight" width="218" height="36"></a><button class="menue" type="button" data-menue aria-controls="hauptnav" aria-expanded="false">Menü</button><nav class="nav" id="hauptnav" aria-label="Hauptnavigation"><a href="../spieler/index.html">Start</a><a href="../spieler/unterlagen.html" aria-current="page">Unterlagen</a><a href="../spieler/hilfe.html">Hilfsangebote</a><a href="../spieler/index.html#eintragen" class="nav-cta">Zur Warteliste</a><a href="../kanzlei/index.html" class="nav-kanzlei">Für Kanzleien</a></nav></div></header>
+<main id="inhalt">
+<section class="bahn bahn--hell lesekopf lesekopf--z kopf-band" aria-labelledby="h-seite"><div class="wrap"><div class="bogen brief"><p class="absender-zeile"><img src="../assets/brand/logo-mark.svg" alt="" width="22" height="22">GetMyRight</p><h1 id="h-seite">Selbstcheck: Kann ich mein Geld zurückholen?</h1><p class="lead">Vier kurze Fragen, etwa eine Minute. Ihre Antworten bleiben auf diesem Gerät.</p></div></div></section>
+<section class="abschnitt abschnitt--eng" aria-labelledby="h-hilfe-aufhoeren"><div class="wrap"><aside class="hinweis hilfe-box"><h2 id="h-hilfe-aufhoeren">Brauchen Sie Hilfe beim Aufhören?</h2><p>Kostenlose und anonyme Telefonberatung: <a href="tel:+498001372700"><strong>0800 1 37 27 00</strong></a>. Online finden Sie Unterstützung bei <a href="https://www.check-dein-spiel.de/" rel="noopener noreferrer" target="_blank">check-dein-spiel.de</a>, einem Angebot des Bundesinstituts für Öffentliche Gesundheit (BIÖG).</p></aside></div></section>
+<section class="bahn bahn--dicht" aria-label="Selbstcheck"><div class="wrap"><div class="bogen bogen--form">
+<div class="bestaetigung bestaetigung--fehler" data-sc-fehler role="alert" hidden></div>
+<div class="formular" data-sc-fragen>
+<fieldset class="sc-frage"><legend>1 · Hatte der Anbieter eine deutsche Erlaubnis?</legend>
+<label class="wahl"><input type="radio" name="lizenz" value="nein"> <span>Nein, keine deutsche Erlaubnis (zum Beispiel nur eine Lizenz aus Malta oder Curaçao)</span></label>
+<label class="wahl"><input type="radio" name="lizenz" value="ja"> <span>Ja, mit deutscher Erlaubnis</span></label>
+<label class="wahl"><input type="radio" name="lizenz" value="unbekannt"> <span>Weiß ich nicht</span></label>
+<div class="feld"><label for="sc-anbieter">Name des Anbieters <span class="opt">(optional)</span></label><input id="sc-anbieter" type="text" maxlength="80" autocomplete="off"></div>
+</fieldset>
+<fieldset class="sc-frage"><legend>2 · Wann haben Sie dort ungefähr gespielt?</legend>
+<div class="zeile2"><div class="feld"><label for="sc-von">ab (Jahr)</label><select id="sc-von" data-jahre></select></div><div class="feld"><label for="sc-bis">bis (Jahr)</label><select id="sc-bis" data-jahre></select></div></div>
+</fieldset>
+<fieldset class="sc-frage"><legend>3 · Wie viel haben Sie dort ungefähr verloren?</legend>
+<label class="wahl"><input type="radio" name="verlust" value="unter-1000"> <span>unter 1.000 €</span></label>
+<label class="wahl"><input type="radio" name="verlust" value="1000-5000"> <span>1.000 – 5.000 €</span></label>
+<label class="wahl"><input type="radio" name="verlust" value="5000-10000"> <span>5.000 – 10.000 €</span></label>
+<label class="wahl"><input type="radio" name="verlust" value="10000-25000"> <span>10.000 – 25.000 €</span></label>
+<label class="wahl"><input type="radio" name="verlust" value="25000-50000"> <span>25.000 – 50.000 €</span></label>
+<label class="wahl"><input type="radio" name="verlust" value="50000-100000"> <span>50.000 – 100.000 €</span></label>
+<label class="wahl"><input type="radio" name="verlust" value="ueber-100000"> <span>über 100.000 €</span></label>
+<label class="wahl"><input type="radio" name="verlust" value="unbekannt"> <span>Weiß ich nicht genau</span></label>
+</fieldset>
+<fieldset class="sc-frage"><legend>4 · Sind oder waren Sie im Sperrsystem OASIS gesperrt?</legend>
+<label class="wahl"><input type="radio" name="oasis" value="ja"> <span>Ja</span></label>
+<label class="wahl"><input type="radio" name="oasis" value="nein"> <span>Nein</span></label>
+<label class="wahl"><input type="radio" name="oasis" value="unbekannt"> <span>Weiß ich nicht</span></label>
+</fieldset>
+<div class="knoepfe"><button type="button" class="btn" data-sc-auswerten>Ergebnis anzeigen</button></div>
+</div>
+<div data-sc-ergebnis hidden tabindex="-1">
+<h2 data-sc-titel></h2>
+<ul class="liste" data-sc-punkte></ul>
+<p class="hinweis small">Das ist keine Rechtsberatung und keine Zusage. Ob und in welcher Höhe eine Rückforderung möglich ist, prüft eine Partnerkanzlei anhand Ihrer Unterlagen.</p>
+<div class="knoepfe"><a class="btn" href="fall.html" data-sc-weiter>Weiter zu meinem Fall</a><button type="button" class="btn btn--sek" data-sc-aendern>Antworten ändern</button></div>
+<p class="small">Ihre Antworten übernehmen wir in die ersten Fragen Ihres Falls. Übertragen wird erst, wenn Sie den Fall anlegen.</p>
+</div>
+<noscript><p class="note err">Für den Selbstcheck muss JavaScript aktiviert sein.</p></noscript>
+</div></div></section>
+</main>
+
+
+<footer class="fuss">
+<div class="rand" aria-hidden="true"></div>
+<div class="wrap">
+<div><a class="fuss-marke" href="../index.html" aria-label="GetMyRight, zur Startseite"><img src="../assets/brand/logo-negativ.svg" alt="GetMyRight" width="218" height="36"></a>
+<p>Strukturierte Vorbereitung im Glücksspielrecht.<br>&copy; 2026 GetMyRight · Robin Alexander Wolff</p></div>
+<nav aria-label="Rechtliches und Bereiche"><ul>
+<li><a href="index.html">Startseite</a></li><li><a href="../kanzlei/index.html">Für Kanzleien</a></li><li><a href="login.html">Login für Spieler</a></li>
+<li><a href="../impressum.html">Impressum</a></li><li><a href="../datenschutz.html">Datenschutz</a></li><li><a href="../agb.html">AGB &amp; Nutzungsbedingungen</a></li></ul></nav>
+<div class="fuss-hilfe"><p><strong>Hilfe zuerst:</strong> Kostenfreie, anonyme Suchthilfe unter <a href="tel:+498001372700">0800 137 27 00</a> · <a href="hilfe.html">Alle Hilfsangebote</a></p></div>
+</div>
+</footer>
+<script src="../js/site.js"></script>
+<script src="../js/gmr-selbstcheck.js"></script>
+</body>
+</html>

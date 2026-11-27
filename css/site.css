@@ -591,3 +591,9 @@ a.extern::after{content:"";display:inline-block;width:.72em;height:.72em;margin-
 /* getmyright.de: Fehlerzustand der Warteliste-Rückmeldung */
 .bestaetigung--fehler{background:var(--err-bg);border-color:var(--err)}
 .bestaetigung--fehler::before{background:var(--err)}
+/* Hilfe-Box „Hilfe beim Aufhören“ (Spielerseiten) und Selbstcheck */
+.hilfe-box h2{font-size:1.15rem;margin:0 0 .35rem}
+.hilfe-box p{margin:0}
+.sc-frage{border:0;padding:0;margin:0 0 1.6rem}
+.sc-frage legend{font-weight:700;font-size:1.05rem;margin-bottom:.6rem;padding:0}
+.sc-frage .wahl{min-height:44px}
