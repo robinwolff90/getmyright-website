@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com https://static.cloudflareinsights.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://gmr-evidence.getmyright.workers.dev; media-src 'self'; connect-src 'self' https://gmr-evidence.getmyright.workers.dev https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; worker-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<script src="/js/gmr-frame.js"></script>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Fälle und Belege · Kanzlei · GetMyRight</title>
+<meta name="description" content="Anmeldung für Partnerkanzleien bei GetMyRight mit E-Mail und Passwort, optional mit Google und Zwei-Faktor-Authentifizierung.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://getmyright.de/kanzlei/faelle.html">
+<meta property="og:title" content="Kanzlei-Login – Anwaltsbereich · GetMyRight">
+<meta property="og:description" content="Anmeldung für Partnerkanzleien bei GetMyRight mit E-Mail und Passwort, optional mit Google und Zwei-Faktor-Authentifizierung.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://getmyright.de/kanzlei/login.html">
+<meta property="og:image" content="https://getmyright.de/icon-512.png">
+<meta name="theme-color" content="#1F3A8A">
+
+<link rel="icon" href="/assets/brand/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="../css/site-belege.css">
+<link rel="stylesheet" href="/css/site-seiten.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+<div class="hilfeleiste" role="region" aria-label="Hilfe bei Spielproblemen"><div class="wrap"><span>Kostenfreie, anonyme Suchthilfe: <a href="tel:+498001372700">0800 137 27 00</a></span><a href="/spieler/hilfe.html">Alle Hilfsangebote</a></div></div>
+<header class="kopf"><div class="wrap"><a class="marke" href="/kanzlei/" aria-label="GetMyRight – Anwaltsbereich"><img src="/assets/brand/logo.svg" alt="GetMyRight" width="218" height="36"></a><button class="menue" type="button" data-menue aria-controls="hauptnav" aria-expanded="false">Menü</button><nav class="nav" id="hauptnav" aria-label="Hauptnavigation"><a href="/kanzlei/">Übersicht</a><a href="/kanzlei/registrierung.html" class="nav-cta">Registrieren</a><a href="/kanzlei/login.html">Login</a><a href="/kanzlei/dashboard.html">Dashboard</a></nav></div></header>
+<main id="inhalt">
+<section class="bahn bahn--dicht" aria-labelledby="h-seite">
+<div class="wrap">
+<p class="vorschau-hinweis" data-kf-inaktiv hidden><b>Noch nicht freigeschaltet</b><span>Die Fall-Ansicht ist vorbereitet und wird erst nach Freigabe aktiviert.</span></p>
+<div class="bestaetigung bestaetigung--fehler" data-kf-fehler role="alert" hidden></div>
+
+<div class="auth" data-kf-login>
+<div class="bogen card">
+<h1 id="h-seite">Kanzlei-Login</h1>
+<p class="leise">Zugang für freigeschaltete Partnerkanzleien. Die Anmeldung erfolgt immer mit E-Mail-Code und Authenticator-App.</p>
+<div class="formular" data-kf-schritt="email">
+<div class="feld"><label for="kf-email">E-Mail der Kanzlei</label><input id="kf-email" type="email" autocomplete="username" inputmode="email"></div>
+<div data-turnstile></div>
+<div class="knoepfe"><button type="button" class="btn" data-kf-senden>Code schicken</button></div>
+</div>
+<div class="formular" data-kf-schritt="code" hidden>
+<p class="small">Wenn die Adresse freigeschaltet ist, kommt gleich eine E-Mail mit Code und Link.</p>
+<div class="feld"><label for="kf-code">6-stelliger Code aus der E-Mail</label><input id="kf-code" class="code-feld" inputmode="numeric" autocomplete="one-time-code" maxlength="6"></div>
+<div class="knoepfe"><button type="button" class="btn" data-kf-code>Weiter</button></div>
+</div>
+<div class="formular" data-kf-schritt="totp" hidden>
+<div data-kf-einrichten hidden>
+<h2>Authenticator-App einrichten</h2>
+<p class="small">Die Zwei-Faktor-Anmeldung ist für Kanzleien Pflicht. Scannen Sie den QR-Code mit einer Authenticator-App (z. B. Google Authenticator, Microsoft Authenticator, 1Password) oder geben Sie den Schlüssel von Hand ein.</p>
+<div class="qr-box" data-kf-qr></div>
+<p class="small">Schlüssel: <span class="geheim" data-kf-secret></span></p>
+</div>
+<div class="feld"><label for="kf-totp">6-stelliger Code aus der Authenticator-App</label><input id="kf-totp" class="code-feld" inputmode="numeric" autocomplete="one-time-code" maxlength="6"></div>
+<label class="wahl"><input type="checkbox" id="kf-merken"> <span>Dieses Gerät 30 Tage merken (nur auf eigenen, gesperrten Geräten)</span></label>
+<div class="knoepfe"><button type="button" class="btn" data-kf-totp>Anmelden</button></div>
+</div>
+</div>
+<div><p class="klein" style="margin:0 0 .35rem">Sicherheit</p><h2>So schützen wir die Belege</h2>
+<ul class="check"><li>Belege verschlüsselt gespeichert, Standort EU</li><li>Einsicht erst nach Übernahme des Falls, nur für Ihre Kanzlei</li><li>Vorschau und Download über Links, die nach 5 Minuten ablaufen</li><li>Jeder Abruf wird protokolliert</li></ul></div>
+</div>
+
+<div class="bogen" data-kf-app hidden>
+<div class="app-kopf"><div><p class="klein" style="margin:0 0 .35rem" data-kf-name>Kanzlei</p><h1>Fälle</h1></div><button type="button" class="btn btn--sek" data-kf-abmelden>Abmelden</button></div>
+<div data-kf-liste>
+<h2>Ihre Fälle</h2>
+<div class="table-wrap"><table class="fall-tabelle"><thead><tr><th>Fall</th><th>Anbieter</th><th>Zeitraum</th><th>Verlust (Schätzung)</th><th>Belege</th><th></th></tr></thead><tbody data-kf-meine></tbody></table></div>
+<h2>Offene Fälle</h2>
+<p class="small">Vor der Übernahme sehen Sie nur die fünf Antworten des Spielers – ohne Namen, E-Mail oder Belege. Die Übernahme ist exklusiv: danach sieht keine andere Kanzlei den Fall.</p>
+<div class="table-wrap"><table class="fall-tabelle"><thead><tr><th>Fall</th><th>Anbieter</th><th>Spielart</th><th>Zeitraum</th><th>Verlust (Schätzung)</th><th>Wohnort</th><th>Belege</th><th></th></tr></thead><tbody data-kf-offen></tbody></table></div>
+</div>
+<div data-kf-detail hidden></div>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="fuss">
+<div class="rand" aria-hidden="true"></div>
+<div class="wrap">
+<div><a class="fuss-marke" href="/" aria-label="GetMyRight, zur Startseite"><img src="/assets/brand/logo-negativ.svg" alt="GetMyRight" width="218" height="36"></a>
+<p>Anwaltsbereich · Software- und Datenbanklizenz für Kanzleien.<br>&copy; 2026 GetMyRight · Robin Alexander Wolff (in Gründung)</p></div>
+<nav aria-label="Rechtliches"><ul><li><a href="/">Startseite</a></li><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li></ul></nav>
+<div class="fuss-hilfe"><p><strong>Hilfe zuerst:</strong> Kostenfreie, anonyme Suchthilfe unter <a href="tel:+498001372700">0800 137 27 00</a> · <a href="/spieler/hilfe.html">Alle Hilfsangebote</a></p></div>
+</div>
+</footer>
+<script src="../js/site.js"></script>
+<script src="../js/gmr-config.js"></script>
+<script src="../js/vendor/qrcode.js"></script>
+<script src="../js/gmr-belege-api.js"></script>
+<script src="../js/gmr-kanzlei-faelle.js"></script>
+</body>
+</html>

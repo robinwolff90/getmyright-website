@@ -1,0 +1,46 @@
+# GetMyRight Beleg-Worker – NOCH NICHT DEPLOYT. Deploy, Bucket- und Datenbank-Anlage erst nach Robins Freigabe.
+name = "gmr-evidence"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+workers_dev = true
+
+[vars]
+ALLOWED_ORIGINS = "https://getmyright.de,https://www.getmyright.de"
+SITE_URL = "https://getmyright.de"
+MAIL_FROM = "info@getmyright.de"
+MAIL_MODE = "brevo"
+
+# Dateispeicher: R2 mit Zuständigkeit EU (Daten bleiben in der EU, nicht öffentlich, kein r2.dev-Link).
+# Anlage: npx wrangler r2 bucket create gmr-belege --jurisdiction eu
+[[r2_buckets]]
+binding = "FILES"
+bucket_name = "gmr-belege"
+jurisdiction = "eu"
+
+# Beleg-Datenbank: eigene D1, getrennt von gmr-kennzahlen. Anlage:
+#   npx wrangler d1 create gmr-belege --jurisdiction eu
+#   npx wrangler d1 execute gmr-belege --remote --file schema.sql
+[[d1_databases]]
+binding = "DB"
+database_name = "gmr-belege"
+database_id = "00000000-0000-0000-0000-000000000000" # nach Anlage eintragen
+
+[[ratelimits]]
+name = "RL_AUTH"
+namespace_id = "1201"
+  [ratelimits.simple]
+  limit = 10
+  period = 60
+
+[[ratelimits]]
+name = "RL_API"
+namespace_id = "1202"
+  [ratelimits.simple]
+  limit = 120
+  period = 60
+
+# Täglich 03:17 UTC: unbestätigte Entwürfe (älter als 7 Tage) samt Dateien löschen, abgelaufene Sitzungen/Codes entfernen
+[triggers]
+crons = ["17 3 * * *"]
+
+# Secrets (nie ins Repo): MASTER_KEY, HMAC_KEY, TURNSTILE_SECRET, BREVO_API_KEY

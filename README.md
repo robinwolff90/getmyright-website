@@ -16,7 +16,7 @@ Alte Adressen (`spieler.html`, `kanzlei.html`, `warteliste.html` …) leiten auf
 
 ## Konfiguration
 
-`js/gmr-config.js`: `googleClientId`, `authEndpoint`, `otpEndpoint`, `uploadEndpoint`, `maxUploadMb`, Brevo-Formular.
+`js/gmr-config.js`: `googleClientId`, `authEndpoint`, `otpEndpoint`, `uploadEndpoint`, `evidenceEndpoint` (Beleg-Upload Phase 1, siehe `workers/evidence/README.md`), `maxUploadMb`, Brevo-Formular.
 Bei neuen Endpunkten die Content-Security-Policy (`connect-src`) in den HTML-Köpfen ergänzen.
 
 ## Technik

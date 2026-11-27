@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com https://static.cloudflareinsights.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; media-src 'self'; connect-src 'self' https://gmr-evidence.getmyright.workers.dev https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; worker-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<script src="/js/gmr-frame.js"></script>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://getmyright.de/spieler/fall.html">
+<title>Fall anlegen und Belege hochladen · GetMyRight</title>
+<meta name="description" content="In fünf Fragen den Fall anlegen und Belege sicher vom Handy hochladen.">
+<meta property="og:title" content="Fall anlegen · GetMyRight">
+<meta property="og:description" content="In fünf Fragen den Fall anlegen und Belege sicher vom Handy hochladen.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1F3A8A">
+<link rel="icon" href="../assets/brand/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+<link rel="stylesheet" href="../css/site-belege.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+<div class="hilfeleiste" role="region" aria-label="Hilfe bei Spielproblemen"><div class="wrap"><span>Kostenfreie, anonyme Suchthilfe: <a href="tel:+498001372700">0800 137 27 00</a></span><a href="../spieler/hilfe.html">Alle Hilfsangebote</a></div></div>
+<header class="kopf"><div class="wrap"><a class="marke" href="../spieler/index.html" aria-label="GetMyRight, zur Startseite"><img src="../assets/brand/logo.svg" alt="GetMyRight" width="218" height="36"></a><button class="menue" type="button" data-menue aria-controls="hauptnav" aria-expanded="false">Menü</button><nav class="nav" id="hauptnav" aria-label="Hauptnavigation"><a href="../spieler/index.html">Start</a><a href="../spieler/unterlagen.html" aria-current="page">Unterlagen</a><a href="../spieler/hilfe.html">Hilfsangebote</a><a href="../spieler/index.html#eintragen" class="nav-cta">Zur Warteliste</a><a href="../kanzlei/index.html" class="nav-kanzlei">Für Kanzleien</a></nav></div></header>
+<main id="inhalt">
+<section class="bahn bahn--hell lesekopf lesekopf--z kopf-band" aria-labelledby="h-seite"><div class="wrap"><div class="bogen brief"><p class="absender-zeile"><img src="../assets/brand/logo-mark.svg" alt="" width="22" height="22">GetMyRight</p><h1 id="h-seite">Ihr Fall, Schritt für Schritt.</h1><p class="lead">Erst ein paar kurze Fragen, dann Ihre Belege – ganz einfach vom Handy. Ihre E-Mail-Adresse brauchen wir erst ganz am Ende.</p></div></div></section>
+<section class="bahn bahn--dicht" aria-label="Fall anlegen"><div class="wrap"><div class="bogen bogen--form">
+<p class="vorschau-hinweis" data-fall-inaktiv hidden><b>Noch nicht freigeschaltet</b><span>Diese Funktion ist vorbereitet und wird erst nach Freigabe aktiviert. Es werden keine Daten übertragen.</span></p>
+<ol class="fall-schritte" aria-label="Fortschritt"><li data-schritt-anzeige="1" aria-current="step">Fragen</li><li data-schritt-anzeige="2">Einwilligung</li><li data-schritt-anzeige="3">Belege</li><li data-schritt-anzeige="4">E-Mail</li></ol>
+<div class="bestaetigung bestaetigung--fehler" data-fall-fehler role="alert" hidden></div>
+
+<!-- Schritt 1: 5 Fragen -->
+<div data-schritt="1">
+<h2>1 · Fünf kurze Fragen</h2>
+<div class="formular">
+<div class="feld"><label for="f-anbieter">Bei welchem Anbieter haben Sie gespielt? <span class="pflicht" aria-hidden="true">*</span></label><input id="f-anbieter" name="anbieter" type="text" maxlength="80" autocomplete="off" placeholder="z. B. Name des Online-Casinos"><span class="small">Mehrere Anbieter? Legen Sie bitte für jeden einen eigenen Fall an.</span></div>
+<div class="feld"><label for="f-spielart">Was haben Sie gespielt? <span class="pflicht" aria-hidden="true">*</span></label><select id="f-spielart" name="spielart"><option value="">Bitte wählen</option><option value="online-casino">Online-Casino</option><option value="slots">Automatenspiele (Slots)</option><option value="sportwetten">Sportwetten</option><option value="poker">Poker</option><option value="sonstiges">Etwas anderes</option></select></div>
+<div class="zeile2"><div class="feld"><label for="f-von">Gespielt ab (Jahr) <span class="pflicht" aria-hidden="true">*</span></label><select id="f-von" name="von" data-jahre></select></div><div class="feld"><label for="f-bis">bis (Jahr) <span class="pflicht" aria-hidden="true">*</span></label><select id="f-bis" name="bis" data-jahre></select></div></div>
+<div class="feld"><label for="f-verlust">Wie viel haben Sie ungefähr verloren? <span class="pflicht" aria-hidden="true">*</span></label><select id="f-verlust" name="verlust"><option value="">Bitte wählen</option><option value="unter-1000">unter 1.000 €</option><option value="1000-5000">1.000 – 5.000 €</option><option value="5000-10000">5.000 – 10.000 €</option><option value="10000-25000">10.000 – 25.000 €</option><option value="25000-50000">25.000 – 50.000 €</option><option value="50000-100000">50.000 – 100.000 €</option><option value="ueber-100000">über 100.000 €</option><option value="unbekannt">Weiß ich nicht</option></select><span class="small">Eine Schätzung reicht völlig.</span></div>
+<div class="feld"><label for="f-land">Wo wohnen Sie? <span class="pflicht" aria-hidden="true">*</span></label><select id="f-land" name="bundesland"><option value="">Bitte wählen</option><option value="BW">Baden-Württemberg</option><option value="BY">Bayern</option><option value="BE">Berlin</option><option value="BB">Brandenburg</option><option value="HB">Bremen</option><option value="HH">Hamburg</option><option value="HE">Hessen</option><option value="MV">Mecklenburg-Vorpommern</option><option value="NI">Niedersachsen</option><option value="NW">Nordrhein-Westfalen</option><option value="RP">Rheinland-Pfalz</option><option value="SL">Saarland</option><option value="SN">Sachsen</option><option value="ST">Sachsen-Anhalt</option><option value="SH">Schleswig-Holstein</option><option value="TH">Thüringen</option><option value="ausland">Außerhalb Deutschlands</option></select></div>
+<div class="knoepfe"><button type="button" class="btn" data-weiter="1">Weiter</button></div>
+</div>
+</div>
+
+<!-- Schritt 2: Einwilligung (ein Bildschirm, Details aufklappbar) -->
+<div data-schritt="2" hidden>
+<h2>2 · Kurz zur Sicherheit Ihrer Belege</h2>
+<ul class="liste">
+<li>Ihre Belege werden verschlüsselt in der EU gespeichert.</li>
+<li>Öffnen kann sie nur die Partnerkanzlei, die Ihren Fall übernimmt.</li>
+<li>Vorher sehen Kanzleien nur Ihre fünf Antworten – ohne Namen, E-Mail oder Belege.</li>
+<li>Sie können Ihre Einwilligung jederzeit widerrufen.</li>
+</ul>
+<details><summary>Mehr Details lesen</summary>
+<p class="small">GetMyRight verarbeitet Ihre Antworten und Belege, um Ihr Anliegen für eine Partnerkanzlei vorzubereiten. Belege wie Kontoauszüge, Spielverläufe oder eine OASIS-Auskunft können Angaben zu Ihrem Spielverhalten enthalten; dafür brauchen wir Ihre ausdrückliche Einwilligung (Art. 9 Abs. 2 lit. a DSGVO). Gespeichert wird bei Cloudflare (Speicher und Datenbank mit Standort EU). Jede Datei wird mit einem eigenen Schlüssel verschlüsselt. Wer wann eine Datei hochgeladen, angesehen oder heruntergeladen hat, wird protokolliert. Ohne bestätigte E-Mail-Adresse löschen wir einen angefangenen Fall nach 7 Tagen automatisch. Den Widerruf richten Sie formlos an info@getmyright.de. Weitere Informationen: <a href="../datenschutz.html">Datenschutzerklärung</a>.</p>
+</details>
+<div class="einwilligung"><label class="wahl"><input type="checkbox" id="f-einwilligung"> <span>Ich willige ein, dass GetMyRight meine Antworten und Belege – auch Angaben zu meinem Spielverhalten – wie beschrieben verarbeitet und an die Partnerkanzlei weitergibt, die meinen Fall übernimmt. <span class="pflicht" aria-hidden="true">*</span></span></label></div>
+<div data-turnstile></div>
+<div class="knoepfe"><button type="button" class="btn btn--sek" data-zurueck="1">Zurück</button><button type="button" class="btn" data-weiter="2">Fall anlegen</button></div>
+</div>
+
+<!-- Schritt 3: Belege-Checkliste -->
+<div data-schritt="3" hidden>
+<h2>3 · Ihre Belege</h2>
+<p>Laden Sie hoch, was Sie schon haben. Fehlt noch etwas, markieren Sie es als „angefordert“ und laden es später nach.</p>
+<p class="small">Erlaubt sind PDF und Fotos. iPhone-Fotos wandeln wir automatisch um, zu große Fotos verkleinern wir automatisch. Höchstens 10 MB pro Datei.</p>
+<div class="beleg-liste" data-checkliste></div>
+<div class="knoepfe"><button type="button" class="btn" data-weiter="3">Weiter zur E-Mail-Bestätigung</button></div>
+<p class="small">Sie können auch ohne Belege weitergehen und später nachreichen.</p>
+</div>
+
+<!-- Schritt 4: E-Mail am Ende -->
+<div data-schritt="4" hidden>
+<h2>4 · E-Mail-Adresse bestätigen</h2>
+<p>Damit Sie später wieder an Ihren Fall kommen und die Kanzlei Sie erreichen kann. Wir schicken Ihnen einen 6-stelligen Code und einen Link.</p>
+<div class="formular">
+<div class="feld"><label for="f-email">E-Mail-Adresse <span class="pflicht" aria-hidden="true">*</span></label><input id="f-email" type="email" autocomplete="email" inputmode="email"></div>
+<div class="knoepfe"><button type="button" class="btn" data-code-senden>Code schicken</button></div>
+<div data-code-schritt hidden>
+<div class="feld"><label for="f-code">6-stelliger Code aus der E-Mail</label><input id="f-code" class="code-feld" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}"></div>
+<p class="small">Sie können auch den Link in der E-Mail antippen – das klappt auch, wenn er sich in einem anderen Browser öffnet.</p>
+<div class="knoepfe"><button type="button" class="btn" data-code-pruefen>Bestätigen</button></div>
+</div>
+</div>
+</div>
+
+<!-- Status -->
+<div data-schritt="5" hidden>
+<h2>Ihr Fall</h2>
+<div class="bestaetigung" data-status-text role="status"></div>
+<div class="beleg-liste" data-checkliste-status></div>
+<div class="knoepfe"><button type="button" class="btn btn--sek" data-abmelden>Abmelden</button></div>
+</div>
+
+<div data-login-bereich>
+<details><summary>Sie haben schon einen Fall? Hier anmelden</summary>
+<div class="formular">
+<div class="feld"><label for="l-email">E-Mail-Adresse</label><input id="l-email" type="email" autocomplete="email" inputmode="email"></div>
+<div class="knoepfe"><button type="button" class="btn btn--sek" data-login-senden>Code schicken</button></div>
+<div data-login-code hidden><div class="feld"><label for="l-code">6-stelliger Code</label><input id="l-code" class="code-feld" inputmode="numeric" autocomplete="one-time-code" maxlength="6"></div><div class="knoepfe"><button type="button" class="btn" data-login-pruefen>Anmelden</button></div></div>
+<div class="small" data-login-status aria-live="polite"></div>
+</div>
+</details>
+</div>
+</div></div></section>
+<section class="schutzband" aria-labelledby="h-schutz"><div class="wrap"><div class="bogen"><div><h2 id="h-schutz">Ihr Schutz geht vor</h2><p>Wenn Sie gerade mit dem Spielen kämpfen, steht Ihr Schutz an erster Stelle. Kostenfreie, anonyme Beratung erhalten Sie zum Beispiel bei <a href="https://www.check-dein-spiel.de/" rel="noopener noreferrer" target="_blank">Check dein Spiel</a> oder telefonisch unter 0800 137 27 00.</p></div></div></div></section>
+</main>
+
+<footer class="fuss">
+<div class="rand" aria-hidden="true"></div>
+<div class="wrap">
+<div><a class="fuss-marke" href="../index.html" aria-label="GetMyRight, zur Startseite"><img src="../assets/brand/logo-negativ.svg" alt="GetMyRight" width="218" height="36"></a>
+<p>Strukturierte Vorbereitung im Glücksspielrecht.<br>&copy; 2026 GetMyRight · Robin Alexander Wolff</p></div>
+<nav aria-label="Rechtliches und Bereiche"><ul>
+<li><a href="index.html">Startseite</a></li><li><a href="../kanzlei/index.html">Für Kanzleien</a></li><li><a href="login.html">Login für Spieler</a></li>
+<li><a href="../impressum.html">Impressum</a></li><li><a href="../datenschutz.html">Datenschutz</a></li><li><a href="../agb.html">AGB &amp; Nutzungsbedingungen</a></li></ul></nav>
+<div class="fuss-hilfe"><p><strong>Hilfe zuerst:</strong> Kostenfreie, anonyme Suchthilfe unter <a href="tel:+498001372700">0800 137 27 00</a> · <a href="hilfe.html">Alle Hilfsangebote</a></p></div>
+</div>
+</footer>
+<script src="../js/site.js"></script>
+<script src="../js/gmr-config.js"></script>
+<script src="../js/gmr-beleg-bild.js"></script>
+<script src="../js/gmr-belege-api.js"></script>
+<script src="../js/gmr-fall.js"></script>
+</body>
+</html>

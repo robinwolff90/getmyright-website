@@ -1,0 +1,12 @@
+{
+  "name": "gmr-evidence",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --local --port 8787",
+    "test": "node --test --test-concurrency=1 test/*.test.js"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  }
+}

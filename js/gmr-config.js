@@ -28,6 +28,10 @@ window.GMR_CONFIG = {
   otpEndpoint: "",
   magicLinkEndpoint: "",
   uploadEndpoint: "",
+  /* Beleg-Upload Phase 1 (Worker /workers/evidence/, R2 + D1 in der EU). Leer = /spieler/fall.html und
+   * /kanzlei/faelle.html zeigen "Noch nicht freigeschaltet" und übertragen nichts. Erst nach Deploy-Freigabe eintragen,
+   * z. B. "https://gmr-evidence.getmyright.workers.dev". Lokal (localhost) wird automatisch http://127.0.0.1:8787 genutzt. */
+  evidenceEndpoint: "",
   maxUploadMb: 250,
   contactEmail: "info@getmyright.de",
   /* Warteliste: Anmeldungen gehen an den eigenen Cloudflare-Worker (Missbrauchsschutz: Rate-Limit, Honeypot,
