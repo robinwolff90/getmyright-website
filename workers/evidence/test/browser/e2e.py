@@ -90,6 +90,7 @@ with sync_playwright() as p:
     kp.fill('#kf-totp', totp(secret)); kp.check('#kf-merken'); kp.click('[data-kf-totp]')
     kp.wait_for_selector('[data-kf-app]:not([hidden])')
     ok(kp.evaluate("!!localStorage.getItem('gmr-kanzlei-geraet')"), '„Gerät 30 Tage merken“ gespeichert')
+    warte(kp, "() => document.querySelector('[data-kf-offen]').textContent.includes('Beispiel-Casino')")
     offen = kp.inner_text('[data-kf-offen]')
     ok('Beispiel-Casino' in offen and 'spieler@example.de' not in kp.content(), 'offener Fall sichtbar, ohne E-Mail des Spielers')
     kp.screenshot(path='05-kanzlei-liste.png', full_page=True)

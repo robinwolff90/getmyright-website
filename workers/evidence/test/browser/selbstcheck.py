@@ -19,10 +19,14 @@ with sync_playwright() as p:
             ok(box.is_visible(), f'[{name}] Hilfe-Box sichtbar auf {seite}')
             ok(box.locator('a[href="tel:+498001372700"]').inner_text() == '0800 1 37 27 00', f'[{name}] Hotline als tel:-Link')
             ok(box.locator('a[href="https://www.check-dein-spiel.de/"]').count() == 1 and 'BIÖG' in box.inner_text(), f'[{name}] Link check-dein-spiel.de (BIÖG)')
+            ok('Brauchst du Hilfe beim Aufhören?' in box.inner_text() and 'findest du' in box.inner_text() and ' Sie ' not in box.inner_text(), f'[{name}] Box in Du-Form')
             top = box.bounding_box()['y']
             ok(top < (2200 if name == 'handy' else 1400), f'[{name}] Box weit oben ({int(top)} px)')
             ok(pg.evaluate('document.documentElement.scrollWidth <= window.innerWidth + 1'), f'[{name}] kein seitliches Scrollen auf {seite}')
-        pg.goto(BASE + '/spieler/selbstcheck.html')
+        pg.goto(BASE + '/spieler/index.html')
+        link = pg.locator('a[href="selbstcheck.html"]').first
+        ok(link.is_visible() and 'Selbstcheck' in link.inner_text() and link.bounding_box()['y'] < 900, f'[{name}] Selbstcheck-Button oben auf der Startseite sichtbar')
+        link.click(); pg.wait_for_url('**/spieler/selbstcheck.html')
         pg.click('[data-sc-auswerten]')
         ok('Frage 1' in pg.inner_text('[data-sc-fehler]'), f'[{name}] Pflichtfragen geprüft')
         pg.check('input[name=lizenz][value=nein]'); pg.fill('#sc-anbieter', 'Beispiel-Casino')
